@@ -13,4 +13,4 @@ Dependencies: ```termcolor```
 1. Download the zip file and extract.
 2. Open your terminal/command prompt inside the extracted contents.
 3. Make sure the depenencies have been met.
-4. Simply do ```python main.py```
+4. Simply do ```python3 main.py```
