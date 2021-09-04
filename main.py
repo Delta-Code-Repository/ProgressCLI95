@@ -49,21 +49,29 @@ def shutdown():
     sleep(2)
     quit()
 
-def startup():
+def startup95():
     clear()
     print('P r o g r e s s b a r  9 5\n\n\nNow Loading...')
+    sleep(4)
+    beginMenu()
+    #to burning: use this when you implement 95+
+def startupplus():
+    clear()
+    print('P r o g r e s s b a r  9 5 ', colored('+ ', "yellow"),colored('P ', "grey"),colored('L ', "red"),colored('U ', "blue"),colored('S', "green"), '\n\n\nNow Loading...')
     sleep(4)
     beginMenu()
 
 # Begin menu normally
 def beginMenu():
     clear()
-    print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Shutdown        ║\n╚════════════════════════╝\n')
+    print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Shutdown        ║\n║    3 - BIOS            ║\n╚════════════════════════╝\n')
     choice = input()
     if choice == "1":
         newGame()
     elif choice == "2":
         shutdown()
+    elif choice == "3":
+        progressbar()
     else:
         beginMenu()
 
@@ -75,10 +83,30 @@ def progressbar():
     clear()
     print('Sparrow Assistant Enhanced Text BIOS.80.1 -', energyStar)
     print('Ver. 05-04-2021\n\n')
-    print('1. Progressbar 95')
+    print(colored('1. PB-DOS Shell', "grey"))
+    print(colored('2. Progressbar 1', "grey"))
+    print(colored('3. Progressbar 2', "grey"))
+    print(colored('4. Progressbar 3.14', "grey"))
+    print(colored('5. Progressbar NOT 3.60', "grey"))
+    print(colored('6. Progressbar Chitown', "grey"))
+    print('7. Progressbar 95')
+    print(colored('8. Progressbar 95 plus', "grey"))
+    print(colored('9. Progressbar NOT 4.0', "grey"))
+    print(colored('10. Progressbar 98', "grey"))
+    print(colored('11. Progressbar Meme', "grey"))
+    print(colored('12. Progressbar 2000', "grey"))
+    print(colored('13. Progressbar Whisper', "grey"))
+    print(colored('14. Progressbar XB', "grey"))
+    print(colored('15. Progressbar Largehorn', "grey"))
+    print(colored('16. Progressbar Wista', "grey"))
+    print(colored('17. Progressbar 7', "grey"))
+    print(colored('18. Progressbar 81', "grey"))
+    print(colored('19. Progressbar 10', "grey"))
+    print(colored('20. Progressbar 1X', "grey"))
+    print(colored('21. Progressbar 11', "grey"))
     choice = input()
-    if choice == "1":
-        startup()
+    if choice == "7":
+        startup95()
     else:
         progressbar()
 
@@ -87,7 +115,7 @@ progressbar()
 # Begin menu during gameplay
 def pauseBeginMenu():
     clear()
-    print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Resume          ║\n║    2 - New Game        ║\n║    3 - Shutdown        ║\n╚════════════════════════╝\n')
+    print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Resume          ║\n║    2 - New Game        ║\n║    3 - Shutdown        ║\n║    4 - BIOS            ║\n╚════════════════════════╝\n')
     choice = input()
     if choice == "1":
         return
@@ -95,6 +123,8 @@ def pauseBeginMenu():
         newGame()
     elif choice == "3":
         shutdown()
+    elif choice == "4":
+        progressbar()
     else:
         pauseBeginMenu()
 
