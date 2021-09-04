@@ -135,7 +135,8 @@ while True:
 
     # checks if lives are 0, sends you a level down if true
     if lives == 0:
-        print("You ran out of lives.")
+        print(colored("GAME OVER", attrs=['reverse']), "\n", colored("-1 LEVEL", attrs=["bold"]), "\nA fatal mistake has been made by the player.\nThe current game session will be terminated.\n\n* Press the key to terminate the current session\n* Don't press CTRL+ALT+DEL to restart\n\n", colored("PRESS ENTER TO CONTINUE", attrs=["reverse"]))
+        input()
         if level > 1:
             level = level - 1
             lives = 3
