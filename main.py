@@ -140,9 +140,11 @@ while True:
         if level > 1:
             level = level - 1
             lives = 3
+            clear()
         else:
             level = 1
             lives = 3
+            clear()
 
     # randomly chooses a segment and loads art
     seg = random.randint(0, 5)
