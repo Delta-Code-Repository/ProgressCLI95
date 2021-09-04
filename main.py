@@ -133,10 +133,15 @@ while True:
     # clears the screen for next segment
     clear()
 
-    # checks if lives are 0, breaks if true
+    # checks if lives are 0, sends you a level down if true
     if lives == 0:
-        print("You are out of lives. Game over!")
-        break
+        print("You ran out of lives.")
+        if level > 1:
+            level = level - 1
+            lives = 3
+        else:
+            level = 1
+            lives = 3
 
     # randomly chooses a segment and loads art
     seg = random.randint(0, 5)
@@ -267,8 +272,10 @@ while True:
     if progressbar >= 100:
         if progressbar2 > 0:
             print('Bravo!')
+            lives = 2
         if progressbar >= 100 and progressbar2 == 0:
             print('Perfect!')
+            lives = 3
         if progressbar > 100:
             print('Outer space!')
         level = level + 1
