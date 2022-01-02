@@ -11,7 +11,7 @@ def detectSave():
     else:
         print('Save file not found. Would you like to create one? (Y/N)')
         saveDataCreation = input("> ")
-        if saveDataCreation == "Y":
+        if saveDataCreation == "Y" or saveDataCreation == "y":
             f = open('save.pcsf', 'a')
             f.write("95,1")
             f.close()
