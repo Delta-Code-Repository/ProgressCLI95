@@ -113,13 +113,15 @@ def startGame(systemName, startLevel, proLevel):
         # checks if lives are 0, breaks if true
         if lives == 0:
             print("You are out of lives. Game over!")
-            print('-1 Level')
-            if startLevel == 0:
-                break
+            if startLevel == 1:
+                print('A level has not been taken.')
             else:
                 startLevel -= 1
-            editSystemSave(systemname2, startLevel)
-            break
+                print('-1 Level')
+                editSystemSave(systemName, startLevel)
+            lives = 3
+            sleep(3)
+            clear()
 
         # randomly chooses a segment and loads art
         seg = random.randint(0, 5)
@@ -236,7 +238,7 @@ def startGame(systemName, startLevel, proLevel):
 
         if catch == "credits":
             clear()
-            print('ProgressCLI95 0.2.1 Development Build 3')
+            print('ProgressCLI95 0.2.1 Development Build 4')
             print('Original code (0.1) by Setapdede')
             print('Improved code (0.2+) by BurningInfern0')
             print('Made for use with Sparrow Assistant by pivinx1')
