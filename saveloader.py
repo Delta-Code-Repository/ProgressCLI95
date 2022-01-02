@@ -41,7 +41,6 @@ def editSystemSave(system, level):
             editedLine = editedLine + 1
     f = open('save.pcsf', 'r')
     filesaver = f.readlines()
-    print(filesaver, editedLine, system, level2)
     filesaver[editedLine] = system+","+level2+"\n"
     x = open("save.pcsf", "w")
     x.writelines(filesaver)
