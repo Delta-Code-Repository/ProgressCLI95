@@ -69,6 +69,19 @@ def pauseBeginMenu(systemName, systemPro):
     else:
         pauseBeginMenu(systemName, systemPro)
 
+# original code by Setapdede, but i refined it a bit.
+def spawnPopup(startLevel, systemLabel):
+    clear()
+    print('Level', startLevel)
+    if systemLevel > 0:
+        print('<', systemLabel, '>')
+    print("╔════════════════════╗\n║ :) Annoying popup! ║\n║        [OK]        ║\n╚════════════════════╝")
+    popupinput = input()
+    if popupinput == "OK":
+        clear()
+    else:
+        spawnPopup(startLevel, systemLabel)        
+        
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
@@ -123,6 +136,10 @@ def startGame(systemName, startLevel, proLevel):
             sleep(3)
             clear()
 
+        popupshow = random.randint(0, 6)
+        if popupshow == 6:
+            spawnPopup(startLevel, systemLabel)
+            
         # randomly chooses a segment and loads art
         seg = random.randint(0, 5)
         if seg == 0:
@@ -238,7 +255,7 @@ def startGame(systemName, startLevel, proLevel):
 
         if catch == "credits":
             clear()
-            print('ProgressCLI95 0.2.1 Development Build 4')
+            print('ProgressCLI95 0.2.1 Release')
             print('Original code (0.1) by Setapdede')
             print('Improved code (0.2+) by BurningInfern0')
             print('Made for use with Sparrow Assistant by pivinx1')
