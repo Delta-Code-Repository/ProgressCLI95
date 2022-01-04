@@ -77,11 +77,11 @@ def spawnPopup(startLevel, systemLabel):
         print('<', systemLabel, '>')
     print("╔════════════════════╗\n║ :) Annoying popup! ║\n║        [OK]        ║\n╚════════════════════╝")
     popupinput = input()
-    if popupinput == "OK":
+    if popupinput == "OK" or "ok":
         clear()
     else:
-        spawnPopup(startLevel, systemLabel)        
-        
+        spawnPopup(startLevel, systemLabel
+                   
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
@@ -273,6 +273,10 @@ def startGame(systemName, startLevel, proLevel):
                 print('Perfect!')
             if progressbar > 100:
                 print('Outer space!')
+            if progressbar == 50 and progressbar2 == 50:
+                print ('Yin and yang')
+            if progressbar == 0 and progressbar2 == 100:
+                print ("Nonconformist!")
             startLevel += 1
             editSystemSave(systemName, startLevel)
             if startLevel == proLevel:
@@ -283,6 +287,9 @@ def startGame(systemName, startLevel, proLevel):
             elif startLevel == 15 and systemName == "95":
                 print('Progressbar95 plus unlocked...')
                 addSystemSave("95plus")
+            elif startLevel == 25 and systemName == "95plus":
+                print ('Progressbar98 unlocked...')
+                addSystemSave("98")
             elif startLevel == 100:
                 print('\nExpert Label acquired!')
                 systemLevel = 2
