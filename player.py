@@ -273,7 +273,7 @@ def startGame(systemName, startLevel, proLevel):
                 print('Perfect!')
             elif progressbar > 100:
                 print('Outer space!')
-            elif progressbar == 100 and progressbar2:
+            elif progressbar == 100 and progressbar2 == 100:
                 print('Nonconfromist!')
             startLevel += 1
             editSystemSave(systemName, startLevel)
