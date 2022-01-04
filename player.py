@@ -80,7 +80,7 @@ def spawnPopup(startLevel, systemLabel):
     if popupinput == "OK" or "ok":
         clear()
     else:
-        spawnPopup(startLevel, systemLabel
+        spawnPopup(startLevel, systemLabel)
                    
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
@@ -290,6 +290,9 @@ def startGame(systemName, startLevel, proLevel):
             elif startLevel == 25 and systemName == "95plus":
                 print ('Progressbar98 unlocked...')
                 addSystemSave("98")
+            elif startLevel == 30 and systemName == "98":
+                print ('ProgressbarMeme unlocked...')
+                addSystemSave("Meme")
             elif startLevel == 100:
                 print('\nExpert Label acquired!')
                 systemLevel = 2
