@@ -188,7 +188,7 @@ def startGame(systemName, startLevel, proLevel):
             print("You have", progressbar,"%", "in your progressbar.")
 
         # catches the currently displayed segment
-        catch = input("Type 'C' to catch, any other key to move away, and 'Q' to quit.\n")
+        catch = input("Type 'c' to catch, any other key to move away, and 'q' to quit.\n")
 
         # calculates which segment you caught and does stuff
         if seg == 0 and catch == "c":
