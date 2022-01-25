@@ -7,9 +7,13 @@ import sys
 # system pros
 global pro95
 global pro95plus
+global pro98
+global promeme
 
 pro95 = 10
 pro95plus = 20
+pro98 = 20
+promeme = 30
 
 # systems
 sys.path.insert(0, './oses/')
@@ -17,6 +21,8 @@ sys.path.insert(0, './oses/')
 def startup(system):
     from system95 import launch95
     from system95plus import launch95plus
+    from system98 import launch98
+    from systemmeme import launchmeme
     if system == "1":
         level95 = loadSystemSave("95")
         badge95 = calculateBadge(level95, pro95)
@@ -28,6 +34,20 @@ def startup(system):
             boot()
         else:
             launch95plus(plus95check, badge95plus, pro95plus)
+    elif system == "3":
+        check98 = loadSystemSave("98")
+        badge98 =  calculateBadge (check98, pro98)
+        if check98 == False:
+            boot()
+        else:
+            launch98(check98, badge98, pro98)
+    elif system == "4":
+        checkmeme = loadSystemSave("Meme")
+        badgememe =  calculateBadge (checkmeme, promeme)
+        if checkmeme == False:
+            boot()
+        else:
+            launch98(checkmeme, badgememe, promeme)
 
 def boot():
 
@@ -52,6 +72,19 @@ def boot():
     else:
         ninefiveplusbadge = calculateBadge(ninefiveplus, pro95plus)
         print('2. Progressbar 95 Plus', ninefiveplusbadge)
+
+    nineeight = loadSystemSave("98")
+    if nineeight == False:
+        print(colored('3. Progressbar 98 - Get to level 25 in PB95+ to unlock this!', "red"))
+    else:
+        nineeightbadge = calculateBadge(nineeight, pro98)
+        print ('3. Progressbar 98', nineeightbadge)
+    meme = loadSystemSave("Meme")
+    if meme == False:
+        print(colored('4. Progressbar Meme - Get to level 30 in PB98 to unlock this!', "red"))
+    else:
+        memebadge = calculateBadge(meme, promeme)
+        print ('4. Progressbar Meme', memebadge)
 
     choice = input()
     startup(choice)
