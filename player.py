@@ -188,7 +188,7 @@ def startGame(systemName, startLevel, proLevel):
             print("You have", progressbar,"%", "in your progressbar.")
 
         # catches the currently displayed segment
-        catch = input("Type 'C' to catch, any other key to move away, and 'Q' to quit.\n")
+        catch = input("Type 'c' to catch, any other key to move away, and 'q' to quit.\n")
 
         # calculates which segment you caught and does stuff
         if seg == 0 and catch == "c":
@@ -269,9 +269,9 @@ def startGame(systemName, startLevel, proLevel):
         if progressbar >= 100:
             if progressbar2 > 0:
                 print('Bravo!')
-            if progressbar >= 100 and progressbar2 == 0:
+            elif progressbar >= 100 and progressbar2 == 0:
                 print('Perfect!')
-            if progressbar > 100:
+            elif progressbar > 100:
                 print('Outer space!')
             if progressbar == 50 and progressbar2 == 50:
                 print ('Yin and yang')
