@@ -16,3 +16,7 @@ Dependencies: ```termcolor```
 2. Open your terminal/command prompt inside the extracted contents.
 3. Make sure the depenencies have been met.
 4. Simply do ```python boot.py```
+
+WARNING: This is an "experimental" fork made by Dieguito0512. This is NOT the original ProgressCLI95
+Go to BurningInfern0/ProgressCLI95 for the latest stable build of PCLI95. Code on this fork may or may 
+not work due to my shitty python coding skills. Download at your own risk!
