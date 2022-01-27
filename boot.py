@@ -94,7 +94,7 @@ def boot():
     else:
         memebadge = calculateBadge(meme, promeme)
         print ('4. Progressbar Meme', memebadge)
-        twok = loadSystemSave("2000")
+    twok = loadSystemSave("2000")
     if twok == False:
         print(colored('5. Progressbar 2000 - Get to level 30 in PBMeme to unlock this!', "red"))
     else:
