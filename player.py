@@ -77,8 +77,10 @@ def spawnPopup(startLevel, systemLabel):
         print('<', systemLabel, '>')
     print("╔════════════════════╗\n║ :) Annoying popup! ║\n║        [OK]        ║\n╚════════════════════╝")
     popupinput = input()
-    if popupinput == "OK" or "ok":
+    if popupinput == "OK":
         clear()
+    elif popupinput == "ok":
+	    clear()
     else:
         spawnPopup(startLevel, systemLabel)
                    
