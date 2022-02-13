@@ -9,11 +9,13 @@ global pro95
 global pro95plus
 global pro98
 global promeme
+global pro2000
 
 pro95 = 10
 pro95plus = 20
 pro98 = 20
 promeme = 30
+pro2000 = 30
 
 # systems
 sys.path.insert(0, './oses/')
@@ -23,6 +25,7 @@ def startup(system):
     from system95plus import launch95plus
     from system98 import launch98
     from systemmeme import launchmeme
+    from system2000 import launch2000
     if system == "1":
         level95 = loadSystemSave("95")
         badge95 = calculateBadge(level95, pro95)
@@ -47,8 +50,14 @@ def startup(system):
         if checkmeme == False:
             boot()
         else:
-            launch98(checkmeme, badgememe, promeme)
-
+            launchmeme(checkmeme, badgememe, promeme)    
+    elif system == "5":
+        check2000 = loadSystemSave("2000")
+        badge2000 =  calculateBadge (check2000, pro2000)
+        if check2000 == False:
+            boot()
+        else:
+            launch2000(check2000, badge2000, pro2000)
 def boot():
 
     detectSave()
@@ -85,6 +94,14 @@ def boot():
     else:
         memebadge = calculateBadge(meme, promeme)
         print ('4. Progressbar Meme', memebadge)
+    twok = loadSystemSave("2000")
+    if twok == False:
+        print(colored('5. Progressbar 2000 - Get to level 30 in PBMeme to unlock this!', "red"))
+    else:
+        twokbadge = calculateBadge(twok, pro2000)
+        print ('5. Progressbar 2000', twokbadge)
+
+
 
     choice = input()
     startup(choice)
