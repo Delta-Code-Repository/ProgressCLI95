@@ -11,6 +11,7 @@ global pro98
 global promeme
 global pro2000
 global proxb
+global prowista
 
 pro95 = 10
 pro95plus = 20
@@ -18,6 +19,7 @@ pro98 = 20
 promeme = 30
 pro2000 = 30
 proxb = 40
+prowista = 40
 
 # systems
 sys.path.insert(0, './oses/')
@@ -29,6 +31,7 @@ def startup(system):
     from systemmeme import launchmeme
     from system2000 import launch2000
     from systemxb import launchxb
+    from systemwista import launchwista
     if system == "1":
         level95 = loadSystemSave("95")
         badge95 = calculateBadge(level95, pro95)
@@ -63,11 +66,18 @@ def startup(system):
             launch2000(check2000, badge2000, pro2000)
     elif system == "6":
         checkxb = loadSystemSave("xb")
-        badgexb =  calculateBadge (checkxb, proxb)
+        badgexb =  calculateBadge(checkxb, proxb)
         if checkxb == False:
             boot()
         else:
             launchxb(checkxb, badgexb, proxb)
+    elif system == "7":
+       checkwista = loadSystemSave("wista")
+       badgexb = calculateBadge(checkwista, prowista)
+       if checkwista == False:
+          boot()
+       else:
+           launchwista(checkwista, badgewista, prowista)
 def boot():
 
     detectSave()
@@ -75,6 +85,9 @@ def boot():
     global currentSystem
 
     clear()
+    # btw pivin fucking work on sparrow
+    # it's just a decision tree, isn't too hard.
+    # or at least sounds easy.
     rprint('Sparrow Assistant Enhanced Text BIOS.80.1 - [bright_yellow]Energy Star Powered[/bright_yellow]')
     print('Ver. 12-30-2021\n\n')
 
@@ -113,6 +126,12 @@ def boot():
     else:
         xbbadge = calculateBadge(xb, proxb)
         print ('6. Progressbar XB', xbbadge)
+    wista = loadSystemSave("Wista")
+    if wista == False:
+        rprint('[red]7. Progressbar Wista - Get to level 50 in PBXB to unlock this![/red]')
+    else:
+         wistabadge = calculateBadge(wista, prowista)
+         print('7. Progressbar Wista (INCOMPLETE)', wistabadge)
 
 
     choice = input()
