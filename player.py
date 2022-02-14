@@ -5,6 +5,8 @@ import random
 from saveloader import editSystemSave, addSystemSave
 from checkbadge import calculateBadge
 
+global cancelPopUp
+cancelPopUp = False
 # shutdown woohoo
 def shutdown():
     clear()
@@ -71,17 +73,24 @@ def pauseBeginMenu(systemName, systemPro):
 
 # original code by Setapdede, but i refined it a bit.
 def spawnPopup(startLevel, systemLabel):
+    global cancelPopUp
+    global popNum
     clear()
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    print("╔════════════════════╗\n║ :) Annoying popup! ║\n║        [OK]        ║\n╚════════════════════╝")
+    if cancelPopUp == False:
+        popNum = random.randint(0, 2)
+    popText = ["Annoying Popup ", " Can I help?   ", "    Hello!     "]
+    popup = popText[popNum]
+    print(f"╔════════════════════╗\n║ :) {popup} ║\n║        [OK]        ║\n╚════════════════════╝")
     popupinput = input()
     if popupinput == "OK":
         clear()
     elif popupinput == "ok":
 	    clear()
     else:
+        cancelPopUp = True
         spawnPopup(startLevel, systemLabel)
                    
 def startGame(systemName, startLevel, proLevel):
@@ -139,7 +148,9 @@ def startGame(systemName, startLevel, proLevel):
             clear()
 
         popupshow = random.randint(0, 6)
+        global cancelPopUp
         if popupshow == 6:
+            cancelPopUp = False
             spawnPopup(startLevel, systemLabel)
             
         # randomly chooses a segment and loads art
