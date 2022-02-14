@@ -1,5 +1,5 @@
 from clear import clear
-from termcolor import colored
+from rich import print as rprint
 from time import sleep
 import random
 from saveloader import editSystemSave, addSystemSave
@@ -10,7 +10,7 @@ def shutdown():
     clear()
     print('P l e a s e  w a i t . . .\n\n\n')
     sleep(3)
-    print(colored('It is now safe to close your Command Line Interface.', "yellow"))
+    rprint('[bold orange]It is now safe to close your Command Line Interface.[/bold orange]')
     sleep(2)
     quit()
 
@@ -75,7 +75,7 @@ def spawnPopup(startLevel, systemLabel):
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    print("╔════════════════════╗\n║ :) Annoying popup! ║\n║        [OK]        ║\n╚════════════════════╝")
+    rprint("[bold bright_black]╔════════════════════╗\n║[/bold bright_black] :) Annoying popup! [bold bright_black]║\n║[/bold bright_black]        [OK]        [bold bright_black]║\n╚════════════════════╝[/bold bright_black]")
     popupinput = input()
     if popupinput == "OK":
         clear()
@@ -83,7 +83,7 @@ def spawnPopup(startLevel, systemLabel):
 	    clear()
     else:
         spawnPopup(startLevel, systemLabel)
-                   
+
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
@@ -127,12 +127,12 @@ def startGame(systemName, startLevel, proLevel):
 
         # checks if lives are 0, breaks if true
         if lives == 0:
-            print("You are out of lives. Game over!")
+            rprint("You are out of lives. Game over!", style="white on blue")
             if startLevel == 1:
                 print('A level has not been taken.')
             else:
                 startLevel -= 1
-                print('-1 Level')
+                rprint('[italic]-1 Level[/italic]', style="white on blue")
                 editSystemSave(systemName, startLevel)
             lives = 3
             sleep(3)
@@ -141,53 +141,53 @@ def startGame(systemName, startLevel, proLevel):
         popupshow = random.randint(0, 6)
         if popupshow == 6:
             spawnPopup(startLevel, systemLabel)
-            
-        # randomly chooses a segment and loads art
-        seg = random.randint(0, 5)
-        if seg == 0:
-            seg_art = colored("╔══╗\n║  ║\n║  ║\n╚══╝", "blue")
-        elif seg == 1:
-            seg_art = colored("╔══╗\n║!!║\n║!!║\n╚══╝", "red")
-        elif seg == 2:
-            seg_art = colored("╔══╗\n║--║\n║--║\n╚══╝", "magenta")
-        elif seg == 3:
-            seg_art = colored("╔══╗\n║~~║\n║~~║\n╚══╝", "yellow")
-        elif seg == 4:
-            seg_art = colored("╔══╗\n║..║\n║..║\n╚══╝")
-        elif seg == 5:
-            seg_art = colored("╔══╗\n║**║\n║**║\n╚══╝", "cyan")
-
-        # green segment check
-        greenseg = random.randint(0, 100)
-        if greenseg == 95:
-            seg = 6
-            seg_art = colored("╔══╗\n║$$║\n║$$║\n╚══╝", "green")
 
         print('Level', startLevel)
         if systemLevel > 0:
             print('<', systemLabel, '>')
 
-        # print segment art
-        print(seg_art)
+        # randomly chooses a segment and loads art
+        seg = random.randint(0, 5)
+        if seg == 0:
+            rprint("[blue]╔══╗\n║  ║\n║  ║\n╚══╝[/blue]")
+        elif seg == 1:
+            rprint("[bright_red]╔══╗\n║!!║\n║!!║\n╚══╝[/bright_red]")
+        elif seg == 2:
+            rprint("[bright_magenta]╔══╗\n║--║\n║--║\n╚══╝[/bright_magenta]")
+        elif seg == 3:
+            rprint("[bright_yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/bright_yellow]")
+        elif seg == 4:
+            rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
+        elif seg == 5:
+            rprint("[bright_cyan]╔══╗\n║**║\n║**║\n╚══╝[/bright_cyan]")
+
+        # green segment check
+        greenseg = random.randint(0, 100)
+        if greenseg == 95:
+            seg = 6
+            rprint("[bright_green]╔══╗\n║$$║\n║$$║\n╚══╝[/bright_green]")
 
         # checks if you have 1 life left
         if lives == 1:
-            print("You have 1 life left. Be careful.")
+            rprint("You have [italic bright_red]1 life left[/italic bright_red]. Be careful.")
         else:
             print("You have", lives, "lives left.")
 
         # checks if you have orange segments in your bar
-        bardisplay = ""
         if progressbar2 > 0:
-            for segments in bar:
-                bardisplay = bardisplay + segments
-            print("\nYour bar:", bardisplay, "\n")
-            print("You have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
+            print('\nYour bar:', end='')
+            for segment in bar2:
+                if segment == "Blue":
+                    rprint("[blue][][/blue]", end='')
+                elif segment == "Orange":
+                    rprint("[bright_yellow][][/bright_yellow]", end='')
+            print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
         else:
-            for segments in bar:
-                bardisplay = bardisplay + segments
-            print("\nYour bar:", bardisplay, "\n")
-            print("You have", progressbar,"%", "in your progressbar.")
+            print('\nYour bar:', end='')
+            for segment in bar2:
+                if segment == "Blue":
+                    rprint("[blue][][/blue]", end='')
+            print("\nYou have", progressbar,"%", "in your progressbar.")
 
         # catches the currently displayed segment
         catch = input("Type 'c' to catch, any other key to move away, and 'q' to quit.\n")
@@ -195,7 +195,6 @@ def startGame(systemName, startLevel, proLevel):
         # calculates which segment you caught and does stuff
         if seg == 0 and catch == "c":
             progressbar = progressbar + 5
-            bar.append(colored("[]", "blue"))
             bar2.append("Blue")
             score = score + 5
         elif seg == 1 and catch == "c":
@@ -212,18 +211,15 @@ def startGame(systemName, startLevel, proLevel):
             if bar2[-1] == "Orange":
                 progressbar2 = progressbar2 - 5
                 progressbar = progressbar - 5
-                bar.pop(-1)
                 bar2.pop(-1)
                 score = score + 5
             else:
                 progressbar = progressbar - 5
-                bar.pop(-1)
                 bar2.pop(-1)
                 score + score - 5
         elif seg == 3 and catch == "c":
             progressbar = progressbar + 5
             progressbar2 = progressbar2 + 5
-            bar.append(colored("[]", "yellow"))
             bar2.append("Orange")
         elif seg == 4 and catch == "c":
             continue
@@ -231,16 +227,11 @@ def startGame(systemName, startLevel, proLevel):
             bonus = random.randint(0, 1)
             if bonus == 0:
                 progressbar = progressbar + 10
-                bar.append(colored("[]", "blue"))
-                bar.append(colored("[]", "blue"))
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 10
             else:
                 progressbar = progressbar + 15
-                bar.append(colored("[]", "blue"))
-                bar.append(colored("[]", "blue"))
-                bar.append(colored("[]", "blue"))
                 bar2.append("Blue")
                 bar2.append("Blue")
                 bar2.append("Blue")
