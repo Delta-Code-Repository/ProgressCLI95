@@ -81,9 +81,9 @@ def spawnPopup(startLevel, systemLabel):
         print('<', systemLabel, '>')
     if cancelPopUp == False:
         popNum = random.randint(0, 2)
-    popText = ["Annoying Popup ", " Can I help?   ", "    Hello!     "]
+    popText = ["Annoying Popup", " Can I help?  ", "  Hello!      "]
     popup = popText[popNum]
-    rprint("[bold bright_black]╔════════════════════╗\n║[/bold bright_black] :) ", popup, " [bold bright_black]║\n║[/bold bright_black]        [OK]        [bold bright_black]║\n╚════════════════════╝[/bold bright_black]")
+    rprint("[bold bright_black]╔════════════════════╗\n║[/bold bright_black] :) ", popup, "[bold bright_black]║\n║[/bold bright_black]        [OK]        [bold bright_black]║\n╚════════════════════╝[/bold bright_black]")
     popupinput = input()
     if popupinput.lower() == "ok":
         clear()
@@ -131,7 +131,7 @@ def startGame(systemName, startLevel, proLevel):
     while True:
         # clears the screen for next segment
         clear()
-
+        global cancelPopUp
         # checks if lives are 0, breaks if true
                 # checks if lives are 0, breaks if true
         if lives == 0:
@@ -146,7 +146,6 @@ def startGame(systemName, startLevel, proLevel):
             sleep(3)
 
             clear()
-
         popupshow = random.randint(0, 6)
         if popupshow == 6:
             cancelPopUp = False
