@@ -76,6 +76,7 @@ def spawnPopup(startLevel, systemLabel):
     if systemLevel > 0:
         print('<', systemLabel, '>')
     rprint("[bold bright_black]╔════════════════════╗\n║[/bold bright_black] :) Annoying popup! [bold bright_black]║\n║[/bold bright_black]        [OK]        [bold bright_black]║\n╚════════════════════╝[/bold bright_black]")
+    screenDown()
     popupinput = input()
     if popupinput == "OK":
         clear()
@@ -83,6 +84,30 @@ def spawnPopup(startLevel, systemLabel):
 	    clear()
     else:
         spawnPopup(startLevel, systemLabel)
+
+def screenDown():
+    # checks if you have 1 life left
+    if lives == 1:
+        rprint("You have [italic bright_red]1 life left[/italic bright_red]. Be careful.")
+    else:
+        print("You have", lives, "lives left.")
+
+    # checks if you have orange segments in your bar
+    if progressbar2 > 0:
+        print('\nYour bar:', end='')
+        for segment in bar2:
+            if segment == "Blue":
+                rprint("[blue][][/blue]", end='')
+            elif segment == "Orange":
+                rprint("[bright_yellow][][/bright_yellow]", end='')
+        print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
+    else:
+        print('\nYour bar:', end='')
+        for segment in bar2:
+            if segment == "Blue":
+                rprint("[blue][][/blue]", end='')
+        print("\nYou have", progressbar,"%", "in your progressbar.")
+
 
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
@@ -169,27 +194,7 @@ def startGame(systemName, startLevel, proLevel):
             seg = 6
             rprint("[bright_green]╔══╗\n║$$║\n║$$║\n╚══╝[/bright_green]")
 
-        # checks if you have 1 life left
-        if lives == 1:
-            rprint("You have [italic bright_red]1 life left[/italic bright_red]. Be careful.")
-        else:
-            print("You have", lives, "lives left.")
-
-        # checks if you have orange segments in your bar
-        if progressbar2 > 0:
-            print('\nYour bar:', end='')
-            for segment in bar2:
-                if segment == "Blue":
-                    rprint("[blue][][/blue]", end='')
-                elif segment == "Orange":
-                    rprint("[bright_yellow][][/bright_yellow]", end='')
-            print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
-        else:
-            print('\nYour bar:', end='')
-            for segment in bar2:
-                if segment == "Blue":
-                    rprint("[blue][][/blue]", end='')
-            print("\nYou have", progressbar,"%", "in your progressbar.")
+        screenDown()
 
         # catches the currently displayed segment
         catch = input("Type 'c' to catch, any other key to move away, and 'q' to quit.\n")
