@@ -12,4 +12,4 @@ def launchwista(systemlevel, systembadge, systempro):
     print(systembadge)
     print('\n\n\nNow Loading...')
     sleep(6)
-    beginMenu("xb", systemlevel, systempro)
+    beginMenu("wista", systemlevel, systempro)
