@@ -1,6 +1,8 @@
 def calculateBadge(level, proLevel):
     # i know you can probably use case statements here but i'm using if statements because it's easier. -Inferno
-    if level >= 1000:
+    if level >= 2147483647:
+        return "What?"
+    elif level >= 1000:
         return "Grand"
     elif level >= 500:
         return "Adept"
