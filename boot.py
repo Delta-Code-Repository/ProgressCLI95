@@ -35,6 +35,7 @@ def startup(system):
     if level == False and int(system) > 1:
         boot()
     launch(stri, level, badge, pro)
+    
 def boot():
 
     detectSave()
@@ -44,6 +45,7 @@ def boot():
     clear()
     rprint('Sparrow Assistant Enhanced Text BIOS.80.1 - [bright_yellow]Energy Star Powered[/bright_yellow]')
     print('Ver. 12-30-2021\n\n')
+    
     for i in range(len(systemList)):
         stri = systemList[i]
         stri1 = systemList[i - 1]
