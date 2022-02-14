@@ -115,7 +115,9 @@ def startGame(systemName, startLevel, proLevel):
 
     systemLabel = calculateBadge(startLevel, proLevel)
 
-    if systemLabel == "Grand":
+    if systemLabel == "What?":
+        systemLevel = 6
+    elif systemLabel == "Grand":
         systemLevel = 5
     elif systemLabel == "Adept":
         systemLevel = 4
@@ -309,6 +311,8 @@ def startGame(systemName, startLevel, proLevel):
                 systemLabel = "Adept"
             elif startLevel == 1000:
                 print('\nGrand Label acquired!')
+            elif startLevel == 2147483647:
+                print('\nWhat?')
                 systemLevel = 5
                 systemLabel = "Grand"
             bar = []
