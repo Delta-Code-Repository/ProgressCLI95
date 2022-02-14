@@ -127,12 +127,12 @@ def startGame(systemName, startLevel, proLevel):
 
         # checks if lives are 0, breaks if true
         if lives == 0:
-            rprint("You are out of lives. Game over!", style="white on blue")
+            rprint("[bold bright_blue]You are out of lives. Game over![/bold bright_blue]")
             if startLevel == 1:
-                print('A level has not been taken.')
+                rprint('[i]A level has not been taken.[/i]')
             else:
                 startLevel -= 1
-                rprint('[italic]-1 Level[/italic]', style="white on blue")
+                rprint('[bold i]-1 Level[/bold i]')
                 editSystemSave(systemName, startLevel)
             lives = 3
             sleep(3)
