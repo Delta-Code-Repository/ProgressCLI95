@@ -248,7 +248,7 @@ def startGame(systemName, startLevel, proLevel):
 
         if catch == "credits":
             clear()
-            print('ProgressCLI95 0.2.1 Release')
+            print('ProgressCLI95 0.2.2 Release')
             print('Original code (0.1) by Setapdede')
             print('Improved code (0.2+) by BurningInfern0')
             print('Made for use with Sparrow Assistant by pivinx1')
