@@ -1,11 +1,13 @@
 from saveloader import detectSave, loadSystemSave
-from termcolor import colored
+from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
 from time import sleep
 import sys
 from mod import systemList, proList
 from player import startGame, beginMenu, pauseBeginMenu
+
+# compressed code helps make game much more expandable/moddable
 
 # systems
 sys.path.insert(0, './oses/')
@@ -16,19 +18,19 @@ def launch(systemOS, systemlevel, systembadge, systempro):
     print(systembadge)
     print('\n\n\nNow Loading...')
     sleep(4)
-    repi = systemOS.replace("Progressbar", "")
+    repi = systemOS.replace("Progressbar ", "")
     beginMenu(repi, systemlevel, systempro)
 
 def startup(system):
-    from system95 import launch95
-    from system95plus import launch95plus
-    from system98 import launch98
-    from systemmeme import launchmeme
-    from system2000 import launch2000
+    # string from mod.py
     stri = systemList[int(system) - 1]
+    # for saving
     repi = stri.replace("Progressbar", "")
+    # originally "level95", "check95plus", etc
     level = loadSystemSave(repi)
+    # removes "necessity" for each os to have a separate pro variable, mod.py
     pro = proList[int(system) - 1]
+    # originally "badge95", etc
     badge = calculateBadge(level, pro)
     if level == False and int(system) > 1:
         boot()
@@ -39,11 +41,8 @@ def boot():
 
     global currentSystem
 
-    # fancy bios text
-    energyStar = colored('Energy Star Powered', "yellow")
-
     clear()
-    print('Sparrow Assistant Enhanced Text BIOS.80.1 -', energyStar)
+    rprint('Sparrow Assistant Enhanced Text BIOS.80.1 - [bright_yellow]Energy Star Powered[/bright_yellow]')
     print('Ver. 12-30-2021\n\n')
     for i in range(len(systemList)):
         stri = systemList[i]
@@ -51,7 +50,7 @@ def boot():
         repi = stri.replace("Progressbar", "")
         save = loadSystemSave(repi)
         if save == False and i > 0:
-            print(colored(f"{i + 1}. {stri} - Get to level {proList[i - 1]} in {stri1} to unlock this!", "red"))
+            rprint(f'[red]{i}. {stri} - Get to level {proList[i - 1]} in {stri1} to unlock this![/red]')
         else:
             badge = calculateBadge(save, proList[i])
             print(f"{i + 1}. {stri}", badge)
