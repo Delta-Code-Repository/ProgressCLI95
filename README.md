@@ -10,7 +10,7 @@ Current Version: **0.2.1**
 
 Built on Python 3.
 
-Dependencies: ```termcolor``` (possibly moving to ```rich``` in the future)
+Dependencies: ```rich```
 
 1. Download the zip file and extract.
 2. Open your terminal/command prompt inside the extracted contents.
