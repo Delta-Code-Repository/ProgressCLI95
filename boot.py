@@ -2,11 +2,22 @@ from saveloader import detectSave, loadSystemSave
 from termcolor import colored
 from clear import clear
 from checkbadge import calculateBadge
+from time import sleep
 import sys
 from mod import systemList, proList
+from player import startGame, beginMenu, pauseBeginMenu
 
 # systems
 sys.path.insert(0, './oses/')
+
+def launch(systemOS, systemlevel, systembadge, systempro):
+    clear()
+    print(" ".join(systemOS))
+    print(systembadge)
+    print('\n\n\nNow Loading...')
+    sleep(4)
+    repi = systemOS.replace("Progressbar", "")
+    beginMenu(repi, systemlevel, systempro)
 
 def startup(system):
     from system95 import launch95
@@ -15,22 +26,13 @@ def startup(system):
     from systemmeme import launchmeme
     from system2000 import launch2000
     stri = systemList[int(system) - 1]
-    stri = stri.replace("Progressbar", "")
-    level = loadSystemSave(stri)
+    repi = stri.replace("Progressbar", "")
+    level = loadSystemSave(repi)
     pro = proList[int(system) - 1]
     badge = calculateBadge(level, pro)
     if level == False and int(system) > 1:
         boot()
-    if system == "1":
-        launch95(level, badge, pro)
-    elif system == "2":
-        launch95plus(level, badge, pro)
-    elif system == "3":
-        launch98(level, badge, pro)
-    elif system == "4":
-        launchmeme(level, badge, pro)    
-    elif system == "5":
-        launch2000(level, badge, pro)
+    launch(stri, level, badge, pro)
 def boot():
 
     detectSave()
