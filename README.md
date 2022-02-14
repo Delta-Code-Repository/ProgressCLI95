@@ -16,5 +16,6 @@ Dependencies: ```rich```
 
 1. Download the zip file and extract.
 2. Open your terminal/command prompt inside the extracted contents.
-3. Make sure the depenencies have been met.
+3. Make sure the dependencies have been met.
+  To met the depedencies you must run "pip install"
 4. Simply do ```python boot.py```
