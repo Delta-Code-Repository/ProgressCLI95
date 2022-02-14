@@ -1,5 +1,5 @@
 from saveloader import detectSave, loadSystemSave
-from termcolor import colored
+from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
 import sys
@@ -50,7 +50,7 @@ def startup(system):
         if checkmeme == False:
             boot()
         else:
-            launchmeme(checkmeme, badgememe, promeme)    
+            launchmeme(checkmeme, badgememe, promeme)
     elif system == "5":
         check2000 = loadSystemSave("2000")
         badge2000 =  calculateBadge (check2000, pro2000)
@@ -64,11 +64,8 @@ def boot():
 
     global currentSystem
 
-    # fancy bios text
-    energyStar = colored('Energy Star Powered', "yellow")
-
     clear()
-    print('Sparrow Assistant Enhanced Text BIOS.80.1 -', energyStar)
+    rprint('Sparrow Assistant Enhanced Text BIOS.80.1 - [bright_yellow]Energy Star Powered[/bright_yellow]')
     print('Ver. 12-30-2021\n\n')
 
     ninefive = loadSystemSave("95")
@@ -77,26 +74,26 @@ def boot():
 
     ninefiveplus = loadSystemSave("95plus")
     if ninefiveplus == False:
-        print(colored('2. Progressbar 95 Plus - Get to level 15 in PB95 to unlock this!', "red"))
+        rprint('[red]2. Progressbar 95 Plus - Get to level 15 in PB95 to unlock this![/red]')
     else:
         ninefiveplusbadge = calculateBadge(ninefiveplus, pro95plus)
         print('2. Progressbar 95 Plus', ninefiveplusbadge)
 
     nineeight = loadSystemSave("98")
     if nineeight == False:
-        print(colored('3. Progressbar 98 - Get to level 25 in PB95+ to unlock this!', "red"))
+        rprint('[red]3. Progressbar 98 - Get to level 25 in PB95+ to unlock this![/red]')
     else:
         nineeightbadge = calculateBadge(nineeight, pro98)
         print ('3. Progressbar 98', nineeightbadge)
     meme = loadSystemSave("Meme")
     if meme == False:
-        print(colored('4. Progressbar Meme - Get to level 30 in PB98 to unlock this!', "red"))
+        rprint('[red]4. Progressbar [bold]Meme[/bold] - Get to level 30 in PB98 to unlock this![/red]')
     else:
         memebadge = calculateBadge(meme, promeme)
         print ('4. Progressbar Meme', memebadge)
     twok = loadSystemSave("2000")
     if twok == False:
-        print(colored('5. Progressbar 2000 - Get to level 30 in PBMeme to unlock this!', "red"))
+        rprint('[red]5. Progressbar 2000 - Get to level 30 in PBMeme to unlock this![/red]')
     else:
         twokbadge = calculateBadge(twok, pro2000)
         print ('5. Progressbar 2000', twokbadge)
