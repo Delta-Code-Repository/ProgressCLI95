@@ -73,7 +73,8 @@ def startup(system):
             launchxb(checkxb, badgexb, proxb)
     elif system == "7":
        checkwista = loadSystemSave("wista")
-       badgexb = calculateBadge(checkwista, prowista)
+       # bruh !!!! -716
+       badgewista = calculateBadge(checkwista, prowista)
        if checkwista == False:
           boot()
        else:
@@ -88,8 +89,8 @@ def boot():
     # btw pivin fucking work on sparrow
     # it's just a decision tree, isn't too hard.
     # or at least sounds easy.
-    rprint('Sparrow Assistant Enhanced Text BIOS.80.1 - [bright_yellow]Energy Star Powered[/bright_yellow]')
-    print('Ver. 12-30-2021\n\n')
+    rprint('[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]')
+    rprint('[white]CLI ver. [bold]0.2.2a[/bold] - compiled 02-14-2022[/white]\n\n')
 
     ninefive = loadSystemSave("95")
     ninefivebadge = calculateBadge(ninefive, pro95)
@@ -97,38 +98,38 @@ def boot():
 
     ninefiveplus = loadSystemSave("95plus")
     if ninefiveplus == False:
-        rprint('[red]2. Progressbar 95 Plus - Get to level 15 in PB95 to unlock this![/red]')
+        rprint('[red][not bold]2[/not bold]. Progressbar [not bold]95[/not bold] Plus - Get to level 15 in PB95 to unlock this![/red]')
     else:
         ninefiveplusbadge = calculateBadge(ninefiveplus, pro95plus)
         print('2. Progressbar 95 Plus', ninefiveplusbadge)
 
     nineeight = loadSystemSave("98")
     if nineeight == False:
-        rprint('[red]3. Progressbar 98 - Get to level 25 in PB95+ to unlock this![/red]')
+        rprint('[red][not bold]3[/not bold]. Progressbar [not bold]98[/not bold] - Get to level 25 in PB95+ to unlock this![/red]')
     else:
         nineeightbadge = calculateBadge(nineeight, pro98)
         print ('3. Progressbar 98', nineeightbadge)
     meme = loadSystemSave("Meme")
     if meme == False:
-        rprint('[red]4. Progressbar [bold]Meme[/bold] - Get to level 30 in PB98 to unlock this![/red]')
+        rprint('[red][not bold]4[/not bold]. Progressbar Meme - Get to level 30 in PB98 to unlock this![/red]')
     else:
         memebadge = calculateBadge(meme, promeme)
         print ('4. Progressbar Meme', memebadge)
     twok = loadSystemSave("2000")
     if twok == False:
-        rprint('[red]5. Progressbar 2000 - Get to level 30 in PBMeme to unlock this![/red]')
+        rprint('[red][not bold]5[/not bold]. Progressbar [not bold]2000[/not bold] - Get to level 30 in PBMeme to unlock this![/red]')
     else:
         twokbadge = calculateBadge(twok, pro2000)
         print ('5. Progressbar 2000', twokbadge)
     xb = loadSystemSave("xb")
     if xb == False:
-        rprint('[red]6. Progressbar XB - Get to level 40 in PB2000 to unlock this![/red]')
+        rprint('[red][not bold]6[/not bold]. Progressbar XB - Get to level 40 in PB2000 to unlock this![/red]')
     else:
         xbbadge = calculateBadge(xb, proxb)
         print ('6. Progressbar XB', xbbadge)
     wista = loadSystemSave("Wista")
     if wista == False:
-        rprint('[red]7. Progressbar Wista - Get to level 50 in PBXB to unlock this![/red]')
+        rprint('[red][not bold]7[/not bold]. Progressbar Wista - Get to level 50 in PBXB to unlock this![/red]')
     else:
          wistabadge = calculateBadge(wista, prowista)
          print('7. Progressbar Wista (INCOMPLETE)', wistabadge)
