@@ -257,33 +257,54 @@ def startGame(systemName, startLevel, proLevel):
 
         # if you have 100% on your progressbar, the game will end.
         if progressbar >= 100:
+
+            # bonuses
             if progressbar2 > 0:
                 print('Bravo!')
             elif progressbar >= 100 and progressbar2 == 0:
                 print('Perfect!')
             elif progressbar > 100:
                 print('Outer space!')
+
             if progressbar == 50 and progressbar2 == 50:
                 print ('Yin and yang')
+
             if progressbar == 0 and progressbar2 == 100:
                 print ("Nonconformist!")
+
+            # increment level count
             startLevel += 1
             editSystemSave(systemName, startLevel)
+
+            # check pro
             if startLevel == proLevel:
                 print('\nCongratulations! You are the Professional!')
                 print('Pro Label acquired!')
                 systemLevel = 1
                 systemLabel = "Pro"
-            elif startLevel == 15 and systemName == "95":
-                print('Progressbar95 plus unlocked...')
+
+            # system check section
+            if startLevel == 15 and systemName == "95":
+                print('Progressbar 95 plus unlocked...')
                 addSystemSave("95plus")
             elif startLevel == 25 and systemName == "95plus":
-                print ('Progressbar98 unlocked...')
+                print('Progressbar 98 unlocked...')
                 addSystemSave("98")
             elif startLevel == 30 and systemName == "98":
-                print ('ProgressbarMeme unlocked...')
+                print('Progressbar Meme unlocked...')
                 addSystemSave("Meme")
-            elif startLevel == 100:
+            elif startLevel == 30 and systemName == "Meme":
+                print('Progressbar 2000 unlocked...')
+                addSystemSave("2000")
+            elif startLevel == 40 and systemName == "2000":
+                print('Progressbar XB unlocked...')
+                addSystemSave("XB")
+            elif startLevel == 50 and systemName == "XB":
+                print('Progressbar Wista unlocked...')
+                addSystemSave("Wista")
+
+            # label check section
+            if startLevel == 100:
                 print('\nExpert Label acquired!')
                 systemLevel = 2
                 systemLabel = "Expert"
@@ -301,7 +322,8 @@ def startGame(systemName, startLevel, proLevel):
                 print('\nWhat?')
                 systemLevel = 5
                 systemLabel = "Grand"
-            bar = []
+
+            # reset variables and await input
             bar2 = []
             bardisplay = ""
             segments = ""
