@@ -10,7 +10,7 @@ def shutdown():
     clear()
     print('P l e a s e  w a i t . . .\n\n\n')
     sleep(3)
-    rprint('[bold orange]It is now safe to close your Command Line Interface.[/bold orange]')
+    rprint('[bold yellow]It is now safe to close your Command Line Interface.[/bold yellow]')
     sleep(2)
     quit()
 
@@ -166,6 +166,10 @@ def startGame(systemName, startLevel, proLevel):
         # green segment check
         greenseg = random.randint(0, 100)
         if greenseg == 95:
+            clear()
+            print('Level', startLevel)
+            if systemLevel > 0:
+                print('<', systemLabel, '>')
             seg = 6
             rprint("[bright_green]╔══╗\n║$$║\n║$$║\n╚══╝[/bright_green]")
 
@@ -247,15 +251,6 @@ def startGame(systemName, startLevel, proLevel):
             print('Game Over! Thanks for playing!')
             sleep(3)
             beginMenu(systemName, startLevel, proLevel)
-
-        if catch == "credits":
-            clear()
-            print('ProgressCLI95 0.2.2 Release')
-            print('Original code (0.1) by Setapdede')
-            print('Improved code (0.2+) by BurningInfern0')
-            print('Made for use with Sparrow Assistant by pivinx1')
-            print('\nPress ENTER to get back to the game.')
-            input()
 
         if catch == "beginmenu":
             pauseBeginMenu(systemName, proLevel)
