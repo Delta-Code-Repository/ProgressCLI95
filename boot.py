@@ -73,7 +73,8 @@ def startup(system):
             launchxb(checkxb, badgexb, proxb)
     elif system == "7":
        checkwista = loadSystemSave("wista")
-       badgexb = calculateBadge(checkwista, prowista)
+       # bruh !!!! -716
+       badgewista = calculateBadge(checkwista, prowista)
        if checkwista == False:
           boot()
        else:
