@@ -20,23 +20,26 @@ def restart():
     sleep(3)
     from boot import boot
     boot()
-def settings():
-    print('╔════════════════════════╗\n║     S e t t i n g     ║\n╚════════════════════════╝\n')
+def settings(systemname, systemlevel, systempro):
+    clear()
+    print('╔════════════════════════╗\n║     S e t t i n g      ║\n╚════════════════════════╝\n')
     choise = input("> ")
     if choise == "1":
-        return
+        beginMenu(systemname, systemlevel, systempro)
 
 # Begin menu normally
 def beginMenu(systemname, systemlevel, systempro):
     clear()
-    if systemname == "95" and systemlevel > 1:
-        print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Restart         ║\n║    3 - Shutdown        ║\n╚════════════════════════╝\n')
-    elif systemlevel > 1:
-        print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Load Game       ║\n║    2 - New Game        ║\n║    3 - Settings        ║\n║     4 - Restart        ║\n║    5 - Shutdown        ║\n╚════════════════════════╝\n')
-    elif systemname == "95":
-        print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Load Game       ║\n║    2 - New Game        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
+    if systemname == "95":
+        if systemlevel > 1:
+            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Load Game       ║\n║    2 - New Game        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
+        else:
+            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Restart         ║\n║    3 - Shutdown        ║\n╚════════════════════════╝\n')
     else:
-        print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Settings        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
+        if systemlevel > 1:
+            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Load Game       ║\n║    2 - New Game        ║\n║    3 - Settings        ║\n║    4 - Restart         ║\n║    5 - Shutdown        ║\n╚════════════════════════╝\n')
+        else:
+            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Settings        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
     choice = input("> ")
     if choice == "1":
         if systemlevel > 1:
@@ -45,24 +48,49 @@ def beginMenu(systemname, systemlevel, systempro):
             editSystemSave(systemname, 1)
             startGame(systemname, 1, systempro)
     elif choice == "2":
-        if systemlevel > 1:
-            editSystemSave(systemname, 1)
-            startGame(systemname, 1, systempro)
-        else:
-            restart()
+        if systemname == "95":
+            if systemlevel > 1:
+                editSystemSave(systemname, 1)
+                startGame(systemname, 1, systempro)
+            else:
+                restart()
+        else: 
+            if systemlevel > 1:
+                editSystemSave(systemname, 1)
+                startGame(systemname, 1, systempro)
+            else:
+                settings(systemname, systemlevel, systempro)
     elif choice == "3":
-        if systemlevel > 1 and systemname == "95":
-            shutdown()
-        elif systemname == "95":
-            restart()
+        if systemname == "95":
+            if systemlevel > 1:
+                restart()
+            else:
+                shutdown()
         else:
-            settings()
+            if systemlevel > 1:
+                settings(systemname, systemlevel, systempro)
+            else:
+                restart()
     elif choice == "4":
-        
-        shutdown()
+        if systemname == "95":
+            if systemlevel > 1:
+                shutdown()
+            else:
+                beginMenu(systemname, systemlevel, systempro)
+        else:
+            if systemlevel > 1:
+                restart()
+            else: 
+                shutdown()
+    elif choice == "5":
+        if systemname == "95":
+            beginMenu(systemname, systemlevel, systempro)
+        else:
+            if systemlevel > 1:
+                shutdown()
     else:
         beginMenu(systemname, systemlevel, systempro)
-
+            
 
 # Begin menu during gameplay
 def pauseBeginMenu(systemName, systemPro):
