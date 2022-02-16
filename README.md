@@ -8,6 +8,8 @@ Current Stable Version: **0.2.2a**
 
 Current Development Version: **0.2.2b-dev1**
 
+#### _It is recommended that you play on stable versions, unless you wish to playtest and report bugs._
+
 ## Installation
 
 Built on Python 3.
