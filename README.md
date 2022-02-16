@@ -4,7 +4,8 @@ Progressbar95 but in a terminal. What else did you expect? Made by BurningInfern
 
 *Now with save files!*
 
-Current Version: **0.2.2a**
+Current Stable Version: **0.2.2a**
+Current Development Version: **0.2.2b-dev1**
 
 ## Installation
 
