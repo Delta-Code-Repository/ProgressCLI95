@@ -5,3 +5,5 @@ oses\__pycache__
 save.pcsf
 test.py
 settings.pcsf
+# i have to put this here otherwise github will commit my node.js stuff to your repo
+node_modules/

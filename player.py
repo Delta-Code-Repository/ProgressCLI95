@@ -235,7 +235,7 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
         elif seg == 2:
             rprint("[bright_magenta]╔══╗\n║--║\n║--║\n╚══╝[/bright_magenta]")
         elif seg == 3:
-            rprint("[bright_yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/bright_yellow]")
+            rprint("[yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/yellow]")
         elif seg == 4:
             rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
         elif seg == 5:
