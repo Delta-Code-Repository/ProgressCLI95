@@ -6,10 +6,10 @@ from player import startGame, beginMenu, pauseBeginMenu
 
 # How about some uniqueness to these things? I can just do these by copypasting them.
 # Just a suggestion.
-def launchwista(systemlevel, systembadge, systempro):
+def launchwista(systemlevel, systembadge, systempro, settingsdict):
     clear()
     print('P r o g r e s s b a r  W i s t a')
     print(systembadge)
     print('\n\n\nNow Loading...')
     sleep(6)
-    beginMenu("wista", systemlevel, systempro)
+    beginMenu("wista", systemlevel, systempro, settingsdict)

@@ -1,4 +1,4 @@
-from saveloader import detectSave, loadSystemSave
+from saveloader import detectSave,detectSettings, loadSystemSave, loadSettingsSave
 from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
@@ -24,6 +24,7 @@ prowista = 40
 # systems
 sys.path.insert(0, './oses/')
 
+
 def startup(system):
     from system95 import launch95
     from system95plus import launch95plus
@@ -35,42 +36,42 @@ def startup(system):
     if system == "1":
         level95 = loadSystemSave("95")
         badge95 = calculateBadge(level95, pro95)
-        launch95(level95, badge95, pro95)
+        launch95(level95, badge95, pro95, settingsdict)
     elif system == "2":
         plus95check = loadSystemSave("95plus")
         badge95plus = calculateBadge(plus95check, pro95plus)
         if plus95check == False:
             boot()
         else:
-            launch95plus(plus95check, badge95plus, pro95plus)
+            launch95plus(plus95check, badge95plus, pro95plus, settingsdict)
     elif system == "3":
         check98 = loadSystemSave("98")
         badge98 =  calculateBadge (check98, pro98)
         if check98 == False:
             boot()
         else:
-            launch98(check98, badge98, pro98)
+            launch98(check98, badge98, pro98, settingsdict)
     elif system == "4":
         checkmeme = loadSystemSave("Meme")
         badgememe =  calculateBadge (checkmeme, promeme)
         if checkmeme == False:
             boot()
         else:
-            launchmeme(checkmeme, badgememe, promeme)
+            launchmeme(checkmeme, badgememe, promeme, settingsdict)
     elif system == "5":
         check2000 = loadSystemSave("2000")
-        badge2000 =  calculateBadge (check2000, pro2000)
+        badge2000 =  calculateBadge (check2000, pro2000, settingsdict)
         if check2000 == False:
             boot()
         else:
-            launch2000(check2000, badge2000, pro2000)
+            launch2000(check2000, badge2000, pro2000, settingsdict)
     elif system == "6":
         checkxb = loadSystemSave("xb")
         badgexb =  calculateBadge(checkxb, proxb)
         if checkxb == False:
             boot()
         else:
-            launchxb(checkxb, badgexb, proxb)
+            launchxb(checkxb, badgexb, proxb, settingsdict)
     elif system == "7":
        checkwista = loadSystemSave("wista")
        # bruh !!!! -716
@@ -78,14 +79,19 @@ def startup(system):
        if checkwista == False:
           boot()
        else:
-           launchwista(checkwista, badgewista, prowista)
+           launchwista(checkwista, badgewista, prowista, settingsdict)
 def boot():
 
     detectSave()
+    detectSettings()
+
+    global settingsdict
+    settingsdict = loadSettingsSave()
 
     global currentSystem
 
     clear()
+    
     # btw pivin fucking work on sparrow
     # it's just a decision tree, isn't too hard.
     # or at least sounds easy.
