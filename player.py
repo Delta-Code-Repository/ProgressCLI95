@@ -5,7 +5,7 @@ import random
 from saveloader import editSystemSave, addSystemSave
 from checkbadge import calculateBadge
 
-# shutdown woohoo
+# shutdown woohooo
 def shutdown():
     clear()
     print('P l e a s e  w a i t . . .\n\n\n')
