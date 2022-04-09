@@ -6,6 +6,9 @@ from player import startGame, beginMenu, pauseBeginMenu
 
 # How about some uniqueness to these things? I can just do these by copypasting them.
 # Just a suggestion.
+
+# i mean, you can just convert the image files into rich terminal markup, so why not? - markverb1 at ??:?? PM
+# and yeah, i did that just now. - markverb1 at 10:26 AM
 def launchwista(systemlevel, systembadge, systempro, settingsdict):
     clear()
     print('P r o g r e s s b a r  W i s t a')

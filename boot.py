@@ -80,6 +80,9 @@ def startup(system):
           boot()
        else:
            launchwista(checkwista, badgewista, prowista, settingsdict)
+    else:
+        clear()
+        boot()
 def boot():
 
     detectSave()
