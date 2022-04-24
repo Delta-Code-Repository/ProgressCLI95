@@ -6,3 +6,4 @@ class system():
     systemunlock = "wista"
     requiredstring = "PB2000"
     listinbootmenu = 5
+    startupstring = "X B"
