@@ -1,6 +1,6 @@
 class system():
     name = "Progressbar XB"
-    shortname = "XB"
+    shortname = "xb"
     prolevel = 40
     unlocklevel = 35
     systemunlock = "wista"
