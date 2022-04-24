@@ -76,7 +76,7 @@ def boot():
                 bmc += 1
             else:
                 systembadge = calculateBadge(systemexists, xobj.prolevel)
-                print(str(bmc) + '. ' + xobj.name + systembadge)
+                print(str(bmc) + '. ' + xobj.name, systembadge)
                 bmc += 1
 
         choice = input()
