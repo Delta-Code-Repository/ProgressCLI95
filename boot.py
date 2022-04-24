@@ -55,7 +55,13 @@ def loadSettings(system):
     else:
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring)
+
+        xu = "system" + xobj.systemunlock
+        xun = osArray.index(xu)
+        xunlo = eval(osArray[xun]).system()
+        xunlock = xunlo.unlocklevel
+
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock)
 
 def boot():
 
@@ -65,7 +71,8 @@ def boot():
         clear()
 
         rprint('[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]')
-        rprint('[white]CLI ver. [bold]{0}[/bold] - compiled {1}[/white]\n\n'.format(version, compileDate))
+        rprint('[white]CLI ver. [bold]{0}[/bold] - compiled {1}[/white]'.format(version, compileDate))
+        rprint('[bold red]- DEVELOPMENT BUILD // BUGS MAY BE COMMON -[/bold red]\n\n')
 
         bmc = 1 # boot menu counter
         for x in osArray:
@@ -82,6 +89,17 @@ def boot():
         choice = input()
         if choice == "":
             print()
+        elif choice == "credits":
+            clear()
+            rprint("Progress[#12cc00]CLI[/#12cc00]95 [blink]Development[/blink] and [blink]Contributor[/blink] Team")
+            print()
+            rprint("[#ff0000]BurningInfern0[/#ff0000]")
+            rprint("[#f5a623]gamingwithpivin[/#f5a623]")
+            rprint("[#f8e71c]setapdede[/#f8e71c]")
+            rprint("[#37d67a]5jiji[/#37d67a]")
+            rprint("[#4a90e2]Dieguito0512[/#4a90e2]")
+            rprint("[#50e3c2]SevenSixteen[/#50e3c2]")
+            input()
         else:
             choice = int(choice) - 1
             loadSettings(choice)
