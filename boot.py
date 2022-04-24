@@ -1,8 +1,10 @@
+from lang import langload
 from saveloader import detectSave, detectSettings, loadSystemSave, loadSettingsSave
 from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
 from player import startup
+from lang import langset
 import sys
 import os
 import random
@@ -68,23 +70,26 @@ def boot():
     detectSave()
     detectSettings()
 
+    langset()
+
     global settingsdict
+    global lang
     settingsdict = loadSettingsSave()
 
 
     while True:
         clear()
 
-        rprint('[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]')
-        rprint('[white]CLI ver. [bold]{0}[/bold] - compiled {1}[/white]'.format(version, compileDate))
-        rprint('[bold red]- DEVELOPMENT BUILD // BUGS MAY BE COMMON -[/bold red]\n\n')
+        rprint(lang["Sparrow"])
+        rprint(lang["Version"].format(version, compileDate))
+        rprint(lang["DEV"])
 
         bmc = 1 # boot menu counter
         for x in osArray:
             xobj = eval(x).system()
             systemexists = loadSystemSave(xobj.shortname)
             if systemexists == False:
-                rprint('[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - Get to level {2} in {3} to unlock this![/red]'.format(bmc, xobj.name, xobj.unlocklevel, xobj.requiredstring))
+                rprint(lang["NotUnlock"].format(bmc, xobj.name, xobj.unlocklevel, xobj.requiredstring))
                 bmc += 1
             else:
                 systembadge = calculateBadge(systemexists, xobj.prolevel)
@@ -96,7 +101,7 @@ def boot():
             print()
         elif choice == "credits":
             clear()
-            rprint("Progress[#12cc00]CLI[/#12cc00]95 [blink]Development[/blink] and [blink]Contributor[/blink] Team")
+            rprint(lang["Credits"])
             print()
             rprint("[#ff0000]BurningInfern0[/#ff0000]")
             rprint("[#f5a623]gamingwithpivin[/#f5a623]")

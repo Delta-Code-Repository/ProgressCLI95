@@ -4,7 +4,9 @@ import sys
 from saveloader import editSettingsFile
 from time import sleep
 
+
 def langset(settingsdict):
+  global lang
   try:
     settingsdict["lang"]
   except:

@@ -9,6 +9,7 @@ def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunloc
 
     global unlock
     global unlocklevel
+    global lang
 
     unlock = systemunlock
     unlocklevel = systemunlocklevel
@@ -16,38 +17,37 @@ def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunloc
     clear()
     print('P r o g r e s s b a r ', systemlogo)
     print(systembadge)
-    print('\n\n\nNow Loading...')
+    print(lang["loading"])
     sleep(5)
     beginMenu(system, systemlevel, systempro, settingsdict)
 
 def screenDownFun():
     # checks if you have orange segments in your bar
     if progressbar2 > 0:
-        print('\nYour bar:', end='')
+        print(lang["bar"], end='')
         for segment in bar2:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
+        print(lang["BarProgressP1"], progressbar, lang["BarProgressP2"], progressbar2, lang["BarProgressP3"])
     else:
-        print('\nYour bar:', end='')
+        print(lang["bar"], end='')
         for segment in bar2:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
-        print("\nYou have", progressbar,"%", "in your progressbar.")
+        print(lang["BarProgressP1"], progressbar,"%", lang["InYourBar"])
 
 def settings(systemname, systemlevel, systempro, settingsdict):
     clear()
-    print('╔════════════════════════╗\n║     S e t t i n g      ║\n║    1 - Popup           ║\n║    2 - Return          ║\n╚════════════════════════╝\n')
+    print(lang["settings"])
     choise = input("> ")
     if choise == "1":
         clear()
-        print("Do you want to have this :")
-        rprint("\nYour bar:[blue][][][][][][][][][][][][][][][][][][][][/blue]")
-        print('You have 95% in your progressbar')
-        print("\nto the popup window? (Y/N)")
-        print(settingsdict)
+        print(lang["DoYouWant"])
+        rprint(lang["bar"], " [blue][][][][][][][][][][][][][][][][][][][][/blue]")
+        print(lang["BarProgressP1"], " 95% ",lang["InYourBar"])
+        print(lang["popupSetting"])
         choice = input("> ")
         if choice == "Y" or choice =="y":
             editSettingsFile("screenDown", "True", settingsdict)
@@ -65,15 +65,15 @@ def settings(systemname, systemlevel, systempro, settingsdict):
 # shutdown woohoo
 def shutdown():
     clear()
-    print('P l e a s e  w a i t . . .\n\n\n')
+    print(lang["Wait"])
     sleep(3)
-    rprint('[bold yellow]It is now safe to close your Command Line Interface.[/bold yellow]')
+    rprint(lang["closeCMD"])
     sleep(2)
     quit()
 
 def restart():
     clear()
-    print('P l e a s e  w a i t . . .\n\n\n')
+    print(lang["Wait"])
     sleep(3)
     from boot import boot
     boot()
