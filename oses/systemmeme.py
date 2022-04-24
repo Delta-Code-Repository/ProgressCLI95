@@ -6,3 +6,4 @@ class system():
     systemunlock = "2000"
     requiredstring = "PB98"
     listinbootmenu = 3
+    startupstring = "M e m e"
