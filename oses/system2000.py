@@ -6,3 +6,4 @@ class system():
     systemunlock = "xb"
     requiredstring = "PBMeme"
     listinbootmenu = 4
+    startupstring = "2 0 0 0"
