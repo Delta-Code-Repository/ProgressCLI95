@@ -1,6 +1,7 @@
-name = "Progressbar Wista"
-shortname = "Wista"
-prolevel = 40
-unlocklevel = 45
-requiredsystem = "XB"
-requiredstring = "PBXB"
+class system():
+    name = "Progressbar Wista"
+    shortname = "Wista"
+    prolevel = 40
+    unlocklevel = 45
+    requiredstring = "PBXB"
+    listinbootmenu = 6
