@@ -5,3 +5,4 @@ class system():
     unlocklevel = 45
     requiredstring = "PBXB"
     listinbootmenu = 6
+    startupstring = "W i s t a"
