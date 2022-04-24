@@ -1,6 +1,6 @@
 class system():
     name = "Progressbar Wista"
-    shortname = "Wista"
+    shortname = "wista"
     prolevel = 40
     unlocklevel = 45
     requiredstring = "PBXB"
