@@ -6,3 +6,4 @@ class system():
     systemunlock = "meme"
     requiredstring = "PB95+"
     listinbootmenu = 2
+    startupstring = "9 8"
