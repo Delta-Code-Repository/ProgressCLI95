@@ -328,6 +328,5 @@ def startGame(systemName, startLevel, proLevel):
             segments = ""
             progressbar = 0
             progressbar2 = 0
-            print('\nPress ENTER to play another level.')
-            input()
+            input('\nPress ENTER to play another level.\n') # condensed this down to one line because HELLO, you can just \n
         continue
