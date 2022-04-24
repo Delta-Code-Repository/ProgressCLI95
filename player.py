@@ -5,6 +5,20 @@ import random
 from saveloader import editSystemSave, addSystemSave
 from checkbadge import calculateBadge
 
+def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel):
+    global unlock
+    global unlocklevel
+
+    unlock = systemunlock
+    unlocklevel = systemunlocklevel
+
+    clear()
+    print('P r o g r e s s b a r ', systemlogo)
+    print(systembadge)
+    print('\n\n\nNow Loading...')
+    sleep(5)
+    beginMenu(system, systemlevel, systempro)
+
 # shutdown woohoo
 def shutdown():
     clear()
@@ -276,32 +290,17 @@ def startGame(systemName, startLevel, proLevel):
             startLevel += 1
             editSystemSave(systemName, startLevel)
 
+            # system unlock check section
+            if startLevel == unlocklevel:
+                rprint('[i]A new system has unlocked...[/i]')
+                addSystemSave(unlock)
+
             # check pro
             if startLevel == proLevel:
                 print('\nCongratulations! You are the Professional!')
                 print('Pro Label acquired!')
                 systemLevel = 1
                 systemLabel = "Pro"
-
-            # system check section
-            if startLevel == 15 and systemName == "95":
-                print('Progressbar 95 plus unlocked...')
-                addSystemSave("95plus")
-            elif startLevel == 25 and systemName == "95plus":
-                print('Progressbar 98 unlocked...')
-                addSystemSave("98")
-            elif startLevel == 30 and systemName == "98":
-                print('Progressbar Meme unlocked...')
-                addSystemSave("Meme")
-            elif startLevel == 30 and systemName == "Meme":
-                print('Progressbar 2000 unlocked...')
-                addSystemSave("2000")
-            elif startLevel == 40 and systemName == "2000":
-                print('Progressbar XB unlocked...')
-                addSystemSave("XB")
-            elif startLevel == 50 and systemName == "XB":
-                print('Progressbar Wista unlocked...')
-                addSystemSave("Wista")
 
             # label check section
             if startLevel == 100:
