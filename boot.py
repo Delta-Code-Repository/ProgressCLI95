@@ -1,4 +1,4 @@
-from saveloader import detectSave, loadSystemSave
+from saveloader import detectSave, detectSettings, loadSystemSave, loadSettingsSave
 from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
@@ -61,11 +61,16 @@ def loadSettings(system):
         xunlo = eval(osArray[xun]).system()
         xunlock = xunlo.unlocklevel
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock)
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock, settingsdict)
 
 def boot():
 
     detectSave()
+    detectSettings()
+
+    global settingsdict
+    settingsdict = loadSettingsSave()
+
 
     while True:
         clear()
