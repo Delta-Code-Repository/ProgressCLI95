@@ -1,7 +1,7 @@
 import sys
 import os
 from clear import clear
-from saveloader import addSetting
+from saveloader import editSettingsFile
 
 def langset():
     finished = False
@@ -30,6 +30,6 @@ def langset():
 
         # check if language code exists and returns it if true.
         if langCode in langArray:
-            addSetting("lang", langCode)
+            editSettingsFile("lang", langCode)
             return langCode
             finished = True
