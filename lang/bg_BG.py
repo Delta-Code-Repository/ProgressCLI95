@@ -12,8 +12,8 @@ class language():
   dev = '[bold red]- ВЕРСИЯ РАЗРАБОТКА // БЪГОВЕ МОЖЕ ДА СА ЧЕСТИ -[/bold red]\n\n'
   # {0} is for the boot menu list number, {1} is for the full system name, {2} is the level number required for unlock, {3} is the level you need in a specified system to unlock this one.
   notUnlocked = '[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - Стигнете до ниво {2} в {3} за да отключите това![/red]'
-  credits1 = "Progress[#12cc00]CLI[/#12cc00]95 екип от [blink]преводачи[/blink] и [blink]програмисти[/blink]"
-  credits2 = "Progress[#12cc00]CLI[/#12cc00]95 екип от [blink]преводачи[/blink]"
+  credits1 = "Екип от [blink]програмисти[/blink]"
+  credits2 = "Екип от [blink]преводачи[/blink]"
 
   # player
   loading = '\n\n\nСега се зарежда...'
