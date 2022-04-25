@@ -59,6 +59,7 @@ def generateTables():
     bm3table.add_row("4."+lang.bm5)
 
     # annoying popup
+    global aptable
     aptable = Table()
     aptable.show_header = False
     aptable.add_column("Annoying popup!")
@@ -182,7 +183,7 @@ def spawnPopup(startLevel, systemLabel):
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    rprint(apTable)
+    rprint(aptable)
     popupinput = input()
     if popupinput == "OK":
         clear()

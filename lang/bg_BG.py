@@ -4,7 +4,7 @@ class language():
   # Please do not remove \n, {*}, or [] objects.
 
   # boot
-  pleaseSelect = 'bulgarian placeholder'
+  pleaseSelect = 'Моля селектирайте'
   sparrow = '[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]'
   # {0} is for the build verson, {1} is for the compile date.
   version = '[white]CLI ver. [bold]{0}[/bold] - compiled {1}[/white]'
@@ -15,45 +15,45 @@ class language():
   credits2 = "Progress[#12cc00]CLI[/#12cc00]95 [blink]Translation[/blink] Team"
 
   # player
-  loading = '\n\n\nNow Loading...'
-  bar = '\nYour bar:'
-  barProgressP1 = "\nYou have"
-  barProgressP2 = "% with"
-  barProgressP3 = "% orange in your progressbar."
-  inYourBar = "in your progressbar"
-  settings = '╔════════════════════════╗\n║     S e t t i n g      ║\n║    1 - Popup           ║\n║    2 - Return          ║\n╚════════════════════════╝\n'
-  doYouWant = "Do you want to have this :"
-  popupSetting = "\nto the popup window? (Y/N)"
-  wait = 'P l e a s e  w a i t . . .\n\n\n'
-  closeCMD = '[bold yellow]It is now safe to close your Command Line Interface.[/bold yellow]'
-  bm1 = 'B e g i n  M e n u'
-  bm2 = 'New Game'
-  bm3 = 'Load Game'
-  bm4 = 'Restart'
-  bm5 = 'Shutdown'
-  bm6 = 'Settings'
-  bm7 = 'Resume'
-  annoyingPopup = ':) Annoying popup!'
-  outOfLives = "[bold bright_blue]You are out of lives. Game over![/bold bright_blue]"
-  noLevelTaken = '[i]A level has not been taken.[/i]'
-  negateLevel = '[bold i]-1 Level[/bold i]'
-  level = 'Level'
-  oneLifeLeft = "You have [italic bright_red]1 life left[/italic bright_red]. Be careful."
+  loading = '\n\n\nСега се зарежда...'
+  bar = '\nВашата лента:'
+  barProgressP1 = "\nВие имате"
+  barProgressP2 = "% с"
+  barProgressP3 = "% оранжево във вашата лента за прогрес."
+  inYourBar = "във вашата лента за прогрес"
+  settings = '╔════════════════════════╗\n║     Н а с т р о й к и      ║\n║    1 - Поп-ъп           ║\n║    2 - Назад          ║\n╚════════════════════════╝\n'
+  doYouWant = "Искате ли да имате това:"
+  popupSetting = "\nВ изскачащия прозорец? (Y/N)"
+  wait = 'М о л я  ч а к а й т е\n\n\n'
+  closeCMD = '[bold yellow]Вече е безопасно да си затворите конзолата.[/bold yellow]'
+  bm1 = 'Старт меню'
+  bm2 = 'Нова игра'
+  bm3 = 'Зарежнаде на игра'
+  bm4 = 'Рестартиране'
+  bm5 = 'Изключване'
+  bm6 = 'Настройки'
+  bm7 = 'Продължете'
+  annoyingPopup = ':) Дразнещ поп-ъп!'
+  outOfLives = "[bold bright_blue]Вече нямате животи. Край на играта![/bold bright_blue]"
+  noLevelTaken = '[i]Не е взето едно ниво.[/i]'
+  negateLevel = '[bold i]-1 ниво[/bold i]'
+  level = 'Ниво'
+  oneLifeLeft = "Вие имате [italic bright_red]1 живот останал[/italic bright_red]. Бъдете внимателни."
   # {0} is the current number of lives.
-  livesLeft = "You have {0} lives left."
-  pressInstructions = "Type 'c' to catch, any other key to move away, and 'q' to quit.\n"
-  gameOver = 'Game Over! Thanks for playing!'
-  pressEnter = '\nPress ENTER to play another level.'
-  gameBravo = 'Bravo!'
-  gamePerfect = 'Perfect!'
-  gameOuterSpace = 'Outer space!'
-  gameYinAndYang = 'Yin and yang'
-  gameNonconformist = "Nonconformist!"
-  newSystem = '[i]A new system has unlocked...[/i]'
-  proCongrats = '\nCongratulations! You are the Professional!'
-  proAcquired = 'Pro Label acquired!'
-  expertAcquired = '\nExpert Label acquired!'
-  masterAcquired = '\nMaster Label acquired!'
-  adeptAcquired = '\nAdept Label acquired!'
-  grandAcquired = '\nGrand Label acquired!'
-  whatAcquired = '\nWhat?'
+  livesLeft = "Вие имате {0} животи останили."
+  pressInstructions = "Напишете 'c' за да уловите, нещо друго за да не уловите, и 'q' за да спрете играта.\n"
+  gameOver = 'Край! Благодаря ви, че играхте!'
+  pressEnter = '\nНатиснете ENTER за да играте друго ниво.'
+  gameBravo = 'Браво!'
+  gamePerfect = 'Перфектно!'
+  gameOuterSpace = 'В космоса!'
+  gameYinAndYang = 'Ин и ян'
+  gameNonconformist = "Некомфист!"
+  newSystem = '[i]Нова система е отключена...[/i]'
+  proCongrats = '\nБраво! Вие сте професионалиста!'
+  proAcquired = 'Вече имате значката "Про"!'
+  expertAcquired = '\nЕкспертна значка получена!'
+  masterAcquired = '\nМайсторска значка получена!!'
+  adeptAcquired = '\n"Адепт" значка получена!'
+  grandAcquired = '\nВеликата значка получена!'
+  whatAcquired = '\nКакво?'
