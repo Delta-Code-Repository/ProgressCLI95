@@ -126,6 +126,10 @@ def boot():
             rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
             print()
             input()
+        elif choice == "chlang":
+            langobj = langset()
+            globals()[langobj] = __import__(langobj)
+            lang = eval(langobj).language()
         else:
             choice = int(choice) - 1
             loadSettings(choice)
