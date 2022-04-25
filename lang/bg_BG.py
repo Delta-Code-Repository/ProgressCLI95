@@ -1,18 +1,19 @@
 class language():
+  # contibuted by markverb1
   # bg_BG language configuration file
   # {*} <-- these are for python's .format() command, used for placing variables in strings.
   # Please do not remove \n, {*}, or [] objects.
 
   # boot
-  pleaseSelect = 'Моля селектирайте'
-  sparrow = '[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]'
+  pleaseSelect = 'Моля селектирайте вашият език като напишете кода отляво'
+  sparrow = '[white]Спароу асистент подобрен текст BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Енергийна Звезда (не)Захранено[/bright_yellow]'
   # {0} is for the build verson, {1} is for the compile date.
-  version = '[white]CLI ver. [bold]{0}[/bold] - compiled {1}[/white]'
-  dev = '[bold red]- DEVELOPMENT BUILD // BUGS MAY BE COMMON -[/bold red]\n\n'
+  version = '[white]КЛИ версия [bold]{0}[/bold] - компилиран {1}[/white]'
+  dev = '[bold red]- ВЕРСИЯ РАЗРАБОТКА // БЪГОВЕ МОЖЕ ДА СА ЧЕСТИ -[/bold red]\n\n'
   # {0} is for the boot menu list number, {1} is for the full system name, {2} is the level number required for unlock, {3} is the level you need in a specified system to unlock this one.
-  notUnlocked = '[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - Get to level {2} in {3} to unlock this![/red]'
-  credits1 = "Progress[#12cc00]CLI[/#12cc00]95 [blink]Development[/blink] and [blink]Contributor[/blink] Team"
-  credits2 = "Progress[#12cc00]CLI[/#12cc00]95 [blink]Translation[/blink] Team"
+  notUnlocked = '[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - Стигнете до ниво {2} в {3} за да отключите това![/red]'
+  credits1 = "Progress[#12cc00]CLI[/#12cc00]95 [blink]Програмиране[/blink] и [blink]съдружнически[/blink] екип"
+  credits2 = "Progress[#12cc00]CLI[/#12cc00]95 [blink]преводачески[/blink] екип"
 
   # player
   loading = '\n\n\nСега се зарежда...'
@@ -24,7 +25,7 @@ class language():
   settings = '╔════════════════════════╗\n║     Н а с т р о й к и      ║\n║    1 - Поп-ъп           ║\n║    2 - Назад          ║\n╚════════════════════════╝\n'
   doYouWant = "Искате ли да имате това:"
   popupSetting = "\nВ изскачащия прозорец? (Y/N)"
-  wait = 'М о л я  ч а к а й т е\n\n\n'
+  wait = 'М о л я  и з ч а к а й т е\n\n\n'
   closeCMD = '[bold yellow]Вече е безопасно да си затворите конзолата.[/bold yellow]'
   bm1 = 'Старт меню'
   bm2 = 'Нова игра'
