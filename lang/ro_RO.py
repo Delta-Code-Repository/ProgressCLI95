@@ -50,7 +50,7 @@ class language():
   gameYinAndYang = 'Yin și yang'
   gameNonconformist = "Nonconformist!"
   newSystem = '[i]Un nou sistem a fost deblocat...[/i]'
-  proCongrats = '\nFelicitări! Acum sunteți Professionalul!'
+  proCongrats = '\nFelicitări! Acum sunteți Profesionistul!'
   proAcquired = 'Ați obținut Eticheta Pro!'
   expertAcquired = '\nAți obținut Eticheta Expert!'
   masterAcquired = '\nAți obținut Eticheta Master!'
