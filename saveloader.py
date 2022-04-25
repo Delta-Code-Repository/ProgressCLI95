@@ -69,13 +69,18 @@ def editSystemSave(system, level):
 def editSettingsFile(setting, value):
   global editedLine
   editedLine = 0
+  lineExists = False
   level2 = str(value)
   with open('settings.pcsf') as sett:
       csv_reader = csv.reader(sett, delimiter=',')
       for line in csv_reader:
           if line[0] == setting:
+              lineExists = True
               break
           editedLine = editedLine + 1
+      if lineExists == False:
+          addSetting(setting, value)
+          return True
   sett = open('settings.pcsf', 'r')
   filesaver = sett.readlines()
   filesaver[editedLine] = setting+","+value+"\n"
