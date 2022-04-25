@@ -58,12 +58,17 @@ def loadSettings(system):
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
 
-        xu = "system" + xobj.systemunlock
-        xun = osArray.index(xu)
-        xunlo = eval(osArray[xun]).system()
-        xunlock = xunlo.unlocklevel
+        if hasattr(xobj, xobj.systemunlock):
+            xu = "system" + xobj.systemunlock
+            xun = osArray.index(xu)
+            xunlo = eval(osArray[xun]).system()
+            xunlock = xunlo.unlocklevel
+            xsystem = xobj.systemunlock
+        else:
+            xsystem = False
+            xunlock = False
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock)
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
 
 def boot():
 
