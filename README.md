@@ -16,11 +16,11 @@ Current Development Version: **0.2.2b-dev2**
 - Romanian (ro_RO) - [setapdede](https://github.com/setapdede), [AlexandruUnu](https://github.com/AlexandruUnu)
 - Indonesian (id_ID) - [NekoSam395](https://github.com/NekoSam395)
 - Bulgarian (bg_BG) - [markverb1](https://github.com/markverb1)
+- French (fr_FR) - [5jiji](https://github.com/5jiji)
 
 Incomplete languages:
 - Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
 - Polish (pl_PL) - [gamingwithpivin](https://github.com/pivinx1)
-- French (fr_FR) - [5jiji](https://github.com/5jiji)
 
 ## Installation
 
