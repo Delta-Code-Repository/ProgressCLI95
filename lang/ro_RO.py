@@ -8,7 +8,7 @@ class language():
   sparrow = '[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]'
   # {0} is for the build verson, {1} is for the compile date.
   version = '[white]CLI ver. [bold]{0}[/bold] - compilat pe {1}[/white]'
-  dev = '[bold red]- DEVELOPMENT BUILD // BUGS MAY BE COMMON -[/bold red]\n\n'
+  dev = '[bold red]- VERSIUNE DE DEZVOLTARE // PROBLEMELE POT FII COMUNE -[/bold red]\n\n'
   # {0} is for the boot menu list number, {1} is for the full system name, {2} is the level number required for unlock, {3} is the level you need in a specified system to unlock this one.
   notUnlocked = '[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - Trebuie să ajungi la nivelul {2} în {3} pentru a debloca acest sistem![/red]'
   credits1 = "Echipa de [blink]Dezvoltare[/blink] și de [blink]Contribuție[/blink] Progress[#12cc00]CLI[/#12cc00]95"
@@ -26,7 +26,7 @@ class language():
   popupSetting = "\ncând apare o fereastră popup? (Y/N)"
   wait = 'V ă  r u g ă m  s ă  a ș t e p t a ț i . . .\n\n\n'
   closeCMD = '[bold yellow]Acum este sigur să închideți Interfața dvs.[/bold yellow]'
-  bm1 = 'M e n i u l  Î n c e p e ț i'
+  bm1 = 'M e n i u l  d e  Î n c e p e r e'
   bm2 = 'Joc nou'
   bm3 = 'Încarcă jocul'
   bm4 = 'Restart'
@@ -51,9 +51,9 @@ class language():
   gameNonconformist = "Nonconformist!"
   newSystem = '[i]Un nou sistem a fost deblocat...[/i]'
   proCongrats = '\nFelicitări! Acum sunteți Professionalul!'
-  proAcquired = '\nAți obținut Ediția Pro!'
-  expertAcquired = '\nAți obținut Ediția Expert!'
-  masterAcquired = '\nAți obținut Ediția Master!'
-  adeptAcquired = '\nAți obținut Ediția Adept'
-  grandAcquired = '\nAți obținut Ediția Grand!'
+  proAcquired = 'Ați obținut Eticheta Pro!'
+  expertAcquired = '\nAți obținut Eticheta Expert!'
+  masterAcquired = '\nAți obținut Eticheta Master!'
+  adeptAcquired = '\nAți obținut Eticheta Adept!'
+  grandAcquired = '\nAți obținut Eticheta Grand!'
   whatAcquired = '\nCe?'
