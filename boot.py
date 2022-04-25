@@ -10,7 +10,7 @@ import random
 
 # no touchy!!!
 version = "0.2.2b-dev2"
-compileDate = "04-24-2022"
+compileDate = "04-25-2022"
 
 # find systems and generate list
 pathToOses = './oses/'
@@ -58,7 +58,7 @@ def loadSettings(system):
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
 
-        if hasattr(xobj, xobj.systemunlock):
+        if hasattr(xobj, "systemunlock"):
             xu = "system" + xobj.systemunlock
             xun = osArray.index(xu)
             xunlo = eval(osArray[xun]).system()
