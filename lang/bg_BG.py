@@ -26,7 +26,7 @@ class language():
   doYouWant = "Искате ли да имате това:"
   popupSetting = "\nВ изскачащия прозорец? (Y/N)"
   wait = 'М о л я  и з ч а к а й т е\n\n\n'
-  closeCMD = '[bold yellow]Вече е безопасно да си затворите конзолата.[/bold yellow]'
+  closeCMD = '[bold yellow]Вече е безопасно да затворите конзолата ви.[/bold yellow]'
   bm1 = 'Старт меню'
   bm2 = 'Нова игра'
   bm3 = 'Зарежнаде на игра'
@@ -41,7 +41,7 @@ class language():
   level = 'Ниво'
   oneLifeLeft = "Вие имате [italic bright_red]1 живот останал[/italic bright_red]. Бъдете внимателни."
   # {0} is the current number of lives.
-  livesLeft = "Вие имате {0} животи останили."
+  livesLeft = "Вие имате {0} животи останали."
   pressInstructions = "Напишете 'c' за да уловите, нещо друго за да не уловите, и 'q' за да спрете играта.\n"
   gameOver = 'Край! Благодаря ви, че играхте!'
   pressEnter = '\nНатиснете ENTER за да играте друго ниво.'
