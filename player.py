@@ -59,7 +59,6 @@ def generateTables():
     bm3table.add_row("4."+lang.bm5)
 
     # annoying popup
-    global aptable
     aptable = Table()
     aptable.show_header = False
     aptable.add_column("Annoying popup!")
