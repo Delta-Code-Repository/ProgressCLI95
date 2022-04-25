@@ -32,7 +32,7 @@ class language():
   bm5 = 'Shutdown'
   bm6 = 'Settings'
   bm7 = 'Resume'
-  sett1 = 'S e t t i n g'
+  sett1 = 'S e t t i n g s'
   sett2 = 'Popup'
   sett3 = 'Return'
   annoyingPopup = ':) Annoying popup!'
