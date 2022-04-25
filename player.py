@@ -32,6 +32,7 @@ def generateTables():
     global bm2table
     global bm3table
     global aptable
+    global sett
 
     # begin menu table with no load game
     bm1table = Table()
@@ -65,6 +66,12 @@ def generateTables():
     aptable.add_row(lang.annoyingPopup)
     aptable.add_row("       [OK]", style="bold bright_black")
 
+    # settings
+    sett = Table()
+    sett.add_column(lang.sett1)
+    sett.add_row("1."+lang.sett2)
+    sett.add_row("2."+lang.sett3)
+
 def screenDownFun():
     # checks if you have orange segments in your bar
     if progressbar2 > 0:
@@ -84,7 +91,7 @@ def screenDownFun():
 
 def settings(systemname, systemlevel, systempro):
     clear()
-    print(lang.settings)
+    rprint(sett)
     choise = input("> ")
     if choise == "1":
         clear()
