@@ -69,6 +69,8 @@ def editSettingsFile(setting, value):
   editedLine = 0
   lineExists = False
   level2 = str(value)
+  sett = open('settings.pcsf', 'a')
+  sett.close()
   with open('settings.pcsf') as sett:
       csv_reader = csv.reader(sett, delimiter=',')
       for line in csv_reader:
