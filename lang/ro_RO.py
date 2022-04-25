@@ -21,7 +21,9 @@ class language():
   barProgressP2 = "% cu"
   barProgressP3 = "% portocaliu în bara ta de progres."
   inYourBar = "în bara ta de progres"
-  settings = '╔════════════════════════╗\n║      S e t ă r i       ║\n║    1 - Popup           ║\n║    2 - Înapoi          ║\n╚════════════════════════╝\n'
+  sett1 = 'S e t ă r i'
+  sett2 = 'Popup'
+  sett3 = 'Înapoi'
   doYouWant = "Dorești să ai aceste informații:"
   popupSetting = "\ncând apare o fereastră popup? (Y/N)"
   wait = 'V ă  r u g ă m  s ă  a ș t e p t a ț i . . .\n\n\n'
