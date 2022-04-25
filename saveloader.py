@@ -9,7 +9,6 @@ def detectSave():
   savefileexists = os.path.exists("./save.pcsf")
   if savefileexists == True:
       print('Save file detected.')
-      sleep(1)
   else:
       f = open('save.pcsf', 'a')
       f.write("95,1")
@@ -19,7 +18,6 @@ def detectSettings():
   settingsFileExists = os.path.exists("./settings.pcsf")
   if settingsFileExists == True:
       print('Settings file detected.')
-      sleep(1)
   else:
       sett = open('settings.pcsf', 'a')
       sett.write("screenDown,False\n")
