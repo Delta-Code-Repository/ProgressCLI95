@@ -271,7 +271,7 @@ def startGame(systemName, startLevel, proLevel):
             rprint("[bright_cyan]╔══╗\n║**║\n║**║\n╚══╝[/bright_cyan]")
 
         # green segment check
-        greenseg = random.randint(0, 100)
+        greenseg = random.randint(0, 250)
         if greenseg == 95:
             clear()
             print('Level', startLevel)
