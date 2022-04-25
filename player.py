@@ -122,8 +122,33 @@ def restart():
     from boot import boot
     boot()
 
+def settings(systemname, systemlevel, systempro, settingsdict):
+    clear()
+    print('╔════════════════════════╗\n║     S e t t i n g      ║\n║    1 - Popup           ║\n║    2 - Return          ║\n╚════════════════════════╝\n')
+    choise = input("> ")
+    if choise == "1":
+        clear()
+        print("Do you want to have this :")
+        rprint("\nYour bar:[blue][][][][][][][][][][][][][][][][][][][][/blue]")
+        print('You have 95% in your progressbar')
+        print("\nto the popup window? (Y/N)")
+        print(settingsdict)
+        choice = input("> ")
+        if choice == "Y" or choice =="y":
+            editSettingsFile("screenDown", "True", settingsdict)
+            settings(systemname, systemlevel, systempro, settingsdict)
+        elif choice == "N" or choice == "n":   
+            editSettingsFile("screenDown", "False", settingsdict)
+            settings(systemname, systemlevel, systempro, settingsdict)
+        else:
+            settings(systemname, systemlevel, systempro, settingsdict)
+    elif choise == "2":
+        beginMenu(systemname, systemlevel, systempro, settingsdict)
+    else:
+        settings(systemname, systemlevel, systempro, settingsdict)
+
 # Begin menu normally
-def beginMenu(systemname, systemlevel, systempro):
+def beginMenu(systemname, systemlevel, systempro, settingsdict):
     clear()
     if systemlevel > 1:
         rprint(bm2table)
@@ -132,10 +157,10 @@ def beginMenu(systemname, systemlevel, systempro):
     choice = input("> ")
     if choice == "1":
         if systemlevel > 1:
-            startGame(systemname, systemlevel, systempro)
+            startGame(systemname, systemlevel, systempro, settingsdict)
         else:
             editSystemSave(systemname, 1)
-            startGame(systemname, 1, systempro)
+            startGame(systemname, 1, systempro, settingsdict)
     elif choice == "2":
         if systemlevel > 1:
             editSystemSave(systemname, 1)
@@ -156,7 +181,7 @@ def beginMenu(systemname, systemlevel, systempro):
         if systemlevel > 1:
             shutdown()
     else:
-        beginMenu(systemname, systemlevel, systempro)
+        beginMenu(systemname, systemlevel, systempro, settingsdict)
 
 
 # Begin menu during gameplay
@@ -177,7 +202,7 @@ def pauseBeginMenu(systemName, systemPro):
         pauseBeginMenu(systemName, systemPro)
 
 # original code by Setapdede, but i refined it a bit.
-def spawnPopup(startLevel, systemLabel):
+def spawnPopup(startLevel, systemLabel, settingsdict):
     clear()
     print('Level', startLevel)
     if systemLevel > 0:
@@ -189,9 +214,26 @@ def spawnPopup(startLevel, systemLabel):
     elif popupinput == "ok":
 	    clear()
     else:
-        spawnPopup(startLevel, systemLabel)
+        spawnPopup(startLevel, systemLabel, settingsdict)
 
-def startGame(systemName, startLevel, proLevel):
+def screenDownFun():
+    # checks if you have orange segments in your bar
+    if progressbar2 > 0:
+        print('\nYour bar:', end='')
+        for segment in bar2:
+            if segment == "Blue":
+                rprint("[blue][][/blue]", end='')
+            elif segment == "Orange":
+                rprint("[bright_yellow][][/bright_yellow]", end='')
+        print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
+    else:
+        print('\nYour bar:', end='')
+        for segment in bar2:
+            if segment == "Blue":
+                rprint("[blue][][/blue]", end='')
+        print("\nYou have", progressbar,"%", "in your progressbar.")
+
+def startGame(systemName, startLevel, proLevel, settingsdict):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
     global lives
@@ -249,7 +291,7 @@ def startGame(systemName, startLevel, proLevel):
 
         popupshow = random.randint(0, 6)
         if popupshow == 6:
-            spawnPopup(startLevel, systemLabel)
+            spawnPopup(startLevel, systemLabel, settingsdict)
 
         print(lang.level, startLevel)
         if systemLevel > 0:
@@ -264,7 +306,7 @@ def startGame(systemName, startLevel, proLevel):
         elif seg == 2:
             rprint("[bright_magenta]╔══╗\n║--║\n║--║\n╚══╝[/bright_magenta]")
         elif seg == 3:
-            rprint("[bright_yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/bright_yellow]")
+            rprint("[yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/yellow]")
         elif seg == 4:
             rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
         elif seg == 5:
@@ -343,7 +385,7 @@ def startGame(systemName, startLevel, proLevel):
         if catch == "q":
             print(lang.gameOver)
             sleep(3)
-            beginMenu(systemName, startLevel, proLevel)
+            beginMenu(systemName, startLevel, proLevel, settingsdict)
 
         if catch == "beginmenu":
             pauseBeginMenu(systemName, proLevel)
