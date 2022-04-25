@@ -3,17 +3,19 @@ from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
 from player import startup
+from lang import langset
 import sys
 import os
 import random
 
 # no touchy!!!
-version = "0.2.2b-dev1"
+version = "0.2.2b-dev2"
 compileDate = "04-24-2022"
 
 # find systems and generate list
 pathToOses = './oses/'
 sys.path.insert(0, pathToOses)
+sys.path.insert(0, './lang/')
 osesDir = os.listdir(pathToOses)
 
 # sanitize list
@@ -61,30 +63,34 @@ def loadSettings(system):
         xunlo = eval(osArray[xun]).system()
         xunlock = xunlo.unlocklevel
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock, settingsdict)
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock)
 
 def boot():
 
-    detectSave()
+    langobj = loadSettingsSave("lang")
+    if langobj == False:
+        langobj = langset()
+    globals()[langobj] = __import__(langobj)
+
     detectSettings()
+    detectSave()
 
-    global settingsdict
-    settingsdict = loadSettingsSave()
-
+    global lang
+    lang = eval(langobj).language()
 
     while True:
         clear()
 
-        rprint('[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]')
-        rprint('[white]CLI ver. [bold]{0}[/bold] - compiled {1}[/white]'.format(version, compileDate))
-        rprint('[bold red]- DEVELOPMENT BUILD // BUGS MAY BE COMMON -[/bold red]\n\n')
+        rprint(lang.sparrow)
+        rprint(lang.version.format(version, compileDate))
+        rprint(lang.dev)
 
         bmc = 1 # boot menu counter
         for x in osArray:
             xobj = eval(x).system()
             systemexists = loadSystemSave(xobj.shortname)
             if systemexists == False:
-                rprint('[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - Get to level {2} in {3} to unlock this![/red]'.format(bmc, xobj.name, xobj.unlocklevel, xobj.requiredstring))
+                rprint(lang.notUnlocked.format(bmc, xobj.name, xobj.unlocklevel, xobj.requiredstring))
                 bmc += 1
             else:
                 systembadge = calculateBadge(systemexists, xobj.prolevel)
@@ -96,14 +102,23 @@ def boot():
             print()
         elif choice == "credits":
             clear()
-            rprint("Progress[#12cc00]CLI[/#12cc00]95 [blink]Development[/blink] and [blink]Contributor[/blink] Team")
+            rprint(lang.credits1)
             print()
-            rprint("[#ff0000]BurningInfern0[/#ff0000]")
-            rprint("[#f5a623]gamingwithpivin[/#f5a623]")
-            rprint("[#f8e71c]setapdede[/#f8e71c]")
-            rprint("[#37d67a]5jiji[/#37d67a]")
-            rprint("[#4a90e2]Dieguito0512[/#4a90e2]")
-            rprint("[#50e3c2]SevenSixteen[/#50e3c2]")
+            rprint("[#af005f]BurningInfern0[/#af005f]")
+            rprint("[#fff400]gamingwithpivin[/#fff400]")
+            rprint("[#6530ff]setapdede[/#6530ff]")
+            rprint("[#2fda00]5jiji[/#2fda00]")
+            rprint("[#edaf58]Dieguito0512[/#edaf58]")
+            rprint("[#d5e7ae]SevenSixteen[/#d5e7ae]")
+            print()
+            rprint(lang.credits2)
+            rprint("🇺🇸 American English (en_US) - [#af005f]BurningInfern0[/#af005f]")
+            rprint("🇵🇱 Polish (pl_PL) - [#fff400]gamingwithpivin[/#fff400]")
+            rprint("🇷🇴 Romanian (ro_RO) - [#6530ff]setapdede[/#6530ff], [#ff5045]AlexandruUnu[/#ff5045]")
+            rprint("🇫🇷 French (fr_FR) - [#2fda00]5jiji[/#2fda00]")
+            rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
+            rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
+            print()
             input()
         else:
             choice = int(choice) - 1
