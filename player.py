@@ -212,7 +212,7 @@ def spawnPopup(startLevel, systemLabel, settingsdict):
     if popupinput == "OK":
         clear()
     elif popupinput == "ok":
-	    clear()
+        clear()
     else:
         spawnPopup(startLevel, systemLabel, settingsdict)
 
@@ -235,7 +235,6 @@ def screenDownFun():
 
 def startGame(systemName, startLevel, proLevel, settingsdict):
     global progressbar # total progressbar progress
-    global progressbar2 # total orange segments in progressbar
     global lives
     global score
     global bar # array that contains segments for the progressbar
@@ -246,8 +245,7 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
     global systemLevel # current system level (used with systemLabel)
 
     # setting global variables
-    progressbar = 0
-    progressbar2 = 0
+    progressbar = [0, 0]
     lives = 3
     score = 0
     bar = []
@@ -334,53 +332,43 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
         catch = input(lang.pressInstructions)
 
         # calculates which segment you caught and does stuff
-        if seg == 0 and catch == "c":
-            progressbar = progressbar + 5
-            bar2.append("Blue")
-            score = score + 5
-        elif seg == 1 and catch == "c":
-            bar = []
-            bar2 = []
-            bardisplay = ""
-            lives = lives - 1
-            progressbar = 0
-            progressbar2 = 0
-            score = score - 10
-        elif seg == 2 and catch == "c":
-            if progressbar == 0:
+        if catch == "c":
+            if seg == 0:
+                progressbar[0] += 5
+                bar2.append("Blue")
+                score += 5
+            elif seg == 1:
+                bar = []
+                bar2 = []
+                bardisplay = ""
+                lives -= 1
+                progressbar = [0, 0]
+                score -= 10
+            elif seg == 2:
+                if progressbar[0] == 0:
+                    continue
+                if bar2[-1] == "Orange":
+                    progressbar[1] -= 5
+                    bar2.pop(-1)
+                    score += 5
+                else:
+                    progressbar -= 5
+                    bar2.pop(-1)
+                    score -= 5
+            elif seg == 3:
+                progressbar[1] += 5
+                bar2.append("Orange")
+            elif seg == 4:
                 continue
-            if bar2[-1] == "Orange":
-                progressbar2 = progressbar2 - 5
-                progressbar = progressbar - 5
-                bar2.pop(-1)
-                score = score + 5
-            else:
-                progressbar = progressbar - 5
-                bar2.pop(-1)
-                score + score - 5
-        elif seg == 3 and catch == "c":
-            progressbar = progressbar + 5
-            progressbar2 = progressbar2 + 5
-            bar2.append("Orange")
-        elif seg == 4 and catch == "c":
-            continue
-        elif seg == 5 and catch == "c":
-            bonus = random.randint(0, 1)
-            if bonus == 0:
-                progressbar = progressbar + 10
-                bar2.append("Blue")
-                bar2.append("Blue")
-                score = score + 10
-            else:
-                progressbar = progressbar + 15
-                bar2.append("Blue")
-                bar2.append("Blue")
-                bar2.append("Blue")
-                score = score + 15
-        elif seg == 6 and catch == "c":
-            progressbar = 100
-            progressbar2 = 0
-            score = score + 100
+            elif seg == 5:
+                bonus = random.randint(0, 1)
+                for i in range(2 + bonus):
+                    progressbar[0] += 5
+                    bar2.append("Blue")
+            elif seg == 6:
+                progressbar[0] = 100
+                progressbar[1] = 0
+                score += 100
 
         if catch == "q":
             print(lang.gameOver)
@@ -391,20 +379,20 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
             pauseBeginMenu(systemName, proLevel)
 
         # if you have 100% on your progressbar, the game will end.
-        if progressbar >= 100:
+        if progressbar[0] + progressbar[1] >= 100:
 
             # bonuses
-            if progressbar2 > 0:
+            if progressbar[1] > 0:
                 print(lang.gameBravo)
-            elif progressbar >= 100 and progressbar2 == 0:
+            elif progressbar[0] >= 100 and progressbar[1] == 0:
                 print(lang.gamePerfect)
-            elif progressbar > 100:
+            elif progressbar[0] + progressbar[1] > 100:
                 print(lang.gameOuterSpace)
 
-            if progressbar == 50 and progressbar2 == 50:
+            if progressbar[0] == 50 and progressbar[1] == 50:
                 print (lang.gameYinAndYang)
 
-            if progressbar == 0 and progressbar2 == 100:
+            if progressbar[0] == 0 and progressbar[1] == 100:
                 print (lang.gameNonconformist)
 
             # increment level count
