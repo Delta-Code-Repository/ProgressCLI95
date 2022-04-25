@@ -31,7 +31,7 @@ def generateTables():
     global bm1table
     global bm2table
     global bm3table
-    global annoyingPopup
+    global aptable
 
     # begin menu table with no load game
     bm1table = Table()
@@ -59,7 +59,6 @@ def generateTables():
     bm3table.add_row("4."+lang.bm5)
 
     # annoying popup
-    global aptable
     aptable = Table()
     aptable.show_header = False
     aptable.add_column("Annoying popup!")
