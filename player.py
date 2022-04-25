@@ -124,7 +124,7 @@ def restart():
     boot()
 
 # Begin menu normally
-def beginMenu(systemname, systemlevel, systempro, settingsdict):
+def beginMenu(systemname, systemlevel, systempro):
     clear()
     if systemlevel > 1:
         rprint(bm2table)
@@ -133,10 +133,10 @@ def beginMenu(systemname, systemlevel, systempro, settingsdict):
     choice = input("> ")
     if choice == "1":
         if systemlevel > 1:
-            startGame(systemname, systemlevel, systempro, settingsdict)
+            startGame(systemname, systemlevel, systempro)
         else:
             editSystemSave(systemname, 1)
-            startGame(systemname, 1, systempro, settingsdict)
+            startGame(systemname, 1, systempro)
     elif choice == "2":
         if systemlevel > 1:
             editSystemSave(systemname, 1)
@@ -157,7 +157,7 @@ def beginMenu(systemname, systemlevel, systempro, settingsdict):
         if systemlevel > 1:
             shutdown()
     else:
-        beginMenu(systemname, systemlevel, systempro, settingsdict)
+        beginMenu(systemname, systemlevel, systempro)
 
 
 # Begin menu during gameplay
@@ -178,7 +178,7 @@ def pauseBeginMenu(systemName, systemPro):
         pauseBeginMenu(systemName, systemPro)
 
 # original code by Setapdede, but i refined it a bit.
-def spawnPopup(startLevel, systemLabel, settingsdict):
+def spawnPopup(startLevel, systemLabel):
     clear()
     print('Level', startLevel)
     if systemLevel > 0:
@@ -190,9 +190,9 @@ def spawnPopup(startLevel, systemLabel, settingsdict):
     elif popupinput == "ok":
         clear()
     else:
-        spawnPopup(startLevel, systemLabel, settingsdict)
+        spawnPopup(startLevel, systemLabel)
 
-def startGame(systemName, startLevel, proLevel, settingsdict):
+def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global lives
     global score
@@ -246,7 +246,7 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
 
         popupshow = random.randint(0, 6)
         if popupshow == 6:
-            spawnPopup(startLevel, systemLabel, settingsdict)
+            spawnPopup(startLevel, systemLabel)
 
         print(lang.level, startLevel)
         if systemLevel > 0:
@@ -261,7 +261,7 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
         elif seg == 2:
             rprint("[bright_magenta]╔══╗\n║--║\n║--║\n╚══╝[/bright_magenta]")
         elif seg == 3:
-            rprint("[yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/yellow]")
+            rprint("[bright_yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/bright_yellow]")
         elif seg == 4:
             rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
         elif seg == 5:
@@ -329,7 +329,7 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
         if catch == "q":
             print(lang.gameOver)
             sleep(3)
-            beginMenu(systemName, startLevel, proLevel, settingsdict)
+            beginMenu(systemName, startLevel, proLevel)
 
         if catch == "beginmenu":
             pauseBeginMenu(systemName, proLevel)
