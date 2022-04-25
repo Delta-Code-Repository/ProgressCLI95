@@ -67,20 +67,21 @@ def generateTables():
 
 def screenDownFun():
     # checks if you have orange segments in your bar
-    if progressbar2 > 0:
+    if progressbar[1] > 0:
         print(lang.bar, end='')
-        for segment in bar2:
+        for segment in bar:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        print(lang.barProgressP1, progressbar, lang.barProgressP2, progressbar2, lang.barProgressP3)
+        barsTogether = progressbar[0] + progressbar[1]
+        print(lang.barProgressP1, barsTogether, lang.barProgressP2, progressbar[1], lang.barProgressP3)
     else:
         print(lang.bar, end='')
-        for segment in bar2:
+        for segment in bar:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
-        print(lang.barProgressP1, progressbar,"%", lang.inYourBar)
+        print(lang.barProgressP1, progressbar[0],"%", lang.inYourBar)
 
 def settings(systemname, systemlevel, systempro):
     clear()
@@ -121,31 +122,6 @@ def restart():
     sleep(3)
     from boot import boot
     boot()
-
-def settings(systemname, systemlevel, systempro, settingsdict):
-    clear()
-    print('╔════════════════════════╗\n║     S e t t i n g      ║\n║    1 - Popup           ║\n║    2 - Return          ║\n╚════════════════════════╝\n')
-    choise = input("> ")
-    if choise == "1":
-        clear()
-        print("Do you want to have this :")
-        rprint("\nYour bar:[blue][][][][][][][][][][][][][][][][][][][][/blue]")
-        print('You have 95% in your progressbar')
-        print("\nto the popup window? (Y/N)")
-        print(settingsdict)
-        choice = input("> ")
-        if choice == "Y" or choice =="y":
-            editSettingsFile("screenDown", "True", settingsdict)
-            settings(systemname, systemlevel, systempro, settingsdict)
-        elif choice == "N" or choice == "n":   
-            editSettingsFile("screenDown", "False", settingsdict)
-            settings(systemname, systemlevel, systempro, settingsdict)
-        else:
-            settings(systemname, systemlevel, systempro, settingsdict)
-    elif choise == "2":
-        beginMenu(systemname, systemlevel, systempro, settingsdict)
-    else:
-        settings(systemname, systemlevel, systempro, settingsdict)
 
 # Begin menu normally
 def beginMenu(systemname, systemlevel, systempro, settingsdict):
@@ -216,29 +192,11 @@ def spawnPopup(startLevel, systemLabel, settingsdict):
     else:
         spawnPopup(startLevel, systemLabel, settingsdict)
 
-def screenDownFun():
-    # checks if you have orange segments in your bar
-    if progressbar2 > 0:
-        print('\nYour bar:', end='')
-        for segment in bar2:
-            if segment == "Blue":
-                rprint("[blue][][/blue]", end='')
-            elif segment == "Orange":
-                rprint("[bright_yellow][][/bright_yellow]", end='')
-        print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
-    else:
-        print('\nYour bar:', end='')
-        for segment in bar2:
-            if segment == "Blue":
-                rprint("[blue][][/blue]", end='')
-        print("\nYou have", progressbar,"%", "in your progressbar.")
-
 def startGame(systemName, startLevel, proLevel, settingsdict):
     global progressbar # total progressbar progress
     global lives
     global score
     global bar # array that contains segments for the progressbar
-    global bar2 # contents in bar that are used to calculate pink segments
     global bardisplay # bar[] contents are displayed on screen
     global segments # used in conjunction with bardisplay
     global systemLabel # current system label
@@ -249,7 +207,6 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
     lives = 3
     score = 0
     bar = []
-    bar2 = []
     bardisplay = ""
     segments = ""
 
@@ -335,11 +292,10 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
         if catch == "c":
             if seg == 0:
                 progressbar[0] += 5
-                bar2.append("Blue")
+                bar.append("Blue")
                 score += 5
             elif seg == 1:
                 bar = []
-                bar2 = []
                 bardisplay = ""
                 lives -= 1
                 progressbar = [0, 0]
@@ -347,24 +303,24 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
             elif seg == 2:
                 if progressbar[0] == 0:
                     continue
-                if bar2[-1] == "Orange":
+                if bar[-1] == "Orange":
                     progressbar[1] -= 5
-                    bar2.pop(-1)
+                    bar.pop(-1)
                     score += 5
                 else:
                     progressbar -= 5
-                    bar2.pop(-1)
+                    bar.pop(-1)
                     score -= 5
             elif seg == 3:
                 progressbar[1] += 5
-                bar2.append("Orange")
+                bar.append("Orange")
             elif seg == 4:
                 continue
             elif seg == 5:
                 bonus = random.randint(0, 1)
                 for i in range(2 + bonus):
                     progressbar[0] += 5
-                    bar2.append("Blue")
+                    bar.append("Blue")
             elif seg == 6:
                 progressbar[0] = 100
                 progressbar[1] = 0
@@ -434,11 +390,10 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
                 systemLabel = "Grand"
 
             # reset variables and await input
-            bar2 = []
+            bar = []
             bardisplay = ""
             segments = ""
             progressbar = 0
-            progressbar2 = 0
             print(lang.pressEnter)
             input()
         continue
