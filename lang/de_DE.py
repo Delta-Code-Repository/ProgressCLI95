@@ -34,7 +34,7 @@ class language():
   bm6 = 'Einstellungen'
   bm7 = 'Fortsetzen'
   annoyingPopup = ':) Nerviges Popup!'
-  outOfLives = "[bold bright_blue]Du hist keine Leben. Spiel ist aus![/bold bright_blue]"
+  outOfLives = "[bold bright_blue]Du hast keine Leben. Spiel ist aus![/bold bright_blue]"
   noLevelTaken = '[i]Ein Level wurde nicht genommen.[/i]'
   negateLevel = '[bold i]-1 Level[/bold i]'
   level = 'Level'
