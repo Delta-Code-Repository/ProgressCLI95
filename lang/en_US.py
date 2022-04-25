@@ -21,7 +21,6 @@ class language():
   barProgressP2 = "% with"
   barProgressP3 = "% orange in your progressbar."
   inYourBar = "in your progressbar"
-  settings = '╔════════════════════════╗\n║     S e t t i n g      ║\n║    1 - Popup           ║\n║    2 - Return          ║\n╚════════════════════════╝\n'
   doYouWant = "Do you want to have this :"
   popupSetting = "\nto the popup window? (Y/N)"
   wait = 'P l e a s e  w a i t . . .\n\n\n'
@@ -33,6 +32,9 @@ class language():
   bm5 = 'Shutdown'
   bm6 = 'Settings'
   bm7 = 'Resume'
+  sett1 = 'S e t t i n g'
+  sett2 = 'Popup'
+  sett3 = 'Return'
   annoyingPopup = ':) Annoying popup!'
   outOfLives = "[bold bright_blue]You are out of lives. Game over![/bold bright_blue]"
   noLevelTaken = '[i]A level has not been taken.[/i]'

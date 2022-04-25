@@ -58,12 +58,17 @@ def loadSettings(system):
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
 
-        xu = "system" + xobj.systemunlock
-        xun = osArray.index(xu)
-        xunlo = eval(osArray[xun]).system()
-        xunlock = xunlo.unlocklevel
+        if hasattr(xobj, xobj.systemunlock):
+            xu = "system" + xobj.systemunlock
+            xun = osArray.index(xu)
+            xunlo = eval(osArray[xun]).system()
+            xunlock = xunlo.unlocklevel
+            xsystem = xobj.systemunlock
+        else:
+            xsystem = False
+            xunlock = False
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xobj.systemunlock, xunlock)
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
 
 def boot():
 
@@ -118,8 +123,13 @@ def boot():
             rprint("🇫🇷 French (fr_FR) - [#2fda00]5jiji[/#2fda00]")
             rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
             rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
+            rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
             print()
             input()
+        elif choice == "chlang":
+            langobj = langset()
+            globals()[langobj] = __import__(langobj)
+            lang = eval(langobj).language()
         else:
             choice = int(choice) - 1
             loadSettings(choice)

@@ -31,7 +31,7 @@ def generateTables():
     global bm1table
     global bm2table
     global bm3table
-    global annoyingPopup
+    global aptable
 
     # begin menu table with no load game
     bm1table = Table()
@@ -182,7 +182,7 @@ def spawnPopup(startLevel, systemLabel):
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    rprint(apTable)
+    rprint(aptable)
     popupinput = input()
     if popupinput == "OK":
         clear()
@@ -271,7 +271,7 @@ def startGame(systemName, startLevel, proLevel):
             rprint("[bright_cyan]╔══╗\n║**║\n║**║\n╚══╝[/bright_cyan]")
 
         # green segment check
-        greenseg = random.randint(0, 100)
+        greenseg = random.randint(0, 250)
         if greenseg == 95:
             clear()
             print('Level', startLevel)
@@ -370,7 +370,9 @@ def startGame(systemName, startLevel, proLevel):
             editSystemSave(systemName, startLevel)
 
             # system unlock check section
-            if startLevel == unlocklevel:
+            if unlocklevel == False:
+                print()
+            elif startLevel == unlocklevel:
                 rprint(lang.newSystem)
                 addSystemSave(unlock)
 
