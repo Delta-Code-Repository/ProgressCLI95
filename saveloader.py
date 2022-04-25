@@ -14,6 +14,15 @@ def detectSave():
       f.write("95,1")
       f.close()
 
+def detectSettings():
+  settingsFileExists = os.path.exists("./settings.pcsf")
+  if settingsFileExists == True:
+      print('Settings file detected.')
+  else:
+      sett = open('settings.pcsf', 'a')
+      sett.write("screenDown,False\n")
+      sett.close()
+
 def loadSystemSave(systemname):
   with open('save.pcsf') as f:
       csv_reader = csv.reader(f, delimiter=',')
