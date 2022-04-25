@@ -1,11 +1,16 @@
 from clear import clear
 from rich import print as rprint
+from rich.table import Table
 from time import sleep
 import random
-from saveloader import editSystemSave, editSettingsFile, addSystemSave
+from saveloader import editSystemSave, editSettingsFile, addSystemSave, loadSettingsSave
 from checkbadge import calculateBadge
 
-def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel, settingsdict):
+def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel):
+    langobj = loadSettingsSave("lang")
+    globals()[langobj] = __import__(langobj)
+    global lang
+    lang = eval(langobj).language()
 
     global unlock
     global unlocklevel
@@ -16,168 +21,177 @@ def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunloc
     clear()
     print('P r o g r e s s b a r ', systemlogo)
     print(systembadge)
-    print('\n\n\nNow Loading...')
+    print(lang.loading)
     sleep(5)
-    beginMenu(system, systemlevel, systempro, settingsdict)
+
+    generateTables()
+    beginMenu(system, systemlevel, systempro)
+
+def generateTables():
+    global bm1table
+    global bm2table
+    global bm3table
+    global annoyingPopup
+
+    # begin menu table with no load game
+    bm1table = Table()
+    bm1table.add_column(lang.bm1)
+    bm1table.add_row("1."+lang.bm2)
+    bm1table.add_row("2."+lang.bm6)
+    bm1table.add_row("3."+lang.bm4)
+    bm1table.add_row("4."+lang.bm5)
+
+    # begin menu table with load game
+    bm2table = Table()
+    bm2table.add_column(lang.bm1)
+    bm2table.add_row("1."+lang.bm3)
+    bm2table.add_row("2."+lang.bm2)
+    bm2table.add_row("3."+lang.bm6)
+    bm2table.add_row("4."+lang.bm4)
+    bm2table.add_row("5."+lang.bm5)
+
+    # paused begin menu
+    bm3table = Table()
+    bm3table.add_column(lang.bm1)
+    bm3table.add_row("1."+lang.bm7)
+    bm3table.add_row("2."+lang.bm2)
+    bm3table.add_row("3."+lang.bm4)
+    bm3table.add_row("4."+lang.bm5)
+
+    # annoying popup
+    aptable = Table()
+    aptable.show_header = False
+    aptable.add_column("Annoying popup!")
+    aptable.add_row(lang.annoyingPopup)
+    aptable.add_row("       [OK]", style="bold bright_black")
 
 def screenDownFun():
     # checks if you have orange segments in your bar
     if progressbar2 > 0:
-        print('\nYour bar:', end='')
+        print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        print("\nYou have", progressbar, "% with", progressbar2, "% orange in your progressbar.")
+        print(lang.barProgressP1, progressbar, lang.barProgressP2, progressbar2, lang.barProgressP3)
     else:
-        print('\nYour bar:', end='')
+        print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
-        print("\nYou have", progressbar,"%", "in your progressbar.")
+        print(lang.barProgressP1, progressbar,"%", lang.inYourBar)
 
-def settings(systemname, systemlevel, systempro, settingsdict):
+def settings(systemname, systemlevel, systempro):
     clear()
-    print('╔════════════════════════╗\n║     S e t t i n g      ║\n║    1 - Popup           ║\n║    2 - Return          ║\n╚════════════════════════╝\n')
+    print(lang.settings)
     choise = input("> ")
     if choise == "1":
         clear()
-        print("Do you want to have this :")
-        rprint("\nYour bar:[blue][][][][][][][][][][][][][][][][][][][][/blue]")
-        print('You have 95% in your progressbar')
-        print("\nto the popup window? (Y/N)")
-        print(settingsdict)
+        print(lang.doYouWant)
+        rprint(lang.bar, " [blue][][][][][][][][][][][][][][][][][][][][/blue]")
+        print(lang.barProgressP1, " 95% ",lang.inYourBar)
+        print(lang.popupSetting)
         choice = input("> ")
         if choice == "Y" or choice =="y":
-            editSettingsFile("screenDown", "True", settingsdict)
-            settings(systemname, systemlevel, systempro, settingsdict)
-        elif choice == "N" or choice == "n":   
-            editSettingsFile("screenDown", "False", settingsdict)
-            settings(systemname, systemlevel, systempro, settingsdict)
+            editSettingsFile("screenDown", "True")
+            settings(systemname, systemlevel, systempro)
+        elif choice == "N" or choice == "n":
+            editSettingsFile("screenDown", "False")
+            settings(systemname, systemlevel, systempro)
         else:
-            settings(systemname, systemlevel, systempro, settingsdict)
+            settings(systemname, systemlevel, systempro)
     elif choise == "2":
-        beginMenu(systemname, systemlevel, systempro, settingsdict)
+        beginMenu(systemname, systemlevel, systempro)
     else:
-        settings(systemname, systemlevel, systempro, settingsdict)
+        settings(systemname, systemlevel, systempro)
 
 # shutdown woohoo
 def shutdown():
     clear()
-    print('P l e a s e  w a i t . . .\n\n\n')
+    print(lang.wait)
     sleep(3)
-    rprint('[bold yellow]It is now safe to close your Command Line Interface.[/bold yellow]')
+    rprint(lang.closeCMD)
     sleep(2)
     quit()
 
 def restart():
     clear()
-    print('P l e a s e  w a i t . . .\n\n\n')
+    print(lang.wait)
     sleep(3)
     from boot import boot
     boot()
 
 # Begin menu normally
-def beginMenu(systemname, systemlevel, systempro, settingsdict):
+def beginMenu(systemname, systemlevel, systempro):
     clear()
-    if systemname == "95":
-        if systemlevel > 1:
-            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Load Game       ║\n║    2 - New Game        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
-        else:
-            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Restart         ║\n║    3 - Shutdown        ║\n╚════════════════════════╝\n')
+    if systemlevel > 1:
+        rprint(bm2table)
     else:
-        if systemlevel > 1:
-            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Load Game       ║\n║    2 - New Game        ║\n║    3 - Settings        ║\n║    4 - Restart         ║\n║    5 - Shutdown        ║\n╚════════════════════════╝\n')
-        else:
-            print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - New Game        ║\n║    2 - Settings        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
+        rprint(bm1table)
     choice = input("> ")
     if choice == "1":
         if systemlevel > 1:
-            startGame(systemname, systemlevel, systempro, settingsdict)
+            startGame(systemname, systemlevel, systempro)
         else:
             editSystemSave(systemname, 1)
-            startGame(systemname, 1, systempro, settingsdict)
+            startGame(systemname, 1, systempro)
     elif choice == "2":
-        if systemname == "95":
-            if systemlevel > 1:
-                editSystemSave(systemname, 1)
-                startGame(systemname, 1, systempro, settingsdict)
-            else:
-                restart()
-        else: 
-            if systemlevel > 1:
-                editSystemSave(systemname, 1)
-                startGame(systemname, 1, systempro, settingsdict)
-            else:
-                settings(systemname, systemlevel, systempro, settingsdict)
+        if systemlevel > 1:
+            editSystemSave(systemname, 1)
+            startGame(systemname, 1, systempro)
+        else:
+            settings(systemname, systemlevel, systempro)
     elif choice == "3":
-        if systemname == "95":
-            if systemlevel > 1:
-                restart()
-            else:
-                shutdown()
+        if systemlevel > 1:
+            settings(systemname, systemlevel, systempro)
         else:
-            if systemlevel > 1:
-                settings(systemname, systemlevel, systempro, settingsdict)
-            else:
-                restart()
+            restart()
     elif choice == "4":
-        if systemname == "95":
-            if systemlevel > 1:
-                shutdown()
-            else:
-                beginMenu(systemname, systemlevel, systempro, settingsdict)
+        if systemlevel > 1:
+            restart()
         else:
-            if systemlevel > 1:
-                restart()
-            else: 
-                shutdown()
+            shutdown()
     elif choice == "5":
-        if systemname == "95":
-            beginMenu(systemname, systemlevel, systempro, settingsdict)
-        else:
-            if systemlevel > 1:
-                shutdown()
+        if systemlevel > 1:
+            shutdown()
     else:
-        beginMenu(systemname, systemlevel, systempro, settingsdict)
+        beginMenu(systemname, systemlevel, systempro)
 
 
 # Begin menu during gameplay
-def pauseBeginMenu(systemName, systemPro, settingsdict):
+def pauseBeginMenu(systemName, systemPro):
     clear()
-    print('╔════════════════════════╗\n║   B e g i n  M e n u   ║\n║    1 - Resume          ║\n║    2 - New Game        ║\n║    3 - Restart         ║\n║    4 - Shutdown        ║\n╚════════════════════════╝\n')
+    rprint(bm3table)
     choice = input()
     if choice == "1":
         return
     elif choice == "2":
         editSystemSave(systemName, 1)
-        startGame(systemName, 1, systemPro, settingsdict)
+        startGame(systemName, 1, systemPro)
     elif choice == "3":
         restart()
     elif choice == "4":
         shutdown()
     else:
-        pauseBeginMenu(systemName, systemPro, settingsdict)
+        pauseBeginMenu(systemName, systemPro)
 
 # original code by Setapdede, but i refined it a bit.
-def spawnPopup(startLevel, systemLabel, settingsdict):
+def spawnPopup(startLevel, systemLabel):
     clear()
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    rprint("[bold bright_black]╔════════════════════╗\n║[/bold bright_black] :) Annoying popup! [bold bright_black]║\n║[/bold bright_black]        [OK]        [bold bright_black]║\n╚════════════════════╝[/bold bright_black]")
+    rprint(apTable)
     popupinput = input()
-    if settingsdict.get("screenDown") == "True":
-        screenDownFun()
     if popupinput == "OK":
         clear()
     elif popupinput == "ok":
 	    clear()
     else:
-        spawnPopup(startLevel, systemLabel, settingsdict)
+        spawnPopup(startLevel, systemLabel)
 
-def startGame(systemName, startLevel, proLevel, settingsdict):
+def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
     global lives
@@ -222,12 +236,12 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
 
         # checks if lives are 0, breaks if true
         if lives == 0:
-            rprint("[bold bright_blue]You are out of lives. Game over![/bold bright_blue]")
+            rprint(lang.outOfLives)
             if startLevel == 1:
-                rprint('[i]A level has not been taken.[/i]')
+                rprint(lang.noLevelTaken)
             else:
                 startLevel -= 1
-                rprint('[bold i]-1 Level[/bold i]')
+                rprint(lang.negateLevel)
                 editSystemSave(systemName, startLevel)
             lives = 3
             sleep(3)
@@ -235,9 +249,9 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
 
         popupshow = random.randint(0, 6)
         if popupshow == 6:
-            spawnPopup(startLevel, systemLabel, settingsdict)
+            spawnPopup(startLevel, systemLabel)
 
-        print('Level', startLevel)
+        print(lang.level, startLevel)
         if systemLevel > 0:
             print('<', systemLabel, '>')
 
@@ -268,14 +282,14 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
 
         # checks if you have 1 life left
         if lives == 1:
-            rprint("You have [italic bright_red]1 life left[/italic bright_red]. Be careful.")
+            rprint(lang.oneLifeLeft)
         else:
-            print("You have", lives, "lives left.")
+            print(lang.livesLeft.format(lives))
 
         screenDownFun()
 
         # catches the currently displayed segment
-        catch = input("Type 'c' to catch, any other key to move away, and 'q' to quit.\n")
+        catch = input(lang.pressInstructions)
 
         # calculates which segment you caught and does stuff
         if seg == 0 and catch == "c":
@@ -327,29 +341,29 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
             score = score + 100
 
         if catch == "q":
-            print('Game Over! Thanks for playing!')
+            print(lang.gameOver)
             sleep(3)
-            beginMenu(systemName, startLevel, proLevel, settingsdict)
+            beginMenu(systemName, startLevel, proLevel)
 
         if catch == "beginmenu":
-            pauseBeginMenu(systemName, proLevel, settingsdict)
+            pauseBeginMenu(systemName, proLevel)
 
         # if you have 100% on your progressbar, the game will end.
         if progressbar >= 100:
 
             # bonuses
             if progressbar2 > 0:
-                print('Bravo!')
+                print(lang.gameBravo)
             elif progressbar >= 100 and progressbar2 == 0:
-                print('Perfect!')
+                print(lang.gamePerfect)
             elif progressbar > 100:
-                print('Outer space!')
+                print(lang.gameOuterSpace)
 
             if progressbar == 50 and progressbar2 == 50:
-                print ('Yin and yang')
+                print (lang.gameYinAndYang)
 
             if progressbar == 0 and progressbar2 == 100:
-                print ("Nonconformist!")
+                print (lang.gameNonconformist)
 
             # increment level count
             startLevel += 1
@@ -357,33 +371,33 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
 
             # system unlock check section
             if startLevel == unlocklevel:
-                rprint('[i]A new system has unlocked...[/i]')
+                rprint(lang.newSystem)
                 addSystemSave(unlock)
 
             # check pro
             if startLevel == proLevel:
-                print('\nCongratulations! You are the Professional!')
-                print('Pro Label acquired!')
+                print(lang.proCongrats)
+                print(lang.proAcquired)
                 systemLevel = 1
                 systemLabel = "Pro"
 
             # label check section
             if startLevel == 100:
-                print('\nExpert Label acquired!')
+                print(lang.expertAcquired)
                 systemLevel = 2
                 systemLabel = "Expert"
             elif startLevel == 250:
-                print('\nMaster Label acquired!')
+                print(lang.masterAcquired)
                 systemLevel = 3
                 systemLabel = "Master"
             elif startLevel == 500:
-                print('\nAdept Label acquired!')
+                print(lang.adeptAcquired)
                 systemLevel = 4
                 systemLabel = "Adept"
             elif startLevel == 1000:
-                print('\nGrand Label acquired!')
+                print(lang.grandAcquired)
             elif startLevel == 2147483647:
-                print('\nWhat?')
+                print(lang.whatAcquired)
                 systemLevel = 5
                 systemLabel = "Grand"
 
@@ -393,5 +407,6 @@ def startGame(systemName, startLevel, proLevel, settingsdict):
             segments = ""
             progressbar = 0
             progressbar2 = 0
-            input('\nPress ENTER to play another level.\n') # condensed this down to one line because HELLO, you can just \n
+            print(lang.pressEnter)
+            input()
         continue
