@@ -133,9 +133,8 @@ def boot():
             lang = eval(langobj).language()
         else:
             try:
-                if int(choice):
-                    choice = int(choice) - 1
-                    loadSettings(choice)
+                choice = int(choice) - 1
+                loadSettings(choice)
             except:
                 continue
 
