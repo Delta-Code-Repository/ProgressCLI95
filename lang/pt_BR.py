@@ -17,11 +17,11 @@ class language():
   # player
   loading = '\n\n\nCarregando...'
   bar = '\nSua barra:'
-  barProgressP1 = "\nVocê tem"
-  barProgressP2 = "% com"
-  barProgressP3 = "% laranja na sua barra de progresso."
-  inYourBar = "na sua barra de progresso."
-  settings = '╔═════════════════════════╗\n║ C o n f i g u r a ç ã o ║\n║    1 - Popups           ║\n║    2 - Voltar           ║\n╚═════════════════════════╝\n'
+  barProgress1 = "\nVocê tem {0}% com {1}% laranja na sua barra de progresso."
+  barProgress2 = "\nVocê tem {0}% na sua barra de progresso."
+  sett1 = 'C o n f i g u r a ç ã o'
+  sett2 = 'Popups'
+  sett3 = 'Voltar'
   doYouWant = "Você quer ter isto: "
   popupSetting = "\nnas janelas de popup? (Y/N)"
   wait = 'P o r  f a v o r  a g u a r d e . . .\n\n\n'

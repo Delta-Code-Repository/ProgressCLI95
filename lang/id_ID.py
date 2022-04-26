@@ -17,11 +17,11 @@ class language():
   # player
   loading = '\n\n\nSekarang memuat...'
   bar = '\nBilah Anda:'
-  barProgressP1 = "\nAnda memiliki"
-  barProgressP2 = "% dengan"
-  barProgressP3 = "% jingga di bilah kemajuan anda."
-  inYourBar = "di bilah kemajuan anda"
-  settings = '╔════════════════════════╗\n║     P e n g a t u r a n      ║\n║    1 - Sembulan           ║\n║    2 - Kembali          ║\n╚════════════════════════╝\n'
+  barProgress1 = "\nAnda memiliki {0}% dengan {1}% jingga di bilah kemajuan anda."
+  barProgress2 = "\nAnda memiliki {0}% di bilah kemajuan anda"
+  sett1 = 'P e n g a t u r a n'
+  sett2 = 'Sembulan'
+  sett3 = 'Kembali'
   doYouWant = "Apakah Anda ingin memiliki ini :"
   popupSetting = "\nke jendela sembulan? (Y/N)"
   wait = 'T u n g g u . . .\n\n\n'

@@ -17,10 +17,8 @@ class language():
   # player
   loading = '\n\n\nNow Loading...'
   bar = '\nYour bar:'
-  barProgressP1 = "\nYou have"
-  barProgressP2 = "% with"
-  barProgressP3 = "% orange in your progressbar."
-  inYourBar = "in your progressbar"
+  barProgress1 = '\nYou have {0}% with {1}% orange in your progressbar.'
+  barProgress2 = "\nYou have {0}% in your progressbar."
   doYouWant = "Do you want to have this :"
   popupSetting = "\nto the popup window? (Y/N)"
   wait = 'P l e a s e  w a i t . . .\n\n\n'
@@ -32,7 +30,7 @@ class language():
   bm5 = 'Shutdown'
   bm6 = 'Settings'
   bm7 = 'Resume'
-  sett1 = 'S e t t i n g'
+  sett1 = 'S e t t i n g s'
   sett2 = 'Popup'
   sett3 = 'Return'
   annoyingPopup = ':) Annoying popup!'

@@ -10,7 +10,7 @@ import random
 
 # no touchy!!!
 version = "0.2.2b-dev2"
-compileDate = "04-24-2022"
+compileDate = "04-25-2022"
 
 # find systems and generate list
 pathToOses = './oses/'
@@ -58,7 +58,7 @@ def loadSettings(system):
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
 
-        if hasattr(xobj, xobj.systemunlock):
+        if hasattr(xobj, "systemunlock"):
             xu = "system" + xobj.systemunlock
             xun = osArray.index(xu)
             xunlo = eval(osArray[xun]).system()
@@ -124,6 +124,7 @@ def boot():
             rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
             rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
             rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
+            rprint("🇹🇷 Turkish (tr_TR) - [#8cc443]UstaYussuf[/#8cc443]")
             print()
             input()
         elif choice == "chlang":

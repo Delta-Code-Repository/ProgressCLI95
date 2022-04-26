@@ -32,6 +32,7 @@ def generateTables():
     global bm2table
     global bm3table
     global aptable
+    global sett
 
     # begin menu table with no load game
     bm1table = Table()
@@ -65,6 +66,11 @@ def generateTables():
     aptable.add_row(lang.annoyingPopup)
     aptable.add_row("       [OK]", style="bold bright_black")
 
+    sett = Table()
+    sett.add_column(lang.sett1)
+    sett.add_row("1."+lang.sett2)
+    sett.add_row("2."+lang.sett3)
+
 def screenDownFun():
     # checks if you have orange segments in your bar
     if progressbar[1] > 0:
@@ -75,17 +81,17 @@ def screenDownFun():
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
         barsTogether = progressbar[0] + progressbar[1]
-        print(lang.barProgressP1, barsTogether, lang.barProgressP2, progressbar[1], lang.barProgressP3)
+        print(lang.barProgress1.format(progressbar, progressbar2))
     else:
         print(lang.bar, end='')
         for segment in bar:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
-        print(lang.barProgressP1, progressbar[0],"%", lang.inYourBar)
+        print(lang.barProgress2.format(progressbar))
 
 def settings(systemname, systemlevel, systempro):
     clear()
-    print(lang.settings)
+    rprint(sett)
     choise = input("> ")
     if choise == "1":
         clear()

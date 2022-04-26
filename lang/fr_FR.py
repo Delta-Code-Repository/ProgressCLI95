@@ -17,10 +17,8 @@ class language():
   # player
   loading = '\n\n\nChargement...'
   bar = '\nVotre bar:'
-  barProgressP1 = "\nVous avez"
-  barProgressP2 = "% avec"
-  barProgressP3 = "% d'orange dans votre bar de progression."
-  inYourBar = "dans votre bar de progression."
+  barProgress1 = "\nVous avez {0}% avec {1}% d'orange dans votre bar de progression."
+  barProgress2 = "\nVous avez {0}% dans votre bar de progression."
   doYouWant = "Do you want to have this :"
   popupSetting = "\nto the popup window? (Y/N)"
   wait = 'V e i l l e z  p a t i e n t é . . .\n\n\n'
