@@ -380,7 +380,7 @@ def startGame(systemName, startLevel, proLevel):
             elif progressbar > 100:
                 print(lang.gameOuterSpace)
             elif progressbar3 == 100:
-                print ("Magic pink!") # TODO: Translate this 
+                print (lang.magicPink)
             if progressbar == 50 and progressbar2 == 50:
                 print (lang.gameYinAndYang)
 
