@@ -80,14 +80,13 @@ def screenDownFun():
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        barsTogether = progressbar[0] + progressbar[1]
-        print(lang.barProgress1.format(progressbar, progressbar2))
+        print(lang.barProgress1.format(progressbar[0), progressbar[1])
     else:
         print(lang.bar, end='')
         for segment in bar:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
-        print(lang.barProgress2.format(progressbar))
+        print(lang.barProgress2.format(progressbar[0]))
 
 def settings(systemname, systemlevel, systempro):
     clear()
@@ -314,7 +313,7 @@ def startGame(systemName, startLevel, proLevel):
                     bar.pop(-1)
                     score += 5
                 else:
-                    progressbar -= 5
+                    progressbar[0] -= 5
                     bar.pop(-1)
                     score -= 5
             elif seg == 3:
@@ -399,7 +398,7 @@ def startGame(systemName, startLevel, proLevel):
             bar = []
             bardisplay = ""
             segments = ""
-            progressbar = 0
+            progressbar = [0, 0]
             print(lang.pressEnter)
             input()
         continue
