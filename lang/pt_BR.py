@@ -17,10 +17,8 @@ class language():
   # player
   loading = '\n\n\nCarregando...'
   bar = '\nSua barra:'
-  barProgressP1 = "\nVocê tem"
-  barProgressP2 = "% com"
-  barProgressP3 = "% laranja na sua barra de progresso."
-  inYourBar = "na sua barra de progresso."
+  barProgress1 = "\nVocê tem {0}% com {1}% laranja na sua barra de progresso."
+  barProgress2 = "\nVocê tem {0}% com na sua barra de progresso."
   sett1 = 'C o n f i g u r a ç ã o'
   sett2 = 'Popups'
   sett3 = 'Voltar'
