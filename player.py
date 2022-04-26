@@ -193,7 +193,7 @@ def spawnPopup(startLevel, systemLabel):
     if popupinput == "OK":
         clear()
     elif popupinput == "ok":
-	    clear()
+        clear()
     else:
         spawnPopup(startLevel, systemLabel)
 
