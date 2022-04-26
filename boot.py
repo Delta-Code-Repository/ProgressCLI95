@@ -132,7 +132,11 @@ def boot():
             globals()[langobj] = __import__(langobj)
             lang = eval(langobj).language()
         else:
-            choice = int(choice) - 1
-            loadSettings(choice)
+            try:
+                if int(choice):
+                    choice = int(choice) - 1
+                    loadSettings(choice)
+            except:
+                continue
 
 boot()
