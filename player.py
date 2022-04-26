@@ -74,13 +74,13 @@ def screenDownFun():
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        print(lang.barProgressP1, progressbar, lang.barProgressP2, progressbar2, lang.barProgressP3)
+        print(lang.barProgress1.format(progressbar, progressbar2))
     else:
         print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
-        print(lang.barProgressP1, progressbar,"%", lang.inYourBar)
+        print(lang.barProgress2.format(progressbar))
 
 def settings(systemname, systemlevel, systempro):
     clear()
