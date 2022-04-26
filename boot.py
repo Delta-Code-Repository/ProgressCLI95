@@ -124,6 +124,7 @@ def boot():
             rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
             rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
             rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
+            rprint("🇹🇷 Turkish (tr_TR) - [#8cc443]UstaYussuf[/#8cc443]")
             print()
             input()
         elif choice == "chlang":
