@@ -17,10 +17,8 @@ class language():
   # player
   loading = '\n\n\nSe încarcă...'
   bar = '\nBara ta de progres:'
-  barProgressP1 = "\nAi"
-  barProgressP2 = "% cu"
-  barProgressP3 = "% portocaliu în bara ta de progres."
-  inYourBar = "în bara ta de progres"
+  barProgress1 = "\nAi {0}% cu {1}% portocaliu în bara ta de progres."
+  barProgress2 = "\nAi {0}% cu în bara ta de progres."
   sett1 = 'S e t ă r i'
   sett2 = 'Popup'
   sett3 = 'Înapoi'
