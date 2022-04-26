@@ -80,7 +80,7 @@ def screenDownFun():
                 rprint("[blue][][/blue]", end='')
             elif segment == "Orange":
                 rprint("[bright_yellow][][/bright_yellow]", end='')
-        print(lang.barProgress1.format(progressbar[0), progressbar[1])
+        print(lang.barProgress1.format(progressbar[0], progressbar[1]))
     else:
         print(lang.bar, end='')
         for segment in bar:
