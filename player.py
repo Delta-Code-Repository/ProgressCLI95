@@ -197,19 +197,27 @@ def startGame(systemName, startLevel, proLevel):
     global lives
     global score
     global bar # array that contains segments for the progressbar
+    global game_score # current game score
     global bar2 # contents in bar that are used to calculate pink segments
     global bardisplay # bar[] contents are displayed on screen
     global segments # used in conjunction with bardisplay
     global systemLabel # current system label
     global systemLevel # current system level (used with systemLabel)
+    global levelLimit
+    global MaxScore
+    global addscore
 
     # setting global variables
+    levelLimit = 100
+    MaxScore = 20000/2 * startLevel
     progressbar = 0
     progressbar2 = 0
     lives = 3
     score = 0
     bar = []
     bar2 = []
+    game_score = 0
+    addscore = MaxScore/20
     bardisplay = ""
     segments = ""
 
@@ -296,6 +304,7 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = progressbar + 5
             bar2.append("Blue")
             score = score + 5
+            game_score += addscore
         elif seg == 1 and catch == "c":
             bar = []
             bar2 = []
@@ -304,6 +313,7 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = 0
             progressbar2 = 0
             score = score - 10
+            game_score = 0
         elif seg == 2 and catch == "c":
             if progressbar == 0:
                 continue
@@ -316,6 +326,7 @@ def startGame(systemName, startLevel, proLevel):
                 progressbar = progressbar - 5
                 bar2.pop(-1)
                 score + score - 5
+                game_score -= addscore
         elif seg == 3 and catch == "c":
             progressbar = progressbar + 5
             progressbar2 = progressbar2 + 5
@@ -329,16 +340,19 @@ def startGame(systemName, startLevel, proLevel):
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 10
+                game_score += addscore * 2
             else:
                 progressbar = progressbar + 15
                 bar2.append("Blue")
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 15
+                game_score += addscore * 3
         elif seg == 6 and catch == "c":
             progressbar = 100
             progressbar2 = 0
             score = score + 100
+            game_score = MaxScore
 
         if catch == "q":
             print(lang.gameOver)
@@ -364,6 +378,9 @@ def startGame(systemName, startLevel, proLevel):
 
             if progressbar == 0 and progressbar2 == 100:
                 print (lang.gameNonconformist)
+
+            # print score
+            print(str(game_score) + lang.gamePoints)
 
             # increment level count
             startLevel += 1
@@ -413,6 +430,7 @@ def startGame(systemName, startLevel, proLevel):
             segments = ""
             progressbar = 0
             progressbar2 = 0
+            game_score = 0
             print(lang.pressEnter)
             input()
         continue

@@ -1,3 +1,4 @@
+from calendar import c
 from saveloader import detectSave, detectSettings, loadSystemSave, loadSettingsSave
 from rich import print as rprint
 from clear import clear
