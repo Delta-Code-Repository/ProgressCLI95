@@ -19,6 +19,7 @@ Current Development Version: **0.2.2b-dev2**
 - Bulgarian (bg_BG) - [markverb1](https://github.com/markverb1)
 - French (fr_FR) - [5jiji](https://github.com/5jiji)
 - Turkish (tr_TR) - [UstaYussuf](https://github.com/ustayussuf)
+- Spanish (es_VE) - elThomas54
 
 Incomplete languages:
 - Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
