@@ -18,7 +18,7 @@ class language():
   loading = '\n\n\nSekarang memuat...'
   bar = '\nBilah Anda:'
   barProgress1 = "\nAnda memiliki {0}% dengan {1}% jingga di bilah kemajuan anda."
-  barProgress2 = "\nAnda memiliki {0}% dengan di bilah kemajuan anda"
+  barProgress2 = "\nAnda memiliki {0}% di bilah kemajuan anda"
   sett1 = 'P e n g a t u r a n'
   sett2 = 'Sembulan'
   sett3 = 'Kembali'
