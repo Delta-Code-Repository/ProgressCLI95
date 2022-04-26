@@ -402,6 +402,10 @@ def startGame(systemName, startLevel, proLevel):
                 print(lang.whatAcquired)
                 systemLevel = 5
                 systemLabel = "Grand"
+            elif startLevel == 9223372036854775807:
+                print(lang.fatherlessAcquired)
+                systemLevel = 5
+                systemLabel = "What?"
 
             # reset variables and await input
             bar2 = []
