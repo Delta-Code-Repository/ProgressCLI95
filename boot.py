@@ -5,6 +5,7 @@ from clear import clear
 from checkbadge import calculateBadge
 from player import startup
 from lang import langset
+from datetime import datetime
 import sys
 import os
 import random
@@ -86,10 +87,12 @@ def boot():
 
     while True:
         clear()
-
+        now = datetime.now()
+        current_date = now.strftime(lang.currentDate)
         rprint(lang.sparrow)
         rprint(lang.version.format(version, compileDate))
         rprint(lang.dev)
+        rprint ('Today is ' + current_date)
 
         bmc = 1 # boot menu counter
         for x in osArray:
