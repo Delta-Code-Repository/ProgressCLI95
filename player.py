@@ -300,6 +300,14 @@ def startGame(systemName, startLevel, proLevel):
 
         # catches the currently displayed segment
         catch = input(lang.pressInstructions)
+        
+        #checks if you caught a non-pink segment in magic pink
+        if catch == "c" and progressbar3 > 0 and not seg == 2: 
+            bar = []
+            bar2 = []
+            progressbar = 0
+            progressbar2 = 0
+            progressbar3 = 0
 
         # calculates which segment you caught and does stuff
         if seg == 0 and catch == "c":
@@ -356,12 +364,6 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = 100
             progressbar2 = 0
             score = score + 100
-        if catch == "c" and progressbar3 > 0 and not seg == 2:
-            bar = []
-            bar2 = []
-            progressbar = 0
-            progressbar2 = 0
-            progressbar3 = 0
 
         if catch == "q":
             print(lang.gameOver)
