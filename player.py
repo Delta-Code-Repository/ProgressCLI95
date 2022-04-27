@@ -468,7 +468,7 @@ def startGame(systemName, startLevel, proLevel):
                 print(lang.gamePerfect + "\n+1000" + lang.gamePoints)
                 game_score += 1000
             elif progressbar3 == 100:
-                print (lang.magicPink = "\n+1000" + lang.gamePoints)
+                print (lang.magicPink + "\n+1000" + lang.gamePoints)
                 game_score += 1000
             if progressbar > 100:
                 print(lang.gameOuterSpace + "\n+2000" + lang.gamePoints)

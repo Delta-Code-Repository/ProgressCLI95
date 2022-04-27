@@ -60,3 +60,4 @@ class language():
   whatAcquired = '\nWhat?'
   fatherlessAcquired = '\nYou are now Fatherless.'
   magicPink = 'Magic pink!'
+  currentDate = "%m-%d-%Y"
