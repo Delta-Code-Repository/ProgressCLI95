@@ -57,5 +57,5 @@ class language():
   masterAcquired = '\nМайсторска значка получена!!'
   adeptAcquired = '\n"Адепт" значка получена!'
   grandAcquired = '\nВеликата значка получена!'
-  whatAcquired = '\nКакво?'
-  magicPink = 'Магическто розово!'
+  magicPink = 'Магическо розово!'
+  fatherlessAcquired = '\nЗначка "без баща" получена.'
