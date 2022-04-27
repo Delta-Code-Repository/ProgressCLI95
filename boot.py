@@ -137,6 +137,9 @@ def boot():
             globals()[langobj] = __import__(langobj)
             lang = eval(langobj).language()
         else:
+            if not choice.isdigit() or int(choice) > len(osArray):
+                clear()
+                boot()
             choice = int(choice) - 1
             loadSettings(choice)
 
