@@ -207,7 +207,6 @@ def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
     global progressbar3 # total pink segments in progressbar
-    global progressbar4 # total pink segments in progressbar
     global lives
     global score
     global bar # array that contains segments for the progressbar
@@ -230,7 +229,6 @@ def startGame(systemName, startLevel, proLevel):
     progressbar = 0
     progressbar2 = 0
     progressbar3 = 0
-    progressbar4 = 0
     lives = 3
     score = 0
     bar = []
