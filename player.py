@@ -215,7 +215,10 @@ def startGame(systemName, startLevel, proLevel):
 
     # setting global variables
     levelLimit = 100
-    MaxScore = 20000/2 * startLevel
+    if startLevel < levelLimit:
+        MaxScore = 1000 * startLevel
+    else:
+        MaxScore = 1000 * levelLimit
     progressbar = 0
     progressbar2 = 0
     lives = 3
@@ -346,7 +349,10 @@ def startGame(systemName, startLevel, proLevel):
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 10
-                game_score += addscore * 2
+                if game_score + addscore * 2 < MaxScore:
+                    game_score += addscore * 2
+                else:
+                    game_score = MaxScore
             else:
                 progressbar = progressbar + 15
                 bar2.append("Blue")
@@ -354,6 +360,10 @@ def startGame(systemName, startLevel, proLevel):
                 bar2.append("Blue")
                 score = score + 15
                 game_score += addscore * 3
+                if game_score + addscore * 3 < MaxScore:
+                    game_score += addscore * 3
+                else:
+                    game_score = MaxScore
         elif seg == 6 and catch == "c":
             progressbar = 100
             progressbar2 = 0
@@ -375,15 +385,17 @@ def startGame(systemName, startLevel, proLevel):
             if progressbar2 > 0:
                 print(lang.gameBravo)
             elif progressbar >= 100 and progressbar2 == 0:
-                print(lang.gamePerfect)
-            elif progressbar > 100:
-                print(lang.gameOuterSpace)
-
-            if progressbar == 50 and progressbar2 == 50:
-                print (lang.gameYinAndYang)
-
+                print(lang.gamePerfect + "\n+1000" + lang.gamePoints)
+                game_score += 1000
+            if progressbar > 100:
+                print(lang.gameOuterSpace + "\n+2000" + lang.gamePoints)
+                game_score += 2000
+            if progressbar == 100 and progressbar2 == 50:
+                print (lang.gameYinAndYang + "\n+1000" + lang.gamePoints)
+                game_score += 1000
             if progressbar == 0 and progressbar2 == 100:
-                print (lang.gameNonconformist)
+                print (lang.gameNonconformist + "\n+4000" + lang.gamePoints)
+                game_score += 4000
 
             # print score
             print(str(game_score) + lang.gamePoints)
