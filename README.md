@@ -20,9 +20,9 @@ Current Development Version: **0.2.2b-dev2**
 - French (fr_FR) - [5jiji](https://github.com/5jiji)
 - Turkish (tr_TR) - [UstaYussuf](https://github.com/ustayussuf)
 - Spanish (es_VE) - [elThomas54](https://github.com/elThomas54)
+- Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
 
 Incomplete languages:
-- Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
 - Polish (pl_PL) - [gamingwithpivin](https://github.com/pivinx1)
 
 ## Installation
