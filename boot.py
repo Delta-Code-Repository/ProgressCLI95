@@ -77,7 +77,11 @@ def boot():
     langobj = loadSettingsSave("lang")
     if langobj == False:
         langobj = langset()
-    globals()[langobj] = __import__(langobj)
+    try:
+        globals()[langobj] = __import__(langobj)
+    except:
+        langobj = "en_US"
+        globals()["en_US"] = __import__("en_US")
 
     detectSettings()
     detectSave()
