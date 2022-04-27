@@ -59,3 +59,4 @@ class language():
   grandAcquired = '\nGrand Label acquired!'
   whatAcquired = '\nWhat?'
   fatherlessAcquired = '\nYou are now Fatherless.'
+  magicPink = 'Magic pink!'

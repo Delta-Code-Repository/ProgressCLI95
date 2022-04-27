@@ -11,7 +11,7 @@ import random
 
 # no touchy!!!
 version = "0.2.2b-dev2"
-compileDate = "04-25-2022"
+compileDate = "04-27-2022"
 
 # find systems and generate list
 pathToOses = './oses/'

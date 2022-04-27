@@ -86,6 +86,8 @@ def screenDownFun():
         for segment in bar2:
             if segment == "Blue":
                 rprint("[blue][][/blue]", end='')
+            elif segment == "Pink":
+                rprint("[bright_magenta][][/bright_magenta]", end='')
         print(lang.barProgress2.format(progressbar))
 
 def settings(systemname, systemlevel, systempro):
@@ -204,6 +206,7 @@ def spawnPopup(startLevel, systemLabel):
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
     global progressbar2 # total orange segments in progressbar
+    global progressbar3 # total pink segments in progressbar
     global lives
     global score
     global bar # array that contains segments for the progressbar
@@ -225,6 +228,7 @@ def startGame(systemName, startLevel, proLevel):
         MaxScore = 1000 * levelLimit
     progressbar = 0
     progressbar2 = 0
+    progressbar3 = 0
     lives = 3
     score = 0
     bar = []
@@ -313,6 +317,14 @@ def startGame(systemName, startLevel, proLevel):
 
         # catches the currently displayed segment
         catch = input(lang.pressInstructions)
+        
+        #checks if you caught a non-pink segment in magic pink
+        if catch == "c" and progressbar3 > 0 and not seg == 2: 
+            bar = []
+            bar2 = []
+            progressbar = 0
+            progressbar2 = 0
+            progressbar3 = 0
 
         # calculates which segment you caught and does stuff
         if seg == 0 and catch == "c":
@@ -327,12 +339,19 @@ def startGame(systemName, startLevel, proLevel):
             lives = lives - 1
             progressbar = 0
             progressbar2 = 0
+            progressbar3 = 0
             score = score - 10
             game_score = 0
         elif seg == 2 and catch == "c":
             if progressbar == 0:
-                continue
-            if bar2[-1] == "Orange":
+                progressbar3 += 5
+                progressbar += 5
+                bar2.append("Pink")
+            elif bar2[-1] == "Pink":
+                progressbar3 += 5
+                progressbar += 5
+                bar2.append("Pink")
+            elif bar2[-1] == "Orange":
                 progressbar2 = progressbar2 - 5
                 progressbar = progressbar - 5
                 bar2.pop(-1)
@@ -445,13 +464,16 @@ def startGame(systemName, startLevel, proLevel):
             # bonuses
             if progressbar2 > 0:
                 print(lang.gameBravo)
-            elif progressbar >= 100 and progressbar2 == 0:
+            elif progressbar == 100 and progressbar2 == 0 and progressbar3 == 0:
                 print(lang.gamePerfect + "\n+1000" + lang.gamePoints)
+                game_score += 1000
+            elif progressbar3 == 100:
+                print (lang.magicPink = "\n+1000" + lang.gamePoints)
                 game_score += 1000
             if progressbar > 100:
                 print(lang.gameOuterSpace + "\n+2000" + lang.gamePoints)
                 game_score += 2000
-            if progressbar == 100 and progressbar2 == 50:
+            if progressbar == 50 and progressbar2 == 50:
                 print (lang.gameYinAndYang + "\n+1000" + lang.gamePoints)
                 game_score += 1000
             if progressbar == 0 and progressbar2 == 100:
@@ -461,6 +483,7 @@ def startGame(systemName, startLevel, proLevel):
             # print score
             print(str(game_score) + lang.gamePoints)
 
+            
             # increment level count
             startLevel += 1
             editSystemSave(systemName, startLevel)
@@ -510,6 +533,7 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = 0
             progressbar2 = 0
             game_score = 0
+            progressbar3 = 0
             print(lang.pressEnter)
             input()
         continue

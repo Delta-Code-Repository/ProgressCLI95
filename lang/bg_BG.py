@@ -58,3 +58,4 @@ class language():
   adeptAcquired = '\n"Адепт" значка получена!'
   grandAcquired = '\nВеликата значка получена!'
   whatAcquired = '\nКакво?'
+  magicPink = 'Магическто розово!'
