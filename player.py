@@ -377,7 +377,7 @@ def startGame(systemName, startLevel, proLevel):
             # bonuses
             if progressbar2 > 0:
                 print(lang.gameBravo)
-            elif progressbar >= 100 and progressbar2 == 0:
+            elif progressbar == 100 and progressbar2 == 0 and progressbar3 == 0:
                 print(lang.gamePerfect)
             elif progressbar > 100:
                 print(lang.gameOuterSpace)
