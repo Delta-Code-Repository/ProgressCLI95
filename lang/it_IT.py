@@ -57,3 +57,4 @@ class language():
   adeptAcquired = '\nEtichetta Adepto ottenuta!'
   grandAcquired = '\nEtichetta Superbo ottenuta!'
   whatAcquired = '\nCosa?'
+  magicPink = 'Rosa magico!'
