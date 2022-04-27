@@ -57,3 +57,4 @@ class language():
   adeptAcquired = '\nLabel Mahir diperoleh!'
   grandAcquired = '\nLabel Agung diperoleh!'
   whatAcquired = '\nApa?'
+  magicPink = 'Merah muda ajaib!'
