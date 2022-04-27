@@ -18,11 +18,8 @@ class language():
   # player
   loading = '\n\n\nŁadowanie...'
   bar = '\nTwój pasek:'
-  barProgressP1 = "\masz"
-  barProgressP2 = "% z"
-  barProgressP3 = "% pomarańczowych w twoim pasku postępu."
-  inYourBar = "w twoim pasku postępu."
-  settings = '╔════════════════════════╗\n║    Ustawienia      ║\n║    1 - Popup           ║\n║    2 - Wróć          ║\n╚════════════════════════╝\n'
+  barProgress1 = "\nmasz {0}% z {1}% pomarańczowych w twoim pasku postępu."
+  barProgress2 = "\nmasz {0}% w twoim pasku postępu."
   doYouWant = "Czy chcesz mieć :"
   popupSetting = "\ndo wyskakującego okienka? (Y/N)"
   wait = 'P r o s z ę  c z e k a ć . . .\n\n\n'
@@ -34,6 +31,9 @@ class language():
   bm5 = 'Zamknij'
   bm6 = 'Ustawienia'
   bm7 = 'Wznów'
+  sett1 = 'U s t a w i e n i a'
+  sett2 = 'Popup'
+  sett3 = 'Wróć'
   annoyingPopup = ':) Denerwujący popup!'
   outOfLives = "[bold bright_blue]Skończyły ci się życia. Koniec gry![/bold bright_blue]"
   noLevelTaken = '[i]Nie odebrano poziomu.[/i]'
