@@ -58,6 +58,4 @@ class language():
   adeptAcquired = '\nAdept Label acquired!'
   grandAcquired = '\nGrand Label acquired!'
   whatAcquired = '\nWhat?'
-  fatherlessAcquired = '\nYou are now Fatherless.'
   magicPink = 'Magic pink!'
-  currentDate = "%m-%d-%Y"
