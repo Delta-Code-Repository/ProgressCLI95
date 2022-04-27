@@ -49,6 +49,7 @@ class language():
   gameOuterSpace = 'Ruang luar!'
   gameYinAndYang = 'Yin-yang'
   gameNonconformist = "Nonkonformis!"
+  gamePoints = " points"
   newSystem = '[i]Sistem baru sudah terbuka...[/i]'
   proCongrats = '\nSelamat! Anda menjadi Profesional!'
   proAcquired = 'Label Pro diperoleh!'
@@ -57,3 +58,5 @@ class language():
   adeptAcquired = '\nLabel Mahir diperoleh!'
   grandAcquired = '\nLabel Agung diperoleh!'
   whatAcquired = '\nApa?'
+  fatherlessAcquired = '\nAnda sekarang menjadi anak yatim.'
+  magicPink = 'Merah muda ajaib!'
