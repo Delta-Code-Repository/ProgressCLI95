@@ -512,12 +512,10 @@ def startGame(systemName, startLevel, proLevel):
                 systemLabel = "Adept"
             elif startLevel == 1000:
                 print(lang.grandAcquired)
-            elif startLevel == 2147483647:
-                print(lang.whatAcquired)
                 systemLevel = 5
                 systemLabel = "Grand"
-            elif startLevel == 9223372036854775807:
-                print(lang.fatherlessAcquired)
+            elif startLevel == 2147483647:
+                print(lang.whatAcquired)
                 systemLevel = 6
                 systemLabel = "What?"
 
