@@ -306,7 +306,6 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = progressbar + 5
             bar2.append("Blue")
             score = score + 5
-            progressbar3 = 0
         elif seg == 1 and catch == "c":
             bar = []
             bar2 = []
@@ -338,9 +337,8 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = progressbar + 5
             progressbar2 = progressbar2 + 5
             bar2.append("Orange")
-            progressbar3 = 0
         elif seg == 4 and catch == "c":
-            progressbar3 = 0
+            continue
         elif seg == 5 and catch == "c":
             bonus = random.randint(0, 1)
             if bonus == 0:
@@ -354,12 +352,16 @@ def startGame(systemName, startLevel, proLevel):
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 15
-            progressbar3 = 0
         elif seg == 6 and catch == "c":
             progressbar = 100
             progressbar2 = 0
-            progressbar3 = 0
             score = score + 100
+        if catch == "c" and progressbar3 > 0 and not seg == 2:
+            bar = []
+            bar2 = []
+            progressbar = 0
+            progressbar2 = 0
+            progressbar3 = 0
 
         if catch == "q":
             print(lang.gameOver)
