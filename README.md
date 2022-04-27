@@ -11,6 +11,7 @@ Current Development Version: **0.2.2b-dev2**
 #### _It is recommended that you play on stable versions, unless you wish to playtest and report bugs._
 
 ## Available in these languages:
+![progresscli](https://user-images.githubusercontent.com/74492478/165300758-6d00bd9a-e17a-4968-b003-b3c77a15449c.gif)
 - American English (en_US) - [BurningInfern0](https://github.com/BurningInfern0)
 - Brazilian Portuguese (pt_BR) - [Luihum](https://github.com/luihum)
 - Romanian (ro_RO) - [setapdede](https://github.com/setapdede), [AlexandruUnu](https://github.com/AlexandruUnu)
@@ -18,9 +19,10 @@ Current Development Version: **0.2.2b-dev2**
 - Bulgarian (bg_BG) - [markverb1](https://github.com/markverb1)
 - French (fr_FR) - [5jiji](https://github.com/5jiji)
 - Turkish (tr_TR) - [UstaYussuf](https://github.com/ustayussuf)
+- Spanish (es_VE) - [elThomas54](https://github.com/elThomas54)
+- Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
 
 Incomplete languages:
-- Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
 - Polish (pl_PL) - [gamingwithpivin](https://github.com/pivinx1)
 
 ## Installation
