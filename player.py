@@ -195,6 +195,10 @@ def spawnPopup(startLevel, systemLabel):
     if popupinput == "OK":
         clear()
     elif popupinput == "ok":
+	    clear()
+    elif popupinput == "oK":
+        clear()
+    elif popupinput == "Ok":
         clear()
     else:
         spawnPopup(startLevel, systemLabel)
@@ -206,13 +210,22 @@ def startGame(systemName, startLevel, proLevel):
     global lives
     global score
     global bar # array that contains segments for the progressbar
+    global game_score # current game score
     global bar2 # contents in bar that are used to calculate pink segments
     global bardisplay # bar[] contents are displayed on screen
     global segments # used in conjunction with bardisplay
     global systemLabel # current system label
     global systemLevel # current system level (used with systemLabel)
+    global levelLimit # level limit for score
+    global MaxScore # maximum score
+    global addscore # add score lol
 
     # setting global variables
+    levelLimit = 100
+    if startLevel < levelLimit:
+        MaxScore = 1000 * startLevel
+    else:
+        MaxScore = 1000 * levelLimit
     progressbar = 0
     progressbar2 = 0
     progressbar3 = 0
@@ -220,6 +233,8 @@ def startGame(systemName, startLevel, proLevel):
     score = 0
     bar = []
     bar2 = []
+    game_score = 0
+    addscore = MaxScore/20
     bardisplay = ""
     segments = ""
 
@@ -266,7 +281,7 @@ def startGame(systemName, startLevel, proLevel):
             print('<', systemLabel, '>')
 
         # randomly chooses a segment and loads art
-        seg = random.randint(0, 5)
+        seg = random.randint(0, 6)
         if seg == 0:
             rprint("[blue]╔══╗\n║  ║\n║  ║\n╚══╝[/blue]")
         elif seg == 1:
@@ -279,6 +294,8 @@ def startGame(systemName, startLevel, proLevel):
             rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
         elif seg == 5:
             rprint("[bright_cyan]╔══╗\n║**║\n║**║\n╚══╝[/bright_cyan]")
+        elif seg == 6:
+            rprint("[blue]╔══╗[/blue]\n[bright_cyan]║??║[/bright_cyan]\n[bright_yellow]║??║[/bright_yellow]\n[bright_red]╚══╝[/bright_red]")
 
         # green segment check
         greenseg = random.randint(0, 250)
@@ -287,7 +304,7 @@ def startGame(systemName, startLevel, proLevel):
             print('Level', startLevel)
             if systemLevel > 0:
                 print('<', systemLabel, '>')
-            seg = 6
+            seg = 7
             rprint("[bright_green]╔══╗\n║$$║\n║$$║\n╚══╝[/bright_green]")
 
         # checks if you have 1 life left
@@ -314,6 +331,7 @@ def startGame(systemName, startLevel, proLevel):
             progressbar = progressbar + 5
             bar2.append("Blue")
             score = score + 5
+            game_score += addscore
         elif seg == 1 and catch == "c":
             bar = []
             bar2 = []
@@ -323,6 +341,7 @@ def startGame(systemName, startLevel, proLevel):
             progressbar2 = 0
             progressbar3 = 0
             score = score - 10
+            game_score = 0
         elif seg == 2 and catch == "c":
             if progressbar == 0:
                 progressbar3 += 5
@@ -341,6 +360,7 @@ def startGame(systemName, startLevel, proLevel):
                 progressbar = progressbar - 5
                 bar2.pop(-1)
                 score + score - 5
+                game_score -= addscore
         elif seg == 3 and catch == "c":
             progressbar = progressbar + 5
             progressbar2 = progressbar2 + 5
@@ -354,16 +374,81 @@ def startGame(systemName, startLevel, proLevel):
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 10
+                if game_score + addscore * 2 < MaxScore:
+                    game_score += addscore * 2
+                else:
+                    game_score = MaxScore
             else:
                 progressbar = progressbar + 15
                 bar2.append("Blue")
                 bar2.append("Blue")
                 bar2.append("Blue")
                 score = score + 15
+                game_score += addscore * 3
+                if game_score + addscore * 3 < MaxScore:
+                    game_score += addscore * 3
+                else:
+                    game_score = MaxScore
         elif seg == 6 and catch == "c":
+            randomseg = random.randint(0,4)
+            if randomseg == 0:
+                progressbar = progressbar + 5
+                bar2.append("Blue")
+                score = score + 5
+                game_score += addscore
+            elif randomseg == 1:
+                bar = []
+                bar2 = []
+                bardisplay = ""
+                lives = lives - 1
+                progressbar = 0
+                progressbar2 = 0
+                score = score - 10
+                game_score = 0
+            elif randomseg == 2:
+                if progressbar == 0:
+                    continue
+                if bar2[-1] == "Orange":
+                    progressbar2 = progressbar2 - 5
+                    progressbar = progressbar - 5
+                    bar2.pop(-1)
+                    score = score + 5
+                else:
+                    progressbar = progressbar - 5
+                    bar2.pop(-1)
+                    score + score - 5
+                    game_score -= addscore
+            elif randomseg == 3:
+                progressbar = progressbar + 5
+                progressbar2 = progressbar2 + 5
+                bar2.append("Orange")
+            elif randomseg == 4:
+                bonus = random.randint(0, 1)
+                if bonus == 0:
+                    progressbar = progressbar + 10
+                    bar2.append("Blue")
+                    bar2.append("Blue")
+                    score = score + 10
+                    if game_score + addscore * 2 < MaxScore:
+                        game_score += addscore * 2
+                    else:
+                        game_score = MaxScore
+                else:
+                    progressbar = progressbar + 15
+                    bar2.append("Blue")
+                    bar2.append("Blue")
+                    bar2.append("Blue")
+                    score = score + 15
+                    game_score += addscore * 3
+                    if game_score + addscore * 3 < MaxScore:
+                        game_score += addscore * 3
+                    else:
+                        game_score = MaxScore
+        elif seg == 7 and catch == "c":
             progressbar = 100
             progressbar2 = 0
             score = score + 100
+            game_score = MaxScore
 
         if catch == "q":
             print(lang.gameOver)
@@ -380,16 +465,23 @@ def startGame(systemName, startLevel, proLevel):
             if progressbar2 > 0:
                 print(lang.gameBravo)
             elif progressbar == 100 and progressbar2 == 0 and progressbar3 == 0:
-                print(lang.gamePerfect)
-            elif progressbar > 100:
-                print(lang.gameOuterSpace)
+                print(lang.gamePerfect + "\n+1000" + lang.gamePoints)
+                game_score += 1000
             elif progressbar3 == 100:
-                print (lang.magicPink)
+                print (lang.magicPink = "\n+1000" + lang.gamePoints)
+                game_score += 1000
+            if progressbar > 100:
+                print(lang.gameOuterSpace + "\n+2000" + lang.gamePoints)
+                game_score += 2000
             if progressbar == 50 and progressbar2 == 50:
-                print (lang.gameYinAndYang)
-
+                print (lang.gameYinAndYang + "\n+1000" + lang.gamePoints)
+                game_score += 1000
             if progressbar == 0 and progressbar2 == 100:
-                print (lang.gameNonconformist)
+                print (lang.gameNonconformist + "\n+4000" + lang.gamePoints)
+                game_score += 4000
+
+            # print score
+            print(str(game_score) + lang.gamePoints)
 
             
             # increment level count
@@ -429,6 +521,10 @@ def startGame(systemName, startLevel, proLevel):
                 print(lang.whatAcquired)
                 systemLevel = 5
                 systemLabel = "Grand"
+            elif startLevel == 9223372036854775807:
+                print(lang.fatherlessAcquired)
+                systemLevel = 6
+                systemLabel = "What?"
 
             # reset variables and await input
             bar2 = []
@@ -436,6 +532,7 @@ def startGame(systemName, startLevel, proLevel):
             segments = ""
             progressbar = 0
             progressbar2 = 0
+            game_score = 0
             progressbar3 = 0
             print(lang.pressEnter)
             input()
