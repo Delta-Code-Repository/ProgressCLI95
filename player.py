@@ -194,6 +194,10 @@ def spawnPopup(startLevel, systemLabel):
         clear()
     elif popupinput == "ok":
 	    clear()
+    elif popupinput == "oK":
+        clear()
+    elif popupinput == "Ok":
+        clear()
     else:
         spawnPopup(startLevel, systemLabel)
 
@@ -209,9 +213,9 @@ def startGame(systemName, startLevel, proLevel):
     global segments # used in conjunction with bardisplay
     global systemLabel # current system label
     global systemLevel # current system level (used with systemLabel)
-    global levelLimit
-    global MaxScore
-    global addscore
+    global levelLimit # level limit for score
+    global MaxScore # maximum score
+    global addscore # add score lol
 
     # setting global variables
     levelLimit = 100
@@ -273,7 +277,7 @@ def startGame(systemName, startLevel, proLevel):
             print('<', systemLabel, '>')
 
         # randomly chooses a segment and loads art
-        seg = random.randint(0, 5)
+        seg = random.randint(0, 6)
         if seg == 0:
             rprint("[blue]╔══╗\n║  ║\n║  ║\n╚══╝[/blue]")
         elif seg == 1:
@@ -286,6 +290,8 @@ def startGame(systemName, startLevel, proLevel):
             rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
         elif seg == 5:
             rprint("[bright_cyan]╔══╗\n║**║\n║**║\n╚══╝[/bright_cyan]")
+        elif seg == 6:
+            rprint("[blue]╔══╗[/blue]\n[bright_cyan]║??║[/bright_cyan]\n[bright_yellow]║??║[/bright_yellow]\n[bright_red]╚══╝[/bright_red]")
 
         # green segment check
         greenseg = random.randint(0, 250)
@@ -294,7 +300,7 @@ def startGame(systemName, startLevel, proLevel):
             print('Level', startLevel)
             if systemLevel > 0:
                 print('<', systemLabel, '>')
-            seg = 6
+            seg = 7
             rprint("[bright_green]╔══╗\n║$$║\n║$$║\n╚══╝[/bright_green]")
 
         # checks if you have 1 life left
@@ -365,6 +371,61 @@ def startGame(systemName, startLevel, proLevel):
                 else:
                     game_score = MaxScore
         elif seg == 6 and catch == "c":
+            randomseg = random.randint(0,4)
+            if randomseg == 0:
+                progressbar = progressbar + 5
+                bar2.append("Blue")
+                score = score + 5
+                game_score += addscore
+            elif randomseg == 1:
+                bar = []
+                bar2 = []
+                bardisplay = ""
+                lives = lives - 1
+                progressbar = 0
+                progressbar2 = 0
+                score = score - 10
+                game_score = 0
+            elif randomseg == 2:
+                if progressbar == 0:
+                    continue
+                if bar2[-1] == "Orange":
+                    progressbar2 = progressbar2 - 5
+                    progressbar = progressbar - 5
+                    bar2.pop(-1)
+                    score = score + 5
+                else:
+                    progressbar = progressbar - 5
+                    bar2.pop(-1)
+                    score + score - 5
+                    game_score -= addscore
+            elif randomseg == 3:
+                progressbar = progressbar + 5
+                progressbar2 = progressbar2 + 5
+                bar2.append("Orange")
+            elif randomseg == 4:
+                bonus = random.randint(0, 1)
+                if bonus == 0:
+                    progressbar = progressbar + 10
+                    bar2.append("Blue")
+                    bar2.append("Blue")
+                    score = score + 10
+                    if game_score + addscore * 2 < MaxScore:
+                        game_score += addscore * 2
+                    else:
+                        game_score = MaxScore
+                else:
+                    progressbar = progressbar + 15
+                    bar2.append("Blue")
+                    bar2.append("Blue")
+                    bar2.append("Blue")
+                    score = score + 15
+                    game_score += addscore * 3
+                    if game_score + addscore * 3 < MaxScore:
+                        game_score += addscore * 3
+                    else:
+                        game_score = MaxScore
+        elif seg == 7 and catch == "c":
             progressbar = 100
             progressbar2 = 0
             score = score + 100
