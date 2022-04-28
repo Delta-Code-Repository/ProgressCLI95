@@ -4,7 +4,7 @@ class language():
   # Please do not remove \n, {*}, or [] objects.
 
   # boot
-  pleaseSelect = 'Lütfen dil kodunuzu girerek dilinizi seçiniz.'
+  pleaseSelect = 'Lütfen soldaki dil kodunu girerek dilinizi seçiniz.'
   sparrow = '[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]'
   # {0} is for the build verson, {1} is for the compile date.
   version = '[white]CLI ver. [bold]{0}[/bold] - derleme {1}[/white]'
@@ -27,7 +27,7 @@ class language():
   bm2 = 'Yeni Oyun'
   bm3 = 'Kaydı Yükle'
   bm4 = 'Yeniden Başlat'
-  bm5 = 'Gücü Kapat'
+  bm5 = 'Bilgisayarı Kapat'
   bm6 = 'Ayarlar'
   bm7 = 'Devam et'
   sett1 = 'A y a r l a r'
@@ -46,7 +46,7 @@ class language():
   pressEnter = '\nYeni bir seviye oynamak için ENTER tuşuna bas.'
   gameBravo = 'Tebrikler!'
   gamePerfect = 'Mükemmel!'
-  gameOuterSpace = 'Dışarı taşık!'
+  gameOuterSpace = 'Dışa taşık!'
   gameYinAndYang = 'Yin ve yang'
   gameNonconformist = "Ters mükemmeliyetçi!"
   gamePoints = " puan"
