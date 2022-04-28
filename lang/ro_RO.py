@@ -57,3 +57,4 @@ class language():
   adeptAcquired = '\nAți obținut Eticheta Adept!'
   grandAcquired = '\nAți obținut Eticheta Grand!'
   whatAcquired = '\nCe?'
+  magicPink = 'Roz magic!'
