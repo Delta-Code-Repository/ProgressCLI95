@@ -57,3 +57,4 @@ class language():
   adeptAcquired = '\nBadge Adepte obtenu'
   grandAcquired = '\nBadge Grand obtenu!'
   whatAcquired = '\nQuoi?'
+  magicPink = 'Rose Magique'
