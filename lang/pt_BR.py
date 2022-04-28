@@ -57,3 +57,4 @@ class language():
   adeptAcquired = '\nRótulo Adept adquirido!'
   grandAcquired = '\nRótulo Grand adquirido!'
   whatAcquired = '\nQuê?'
+  magicPink = 'Rosa mágico!'
