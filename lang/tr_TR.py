@@ -49,7 +49,7 @@ class language():
   gameOuterSpace = 'Dışarı taşık!'
   gameYinAndYang = 'Yin ve yang'
   gameNonconformist = "Ters mükemmeliyetçi!"
-  magicPink = "Sihirli Pembe!"
+  gamePoints = " puan"
   newSystem = '[i]Yeni bir sistem açıldı...[/i]'
   proCongrats = '\nTebrikler! Artık Profosyonelsiniz!'
   proAcquired = 'Pro Rozeti alındı!'
@@ -58,3 +58,4 @@ class language():
   adeptAcquired = '\nAdept Rozeti alındı!'
   grandAcquired = '\nGrand Rozeti alındı!'
   whatAcquired = '\nNe?'
+  magicPink = "Sihirli Pembe!"
