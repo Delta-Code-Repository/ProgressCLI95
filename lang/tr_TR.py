@@ -38,7 +38,7 @@ class language():
   noLevelTaken = '[i]Daha bir seviye oynanmamış.[/i]'
   negateLevel = '[bold i]-1 Seviye[/bold i]'
   level = 'Seviye'
-  oneLifeLeft = "Sadece[italic bright_red]1 canın kaldı[/italic bright_red]. Dikkatli ol."
+  oneLifeLeft = "Sadece[italic bright_red] 1 canın[/italic bright_red] kaldı. Dikkatli ol."
   # {0} is the current number of lives.
   livesLeft = "{0} canın kaldı."
   pressInstructions = "Yakalamak için 'c' tuşuna, kaçınmak için herhangi bir tuşa ve çıkmak için 'q' tuşuna bas.\n"
