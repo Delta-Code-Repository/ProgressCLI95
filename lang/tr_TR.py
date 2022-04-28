@@ -49,6 +49,7 @@ class language():
   gameOuterSpace = 'Dışarı taşık!'
   gameYinAndYang = 'Yin ve yang'
   gameNonconformist = "Ters mükemmeliyetçi!"
+  magicPink = "Sihirli Pembe!"
   newSystem = '[i]Yeni bir sistem açıldı...[/i]'
   proCongrats = '\nTebrikler! Artık Profosyonelsiniz!'
   proAcquired = 'Pro Rozeti alındı!'
