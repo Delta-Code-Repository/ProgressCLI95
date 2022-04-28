@@ -98,7 +98,7 @@ def settings(systemname, systemlevel, systempro):
         clear()
         print(lang.doYouWant)
         rprint(lang.bar, " [blue][][][][][][][][][][][][][][][][][][][][/blue]")
-        print(lang.barProgressP1, " 95% ",lang.inYourBar)
+        print(lang.barProgress2.format("95"))
         print(lang.popupSetting)
         choice = input("> ")
         if choice == "Y" or choice =="y":
