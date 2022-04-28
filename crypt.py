@@ -10,13 +10,13 @@ def Decrypt(data):
 def CreateKey(win):
   key = Fernet.generate_key()
   if win:
-    keyFile = open("key.crypt", 'a')
+    keyFile = open("key.crypt", 'ab')
     keyFile.write(key)
     keyFile.close()
     f = Fernet(key)
     WinAttr("key.crypt")
   else:
-    keyFile = open(".key", 'a')
+    keyFile = open(".key", 'ab')
     keyFile.write(key)
     keyFile.close()
     f = Fernet(key)
@@ -26,14 +26,14 @@ def LoadKey():
 
   if os.name == "nt":
     if os.path.exists('key.crypt'):
-      keyFile = open("key.crypt", 'r')
+      keyFile = open("key.crypt", 'rb')
       f = Fernet(keyFile.readline())
       keyFile.close()
     else:
       CreateKey(True)
   else:
     if os.path.exists('.key'):
-      keyFile = open('.key', 'r')
+      keyFile = open('.key', 'rb')
       f = Fernet(keyFile.readline())
       keyFile.close()
     else:
