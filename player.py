@@ -77,17 +77,17 @@ def screenDownFun():
         print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
-                rprint("[blue][][/blue]", end='')
+                rprint("[blue]█[/blue]", end='')
             elif segment == "Orange":
-                rprint("[bright_yellow][][/bright_yellow]", end='')
+                rprint("[bright_yellow]█[/bright_yellow]", end='')
         print(lang.barProgress1.format(progressbar, progressbar2))
     else:
         print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
-                rprint("[blue][][/blue]", end='')
+                rprint("[blue]█[/blue]", end='')
             elif segment == "Pink":
-                rprint("[bright_magenta][][/bright_magenta]", end='')
+                rprint("[bright_magenta]█[/bright_magenta]", end='')
         print(lang.barProgress2.format(progressbar))
 
 def settings(systemname, systemlevel, systempro):
@@ -97,7 +97,7 @@ def settings(systemname, systemlevel, systempro):
     if choise == "1":
         clear()
         print(lang.doYouWant)
-        rprint(lang.bar, " [blue][][][][][][][][][][][][][][][][][][][][/blue]")
+        rprint(lang.bar, " [blue]███████████████████[/blue]")
         print(lang.barProgress2.format("95"))
         print(lang.popupSetting)
         choice = input("> ")
