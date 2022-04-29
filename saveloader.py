@@ -54,17 +54,18 @@ def editSystemSave(system, level):
     editedLine = 0
     level2 = str(level)
     with open('save.pcsf','rt') as f:
-        csv_reader = csv.reader(bytes.decode(Decrypt(f.read())), delimiter=',')
+        print(type(system))
+        csv_reader = csv.reader(bytes.decode(Decrypt(f.read())).split("\n"), delimiter=',')
         for line in csv_reader:
             if line[0] == system:
                 break
             editedLine = editedLine + 1
     f = open('save.pcsf', 'r')
     filesaver = f.readlines()
-    filesaver[editedLine] = system+","+level2+"\n"
-    e = Encrypt(filesaver)
+    filesaver[editedLine] = system+","+level2
+    e = Encrypt("\n".join(filesaver))
     x = open("save.pcsf", "wb")
-    x.writelines(e)
+    x.write(e)
     x.close()
 
 def editSettingsFile(setting, value):
