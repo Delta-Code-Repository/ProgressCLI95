@@ -2,10 +2,11 @@ from cryptography.fernet import Fernet
 import os
 
 def Encrypt(data):
-  return f.encrypt(bytes(data,'utf-8'))
+  return f.encrypt(bytes(data, encoding='utf-8'))
 
 def Decrypt(data):
-  return f.decrypt(bytes(data,'utf-8'))
+  print(type(data))
+  return f.decrypt(bytes(data, encoding='utf-8'))
 
 def CreateKey(win):
   key = Fernet.generate_key()
