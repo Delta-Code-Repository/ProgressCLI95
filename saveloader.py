@@ -27,10 +27,11 @@ def detectSettings():
 def loadSystemSave(systemname):
     LoadKey()
     with open('save.pcsf','r') as f:
-        csv_reader = csv.reader(bytes.decode(Decrypt(f.read()),"utf-8"), delimiter=',')
+        csv_reader = csv.reader(bytes.decode(Decrypt(f.read()),"utf-8"))
         f.seek(0) #NOTE: DEBUG
         print(bytes.decode(Decrypt(f.read()),"utf-8")) #NOTE: DEBUG
         for line in csv_reader:
+            print(line)
             if line[0] == systemname: 
                 systemlevel = int(line[1])
                 return systemlevel
