@@ -10,8 +10,9 @@ def detectSave():
     if savefileexists == True:
         print('Save file detected.')
     else:
-        f = open('save.pcsf', 'a')
-        f.write("95,1")
+        LoadKey()
+        f = open('save.pcsf', 'xb')
+        f.write(Encrypt("95,1"))
         f.close()
 
 def detectSettings():
@@ -25,12 +26,13 @@ def detectSettings():
 
 def loadSystemSave(systemname):
     LoadKey()
-    with open('save.pcsf') as f:
-        csv_reader = csv.reader(Decrypt(f.readline()), delimiter=',')
+    with open('save.pcsf','r') as f:
+        csv_reader = csv.reader(bytes.decode(Decrypt(f.read()),"utf-8"), delimiter=',')
+        f.seek(0) #NOTE: DEBUG
+        print(bytes.decode(Decrypt(f.read()),"utf-8")) #NOTE: DEBUG
         for line in csv_reader:
-            if line[0] == systemname:
-                systemleve = line[1]
-                systemlevel = int(systemleve)
+            if line[0] == systemname: 
+                systemlevel = int(line[1])
                 return systemlevel
         return False
 
@@ -51,8 +53,8 @@ def editSystemSave(system, level):
     global editedLine
     editedLine = 0
     level2 = str(level)
-    with open('save.pcsf') as f:
-        csv_reader = csv.reader(f, delimiter=',')
+    with open('save.pcsf','rt') as f:
+        csv_reader = csv.reader(Decrypt(f), delimiter=',')
         for line in csv_reader:
             if line[0] == system:
                 break
@@ -61,7 +63,7 @@ def editSystemSave(system, level):
     filesaver = f.readlines()
     filesaver[editedLine] = system+","+level2+"\n"
     e = Encrypt(filesaver)
-    x = open("save.pcsf", "w")
+    x = open("save.pcsf", "wb")
     x.writelines(e)
     x.close()
 
@@ -91,8 +93,8 @@ def editSettingsFile(setting, value):
     sleep(0.1)
 
 def addSystemSave(system):
-    x = open("save.pcsf", "a")
-    x.writelines(system+",1\n")
+    x = open("save.pcsf", "ab")
+    x.writelines(Encrypt(system+",1\n"))
     x.close()
 
 def addSetting(settingname, settingvalue):
