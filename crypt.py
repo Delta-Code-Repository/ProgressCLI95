@@ -2,10 +2,10 @@ from cryptography.fernet import Fernet
 import os
 
 def Encrypt(data):
-  return f.encrypt(data)
+  return f.encrypt(bytes(data,'utf-8'))
 
 def Decrypt(data):
-  return f.decrypt(data)
+  return f.decrypt(bytes(data,'utf-8'))
 
 def CreateKey(win):
   key = Fernet.generate_key()
@@ -29,6 +29,7 @@ def LoadKey():
       keyFile = open("key.crypt", 'rb')
       f = Fernet(keyFile.readline())
       keyFile.close()
+      #WinAttr('key.crypt')
     else:
       CreateKey(True)
   else:
