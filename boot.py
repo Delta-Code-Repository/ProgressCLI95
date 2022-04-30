@@ -136,6 +136,8 @@ def boot():
             langobj = langset()
             globals()[langobj] = __import__(langobj)
             lang = eval(langobj).language()
+        elif choice == "quit":
+            quit()
         else:
             if not choice.isdigit() or int(choice) > len(osArray):
                 clear()
