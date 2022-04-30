@@ -5,7 +5,6 @@ def Encrypt(data):
   return f.encrypt(bytes(data, encoding='utf-8'))
 
 def Decrypt(data):
-  print(type(data))
   return f.decrypt(bytes(data, encoding='utf-8'))
 
 def CreateKey(win):
