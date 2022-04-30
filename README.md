@@ -27,7 +27,7 @@ Current Development Version: **0.2.2b-dev2**
 
 Built on Python 3.
 
-Dependencies: ```rich```
+Dependencies: ```rich``` and ```cryptography```
 
 1. Download the zip file and extract.
 2. Open your terminal/command prompt inside the extracted contents.
