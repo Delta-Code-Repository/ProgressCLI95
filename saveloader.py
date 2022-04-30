@@ -54,7 +54,6 @@ def editSystemSave(system, level):
     editedLine = 0
     level2 = str(level)
     with open('save.pcsf','rt') as f:
-        print(type(system))
         csv_reader = csv.reader(bytes.decode(Decrypt(f.read())).split("\n"), delimiter=',')
         for line in csv_reader:
             if line[0] == system:
