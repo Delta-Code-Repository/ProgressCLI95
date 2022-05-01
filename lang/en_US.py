@@ -49,6 +49,7 @@ class language():
   gameOuterSpace = 'Outer space!'
   gameYinAndYang = 'Yin and yang'
   gameNonconformist = "Nonconformist!"
+  game95percent = '95%'
   gamePoints = " points"
   newSystem = '[i]A new system has unlocked...[/i]'
   proCongrats = '\nCongratulations! You are the Professional!'
