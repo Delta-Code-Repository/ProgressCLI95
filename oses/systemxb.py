@@ -7,3 +7,4 @@ class system():
     requiredstring = "PB2000"
     listinbootmenu = 5
     startupstring = "X B"
+    levellimit = 60

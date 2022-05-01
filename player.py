@@ -6,15 +6,17 @@ import random
 from saveloader import editSystemSave, editSettingsFile, addSystemSave, loadSettingsSave
 from checkbadge import calculateBadge
 
-def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel):
+def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel, systemlevellimit):
     langobj = loadSettingsSave("lang")
     globals()[langobj] = __import__(langobj)
     global lang
     lang = eval(langobj).language()
 
+    global levellimit
     global unlock
     global unlocklevel
 
+    levellimit = systemlevellimit
     unlock = systemunlock
     unlocklevel = systemunlocklevel
 
@@ -216,7 +218,7 @@ def startGame(systemName, startLevel, proLevel):
     global addscore # add score lol
 
     # setting global variables
-    levelLimit = 100
+    levelLimit = levellimit
     if startLevel < levelLimit:
         MaxScore = 1000 * startLevel
     else:

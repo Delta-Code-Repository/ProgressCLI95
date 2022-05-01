@@ -7,3 +7,4 @@ class system():
     systemunlock = "10"
     listinbootmenu = 8
     startupstring = "8 1"
+    levellimit = 90

@@ -7,3 +7,4 @@ class system():
     requiredstring = ""
     listinbootmenu = 0
     startupstring = "9 5"
+    levlelimit = 10

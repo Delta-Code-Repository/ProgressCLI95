@@ -58,7 +58,8 @@ def loadSettings(system):
     else:
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
-
+        if hasattr(xobj, "levellimit"):
+            xlvllimit = xobj.levellimit
         if hasattr(xobj, "systemunlock"):
             xu = "system" + xobj.systemunlock
             xun = osArray.index(xu)
@@ -69,7 +70,7 @@ def loadSettings(system):
             xsystem = False
             xunlock = False
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock, xlvllimit)
 
 def boot():
 
