@@ -6,7 +6,6 @@ global directory, cwd
 def shell(type = None):
     # File types:
     # @ Directory
-    # # Encrypted
     # $ Executable
     # ! System directory
     # & Encrypted directory
@@ -22,6 +21,9 @@ def shell(type = None):
                 match command[0]:
                     case "": continue
                     case "exit": return
+                    case "help":
+                        print("     BASIC PROGRESSDOS COMMANDS:")
+
                     case "dir":
                         if directory.get("\\".join(cwd)) == None:
                             print("<THIS DIRECTORY IS EMPTY>")
@@ -35,8 +37,6 @@ def shell(type = None):
                                     print(item[1:].ljust(17) + "EXE")
                                 case "%":           # if hidden directory
                                     pass
-                                case "#":           # if encrypted file
-                                    print(item[1:].ljust(17) + "TXT")
                                 case _:
                                     print(item.ljust(17) + "TXT")
 
@@ -63,9 +63,8 @@ def shell(type = None):
                         directory["\\".join(cwd)].append("@"+command[1].upper())
                     case _:
                         if command == []: continue
-                        print(directory["\\".join(cwd)][0])
                         if command[0] in directory["\\".join(cwd)]:
-                            print("COOL")
+                            print("COOL") # debug
             except IndexError: pass
     elif type == "terminus":
         print("Terminus is not implemented yet. Sorry!")
