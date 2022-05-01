@@ -476,6 +476,9 @@ def startGame(systemName, startLevel, proLevel):
             if progressbar == 0 and progressbar2 == 100:
                 print (lang.gameNonconformist + "\n+4000" + lang.gamePoints)
                 game_score += 4000
+            if progressbar == 95 and progressbar2 == 5:
+                print (lang.game95percent + "\n+2000" + lang.gamePoints)
+                game_score += 2000
 
             # print score
             print(str(game_score) + lang.gamePoints)
