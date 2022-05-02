@@ -80,7 +80,6 @@ def shell(type = None):
         raise ValueError(f"Unknown shell type {type}")
 
 def hexviewer(size): 
-    # format(random.randrange(0,255), "02x").upper()
     hexmatrix = []
     hexcode = format(random.randrange(0,255), "02x").upper()
     hexmatrix = [hexcode] * 5
@@ -88,16 +87,11 @@ def hexviewer(size):
         randomhex = format(random.randrange(0,255), "02x").upper()
         if randomhex != hexcode and hexmatrix.count(randomhex) < 5: 
             hexmatrix.append(randomhex)
-    tmp = []
-    for b in hexmatrix:
-        tmp.append([b])
-    hexmatrix = tmp
+    
+    random.shuffle(hexmatrix)
+
     for line in range(size):
-        for item in range(1, size+1):
-            sep = ' ' if item != size else '\n'
-            random.shuffle(hexmatrix)
-            print(hexmatrix[line], sep=sep)
-    #  for i in range(6): 
-    #    random_loc = random.choice(hexmatrix[random.randrange(size)])
-    #    hexmatrix[random_loc] = hexcode
+        for item in range(size):
+            sep = ' ' if item != size-1 else '\n'
+            print(hexmatrix[(line*size)+item], end=sep)
 shell()
