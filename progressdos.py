@@ -84,12 +84,19 @@ def hexviewer(size):
     hexmatrix = []
     hexcode = format(random.randrange(0,255), "02x").upper()
     hexmatrix = [hexcode] * 5
-    while len(hexmatrix) != size:
+    while len(hexmatrix) != size**2:
         randomhex = format(random.randrange(0,255), "02x").upper()
-        if randomhex != hexcode and hexmatrix.count(hexcode): 
+        if randomhex != hexcode and hexmatrix.count(randomhex) < 5: 
             hexmatrix.append(randomhex)
-    for line in hexmatrix: print(" ".join(line))
-
+    tmp = []
+    for b in hexmatrix:
+        tmp.append([b])
+    hexmatrix = tmp
+    for line in range(size):
+        for item in range(1, size+1):
+            sep = ' ' if item != size else '\n'
+            random.shuffle(hexmatrix)
+            print(hexmatrix[line], sep=sep)
     #  for i in range(6): 
     #    random_loc = random.choice(hexmatrix[random.randrange(size)])
     #    hexmatrix[random_loc] = hexcode
