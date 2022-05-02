@@ -83,8 +83,10 @@ def hexviewer(size):
     hexmatrix = []
     hexcode = format(random.randrange(0,255), "02x").upper()
     hexmatrix = [hexcode] * 5
+    randomhex = format(random.randrange(0,255), "02x").upper()
     while len(hexmatrix) != size**2:
-        randomhex = format(random.randrange(0,255), "02x").upper()
+        if random.randint(1, 10) > 5:
+            randomhex = format(random.randrange(0,255), "02x").upper()
         if randomhex != hexcode and hexmatrix.count(randomhex) < 5: 
             hexmatrix.append(randomhex)
     
