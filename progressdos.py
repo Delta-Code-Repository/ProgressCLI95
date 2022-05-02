@@ -1,3 +1,4 @@
+import random
 from clear import clear
 from rich import print as rprint
 
@@ -23,6 +24,12 @@ def shell(type = None):
                     case "exit": return
                     case "help":
                         print("     BASIC PROGRESSDOS COMMANDS:")
+                    case "cd"|"cd..":
+                        if command[0] == "cd.." or command[1] == ".." and len(cwd) > 1:
+                            cwd.pop()
+                        else:
+                            if any(command[1] in word for word in directory["\\".join(cwd)]):
+                                print("CE-")
 
                     case "dir":
                         if directory.get("\\".join(cwd)) == None:
@@ -61,14 +68,29 @@ def shell(type = None):
                         else: print("Invalid command")
                     case "mkdir":
                         directory["\\".join(cwd)].append("@"+command[1].upper())
+                    case "hexview": hexviewer(int(command[1])) # debug command
                     case _:
                         if command == []: continue
                         if command[0] in directory["\\".join(cwd)]:
                             print("COOL") # debug
-            except IndexError: pass
+            except (IndexError,KeyError): pass
     elif type == "terminus":
         print("Terminus is not implemented yet. Sorry!")
     else:
         raise ValueError(f"Unknown shell type {type}")
 
+def hexviewer(size): 
+    # format(random.randrange(0,255), "02x").upper()
+    hexmatrix = []
+    hexcode = format(random.randrange(0,255), "02x").upper()
+    hexmatrix = [hexcode] * 5
+    while len(hexmatrix) != size:
+        randomhex = format(random.randrange(0,255), "02x").upper()
+        if randomhex != hexcode and hexmatrix.count(hexcode): 
+            hexmatrix.append(randomhex)
+    for line in hexmatrix: print(" ".join(line))
+
+    #  for i in range(6): 
+    #    random_loc = random.choice(hexmatrix[random.randrange(size)])
+    #    hexmatrix[random_loc] = hexcode
 shell()
