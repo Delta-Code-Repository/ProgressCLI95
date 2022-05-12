@@ -17,7 +17,7 @@ Current Development Version: **0.2.2b-dev2**
 - Romanian (ro_RO) - [setapdede](https://github.com/setapdede), [AlexandruUnu](https://github.com/AlexandruUnu)
 - Indonesian (id_ID) - [NekoSam395](https://github.com/NekoSam395)
 - Bulgarian (bg_BG) - [markverb1](https://github.com/markverb1)
-- French (fr_FR) - [5jiji](https://github.com/5jiji)
+- French (fr_FR) - [5jiji](https://github.com/5jiji), [Valv0 Rainbowdash](https://github.com/valv0-rainbow-dash)
 - Turkish (tr_TR) - [UstaYussuf](https://github.com/ustayussuf)
 - Spanish (es_VE) - [elThomas54](https://github.com/elThomas54)
 - Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
