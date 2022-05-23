@@ -1,13 +1,9 @@
-import sys
-sys.path.insert(0, '../')
-from clear import clear
-from time import sleep
-from player import startGame, beginMenu, pauseBeginMenu
-
-def launch95(systemlevel, systembadge, systempro, settingsdict):
-    clear()
-    print('P r o g r e s s b a r  9 5')
-    print(systembadge)
-    print('\n\n\nNow Loading...')
-    sleep(4)
-    beginMenu("95", systemlevel, systempro, settingsdict)
+class system():
+    name = "Progressbar 95"
+    shortname = "95"
+    prolevel = 10
+    unlocklevel = 0
+    systemunlock = "95plus"
+    requiredstring = ""
+    listinbootmenu = 0
+    startupstring = "9 5"

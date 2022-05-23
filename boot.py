@@ -1,147 +1,145 @@
-from saveloader import detectSave,detectSettings, loadSystemSave, loadSettingsSave
+from saveloader import detectSave, detectSettings, loadSystemSave, loadSettingsSave
 from rich import print as rprint
 from clear import clear
 from checkbadge import calculateBadge
+from player import startup
+from lang import langset
 import sys
+import os
+import random
 
-# system pros
-global pro95
-global pro95plus
-global pro98
-global promeme
-global pro2000
-global proxb
-global prowista
+# no touchy!!!
+version = "0.2.2b-dev2"
+compileDate = "04-27-2022"
 
-pro95 = 10
-pro95plus = 20
-pro98 = 20
-promeme = 30
-pro2000 = 30
-proxb = 40
-prowista = 40
+# find systems and generate list
+pathToOses = './oses/'
+sys.path.insert(0, pathToOses)
+sys.path.insert(0, './lang/')
+osesDir = os.listdir(pathToOses)
 
-# systems
-sys.path.insert(0, './oses/')
+# sanitize list
+osArrayUnsorted = []
+for x in osesDir:
+    if x == "__pycache__":
+        continue
+    else:
+        x = x.replace('.py', '')
+        osArrayUnsorted.append(x)
 
+# import systems
+for x in osArrayUnsorted:
+    globals()[x] = __import__(x)
 
-def startup(system):
-    from system95 import launch95
-    from system95plus import launch95plus
-    from system98 import launch98
-    from systemmeme import launchmeme
-    from system2000 import launch2000
-    from systemxb import launchxb
-    from systemwista import launchwista
-    if system == "1":
-        level95 = loadSystemSave("95")
-        badge95 = calculateBadge(level95, pro95)
-        launch95(level95, badge95, pro95, settingsdict)
-    elif system == "2":
-        plus95check = loadSystemSave("95plus")
-        badge95plus = calculateBadge(plus95check, pro95plus)
-        if plus95check == False:
-            boot()
+# sort array into new array (this is probably inefficient but whatever)
+finished = False
+arrayCounter = 0
+osArray = []
+while finished == False:
+    arraySelect = random.randrange(0, len(osArrayUnsorted))
+    xobj = eval(osArrayUnsorted[arraySelect]).system()
+    if xobj.listinbootmenu == arrayCounter:
+        osArray.append(osArrayUnsorted[arraySelect])
+        osArrayUnsorted.pop(arraySelect)
+        arrayCounter +=1
+    else:
+        continue
+
+    if len(osArrayUnsorted) == 0:
+        finished = True
+
+def loadSettings(system):
+    xsys = osArray[system]
+    xobj = eval(xsys).system()
+    x = loadSystemSave(xobj.shortname)
+    if x == False:
+        print()
+    else:
+        xlevel = x
+        xbadge = calculateBadge(xlevel, xobj.prolevel)
+
+        if hasattr(xobj, "systemunlock"):
+            xu = "system" + xobj.systemunlock
+            xun = osArray.index(xu)
+            xunlo = eval(osArray[xun]).system()
+            xunlock = xunlo.unlocklevel
+            xsystem = xobj.systemunlock
         else:
-            launch95plus(plus95check, badge95plus, pro95plus, settingsdict)
-    elif system == "3":
-        check98 = loadSystemSave("98")
-        badge98 =  calculateBadge (check98, pro98)
-        if check98 == False:
-            boot()
-        else:
-            launch98(check98, badge98, pro98, settingsdict)
-    elif system == "4":
-        checkmeme = loadSystemSave("Meme")
-        badgememe =  calculateBadge (checkmeme, promeme)
-        if checkmeme == False:
-            boot()
-        else:
-            launchmeme(checkmeme, badgememe, promeme, settingsdict)
-    elif system == "5":
-        check2000 = loadSystemSave("2000")
-        badge2000 =  calculateBadge (check2000, pro2000, settingsdict)
-        if check2000 == False:
-            boot()
-        else:
-            launch2000(check2000, badge2000, pro2000, settingsdict)
-    elif system == "6":
-        checkxb = loadSystemSave("xb")
-        badgexb =  calculateBadge(checkxb, proxb)
-        if checkxb == False:
-            boot()
-        else:
-            launchxb(checkxb, badgexb, proxb, settingsdict)
-    elif system == "7":
-       checkwista = loadSystemSave("wista")
-       # bruh !!!! -716
-       badgewista = calculateBadge(checkwista, prowista)
-       if checkwista == False:
-          boot()
-       else:
-           launchwista(checkwista, badgewista, prowista, settingsdict)
+            xsystem = False
+            xunlock = False
+
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
+
 def boot():
 
-    detectSave()
+    langobj = loadSettingsSave("lang")
+    if langobj == False:
+        langobj = langset()
+    try:
+        globals()[langobj] = __import__(langobj)
+    except:
+        langobj = "en_US"
+        globals()["en_US"] = __import__("en_US")
+
     detectSettings()
+    detectSave()
 
-    global settingsdict
-    settingsdict = loadSettingsSave()
+    global lang
+    lang = eval(langobj).language()
 
-    global currentSystem
+    while True:
+        clear()
+        rprint(lang.sparrow)
+        rprint(lang.version.format(version, compileDate))
+        rprint(lang.dev)
 
-    clear()
-    
-    # btw pivin fucking work on sparrow
-    # it's just a decision tree, isn't too hard.
-    # or at least sounds easy.
-    rprint('[white]Sparrow Assistant Enhanced Text BIOS.[not bold]80.1[/not bold][/white] - [bright_yellow]Energy Star (un)Powered[/bright_yellow]')
-    rprint('[white]CLI ver. [bold]0.2.2a[/bold] - compiled 02-14-2022[/white]\n\n')
+        bmc = 1 # boot menu counter
+        for x in osArray:
+            xobj = eval(x).system()
+            systemexists = loadSystemSave(xobj.shortname)
+            if systemexists == False:
+                rprint(lang.notUnlocked.format(bmc, xobj.name, xobj.unlocklevel, xobj.requiredstring))
+                bmc += 1
+            else:
+                systembadge = calculateBadge(systemexists, xobj.prolevel)
+                print(str(bmc) + '. ' + xobj.name, systembadge)
+                bmc += 1
 
-    ninefive = loadSystemSave("95")
-    ninefivebadge = calculateBadge(ninefive, pro95)
-    print('1. Progressbar 95', ninefivebadge)
-
-    ninefiveplus = loadSystemSave("95plus")
-    if ninefiveplus == False:
-        rprint('[red][not bold]2[/not bold]. Progressbar [not bold]95[/not bold] Plus - Get to level 15 in PB95 to unlock this![/red]')
-    else:
-        ninefiveplusbadge = calculateBadge(ninefiveplus, pro95plus)
-        print('2. Progressbar 95 Plus', ninefiveplusbadge)
-
-    nineeight = loadSystemSave("98")
-    if nineeight == False:
-        rprint('[red][not bold]3[/not bold]. Progressbar [not bold]98[/not bold] - Get to level 25 in PB95+ to unlock this![/red]')
-    else:
-        nineeightbadge = calculateBadge(nineeight, pro98)
-        print ('3. Progressbar 98', nineeightbadge)
-    meme = loadSystemSave("Meme")
-    if meme == False:
-        rprint('[red][not bold]4[/not bold]. Progressbar Meme - Get to level 30 in PB98 to unlock this![/red]')
-    else:
-        memebadge = calculateBadge(meme, promeme)
-        print ('4. Progressbar Meme', memebadge)
-    twok = loadSystemSave("2000")
-    if twok == False:
-        rprint('[red][not bold]5[/not bold]. Progressbar [not bold]2000[/not bold] - Get to level 30 in PBMeme to unlock this![/red]')
-    else:
-        twokbadge = calculateBadge(twok, pro2000)
-        print ('5. Progressbar 2000', twokbadge)
-    xb = loadSystemSave("xb")
-    if xb == False:
-        rprint('[red][not bold]6[/not bold]. Progressbar XB - Get to level 40 in PB2000 to unlock this![/red]')
-    else:
-        xbbadge = calculateBadge(xb, proxb)
-        print ('6. Progressbar XB', xbbadge)
-    wista = loadSystemSave("Wista")
-    if wista == False:
-        rprint('[red][not bold]7[/not bold]. Progressbar Wista - Get to level 50 in PBXB to unlock this![/red]')
-    else:
-         wistabadge = calculateBadge(wista, prowista)
-         print('7. Progressbar Wista (INCOMPLETE)', wistabadge)
-
-
-    choice = input()
-    startup(choice)
+        choice = input()
+        if choice == "":
+            print()
+        elif choice == "credits":
+            clear()
+            rprint(lang.credits1)
+            print()
+            rprint("[#af005f]BurningInfern0[/#af005f]")
+            rprint("[#fff400]gamingwithpivin[/#fff400]")
+            rprint("[#6530ff]setapdede[/#6530ff]")
+            rprint("[#2fda00]5jiji[/#2fda00]")
+            rprint("[#edaf58]Dieguito0512[/#edaf58]")
+            rprint("[#d5e7ae]SevenSixteen[/#d5e7ae]")
+            print()
+            rprint(lang.credits2)
+            rprint("🇺🇸 American English (en_US) - [#af005f]BurningInfern0[/#af005f]")
+            rprint("🇵🇱 Polish (pl_PL) - [#fff400]gamingwithpivin[/#fff400]")
+            rprint("🇷🇴 Romanian (ro_RO) - [#6530ff]setapdede[/#6530ff], [#ff5045]AlexandruUnu[/#ff5045]")
+            rprint("🇫🇷 French (fr_FR) - [#2fda00]5jiji[/#2fda00]")
+            rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
+            rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
+            rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
+            rprint("🇹🇷 Turkish (tr_TR) - [#8cc443]UstaYussuf[/#8cc443]")
+            rprint("🇻🇪 Spanish (es_VE) - [#7289da]elThomas54[/#7289da]")
+            print()
+            input()
+        elif choice == "chlang":
+            langobj = langset()
+            globals()[langobj] = __import__(langobj)
+            lang = eval(langobj).language()
+        else:
+            if not choice.isdigit() or int(choice) > len(osArray):
+                clear()
+                boot()
+            choice = int(choice) - 1
+            loadSettings(choice)
 
 boot()
