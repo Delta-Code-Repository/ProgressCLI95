@@ -16,15 +16,6 @@ def detectSave():
       f.close()
 
 def detectSettings():
-  settingsFileExists = os.path.exists("./settings.pcsf")
-  if settingsFileExists == True:
-      print('Settings file detected.')
-  else:
-      sett = open('settings.pcsf', 'a')
-      sett.write("screenDown,False\n")
-      sett.close()
-
-def detectSettings():
     settingsFileExists = os.path.exists("./settings.pcsf")
     if settingsFileExists == True:
         print('Settings file detected')
@@ -64,18 +55,6 @@ def loadSettingsSave(setting):
     except:
         return False
 
-def loadSettingsSave():
-    with open('settings.pcsf') as sett:
-        csv_reader = csv.reader(sett, delimiter=',')
-        p = 1
-        global settingsdict
-        settingsdict = {}
-        for line in csv_reader:
-            name = line[0]
-            value = line[1]
-            settingsdict[name] = value
-        return settingsdict
-
 def editSystemSave(system, level):
   global editedLine
   editedLine = 0
@@ -92,32 +71,6 @@ def editSystemSave(system, level):
   x = open("save.pcsf", "w")
   x.writelines(filesaver)
   x.close()
-
-
-def editSettingsFile(setting, value):
-  global editedLine
-  editedLine = 0
-  lineExists = False
-  level2 = str(value)
-  sett = open('settings.pcsf', 'a')
-  sett.close()
-  with open('settings.pcsf') as sett:
-      csv_reader = csv.reader(sett, delimiter=',')
-      for line in csv_reader:
-          if line[0] == setting:
-              lineExists = True
-              break
-          editedLine = editedLine + 1
-      if lineExists == False:
-          addSetting(setting, value)
-          return True
-  sett = open('settings.pcsf', 'r')
-  filesaver = sett.readlines()
-  filesaver[editedLine] = setting+","+value+"\n"
-  xx = open("settings.pcsf", "w")
-  xx.writelines(filesaver)
-  xx.close()
-  sleep(0.1)
 
 def editSettingsFile(setting, value, settingsdict):
     global editedLine
