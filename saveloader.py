@@ -1,6 +1,5 @@
 import csv
 import os
-import re
 from time import sleep
 
 editedLine = 0
@@ -72,24 +71,29 @@ def editSystemSave(system, level):
   x.writelines(filesaver)
   x.close()
 
-def editSettingsFile(setting, value, settingsdict):
-    global editedLine
-    editedLine = 0
-    level2 = str(value)
-    with open('settings.pcsf') as sett:
-        csv_reader = csv.reader(sett, delimiter=',')
-        for line in csv_reader:
-            if line[0] == setting:
-                break
-            editedLine = editedLine + 1
-    sett = open('settings.pcsf', 'r')
-    filesaver = sett.readlines()
-    filesaver[editedLine] = setting+","+value+"\n"
-    xx = open("settings.pcsf", "w")
-    xx.writelines(filesaver)
-    xx.close()
-    sleep(0.1)
-    settingsdict[setting] = value
+def editSettingsFile(setting, value):
+  global editedLine
+  editedLine = 0
+  lineExists = False
+  sett = open('settings.pcsf', 'a')
+  sett.close()
+  with open('settings.pcsf') as sett:
+      csv_reader = csv.reader(sett, delimiter=',')
+      for line in csv_reader:
+          if line[0] == setting:
+              lineExists = True
+              break
+          editedLine = editedLine + 1
+      if lineExists == False:
+          addSetting(setting, value)
+          return True
+  sett = open('settings.pcsf', 'r')
+  filesaver = sett.readlines()
+  filesaver[editedLine] = setting+","+value+"\n"
+  xx = open("settings.pcsf", "w")
+  xx.writelines(filesaver)
+  xx.close()
+  sleep(0.1)
 
 def addSystemSave(system):
   x = open("save.pcsf", "a")

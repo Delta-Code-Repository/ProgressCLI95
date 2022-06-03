@@ -17,11 +17,9 @@ class language():
   # player
   loading = '\n\n\nCaricamento in corso...'
   bar = '\nLa tua barra:'
-  barProgressP1 = "\nSei al"
-  barProgressP2 = "% con "
-  barProgressP3 = "% arancione nella tua barra di avanzamento."
+  barProgress1 = "\nSei al {0}% con {1}% arancione nella tua barra di avanzamento."
+  barProgress2 = "\nSei al {0}%"
   inYourBar = "nella tua barra di avanzamento"
-  settings = '╔════════════════════════╗\n║     O p z i o n i      ║\n║    1 - Finestra           ║\n║    2 - Indietro          ║\n╚════════════════════════╝\n'
   doYouWant = "Vuoi avere questo :"
   popupSetting = "\nnella finestra di popup? (Y/N)"
   wait = 'P l e a s e  w a i t . . .\n\n\n'
@@ -33,6 +31,9 @@ class language():
   bm5 = 'Arresta il sistema'
   bm6 = 'Opzioni'
   bm7 = 'Riprendi'
+  sett1 = "O p z i o n i"
+  sett2 = "Finestra"
+  sett3 = "Indietro"
   annoyingPopup = ':) Finestra fastidiosa!'
   outOfLives = "[bold bright_blue]Sei a corto di vite. Game over![/bold bright_blue]"
   noLevelTaken = '[i]Non hai ancora completato un livello, il gioco ricomincia dal livello 1.[/i]'
