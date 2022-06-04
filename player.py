@@ -193,12 +193,14 @@ def spawnPopup(startLevel, systemLabel):
     if systemLevel > 0:
         print('<', systemLabel, '>')
     rprint(aptable)
+    if (loadSettingsSave("screenDown")):
+        screenDownFun()
     popupinput = input()
     popupinput = popupinput.lower()
     if popupinput == "ok":
         clear()
     else:
-        spawnPopup(startLevel, systemLabel) 
+        spawnPopup(startLevel, systemLabel)
 
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
@@ -282,17 +284,17 @@ def startGame(systemName, startLevel, proLevel):
         if seg == 0:
             rprint("[blue]╔══╗\n║  ║\n║  ║\n╚══╝[/blue]")
         elif seg == 1:
-            rprint("[bright_red]╔══╗\n║!!║\n║!!║\n╚══╝[/bright_red]")
+            rprint("[red]╔══╗\n║!!║\n║!!║\n╚══╝[/red]")
         elif seg == 2:
             rprint("[bright_magenta]╔══╗\n║--║\n║--║\n╚══╝[/bright_magenta]")
         elif seg == 3:
-            rprint("[bright_yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/bright_yellow]")
+            rprint("[yellow]╔══╗\n║~~║\n║~~║\n╚══╝[/yellow]")
         elif seg == 4:
             rprint("[bright_black]╔══╗\n║..║\n║..║\n╚══╝[/bright_black]")
         elif seg == 5:
-            rprint("[bright_cyan]╔══╗\n║**║\n║**║\n╚══╝[/bright_cyan]")
+            rprint("[cyan]╔══╗\n║**║\n║**║\n╚══╝[/cyan]")
         elif seg == 6:
-            rprint("[blue]╔══╗[/blue]\n[bright_cyan]║??║[/bright_cyan]\n[bright_yellow]║??║[/bright_yellow]\n[bright_red]╚══╝[/bright_red]")
+            rprint("[blue]╔══╗[/blue]\n[cyan]║??║[/cyan]\n[yellow]║??║[/yellow]\n[red]╚══╝[/red]")
 
         # green segment check
         greenseg = random.randint(0, 250)
