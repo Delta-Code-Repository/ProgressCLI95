@@ -35,6 +35,7 @@ def generateTables():
     global bm3table
     global aptable
     global sett
+    global mtable
 
     # begin menu table with no load game
     bm1table = Table()
@@ -67,6 +68,13 @@ def generateTables():
     aptable.add_column("Annoying popup!")
     aptable.add_row(lang.annoyingPopup)
     aptable.add_row("       [OK]", style="bold bright_black")
+
+    # mine
+    mtable = Table()
+    mtable.show_header = False
+    mtable.add_column("Mine")
+    mtable.add_row(lang.mine)
+    mtable.add_row("[Do not type OK]", style="bold bright_black")
 
     sett = Table()
     sett.add_column(lang.sett1)
@@ -192,15 +200,34 @@ def spawnPopup(startLevel, systemLabel):
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    rprint(aptable)
+    type = random.randint(1,3)
+    if type == 3:
+        rprint(mtable)
+    else:
+        rprint(aptable)
     if (loadSettingsSave("screenDown")):
         screenDownFun()
     popupinput = input()
     popupinput = popupinput.lower()
-    if popupinput == "ok":
-        clear()
+    if type == 3:
+        if popupinput == "ok":
+            clear()
+            bar = []
+            bar2 = []
+            bardisplay = ""
+            lives = lives - 1
+            progressbar = 0
+            progressbar2 = 0
+            progressbar3 = 0
+            score = score - 10
+            game_score = 0
+        else:
+            clear()
     else:
-        spawnPopup(startLevel, systemLabel)
+        if popupinput == "ok":
+            clear()
+        else:
+            spawnPopup(startLevel, systemLabel)
 
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
@@ -274,6 +301,8 @@ def startGame(systemName, startLevel, proLevel):
         popupshow = random.randint(0, 6)
         if popupshow == 6:
             spawnPopup(startLevel, systemLabel)
+
+        
 
         print(lang.level, startLevel)
         if systemLevel > 0:

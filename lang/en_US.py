@@ -51,6 +51,7 @@ class language():
   gameNonconformist = "Nonconformist!"
   game95percent = '95%'
   gamePoints = " points"
+  mine = "Mine"
   newSystem = '[i]A new system has unlocked...[/i]'
   proCongrats = '\nCongratulations! You are the Professional!'
   proAcquired = 'Pro Label acquired!'
