@@ -6,15 +6,17 @@ import random
 from saveloader import editSystemSave, editSettingsFile, addSystemSave, loadSettingsSave
 from checkbadge import calculateBadge
 
-def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel):
+def startup(system, systemlevel, systempro, systembadge, systemlogo, systemunlock, systemunlocklevel, systemlevellimit):
     langobj = loadSettingsSave("lang")
     globals()[langobj] = __import__(langobj)
     global lang
     lang = eval(langobj).language()
 
+    global levellimit
     global unlock
     global unlocklevel
 
+    levellimit = systemlevellimit
     unlock = systemunlock
     unlocklevel = systemunlocklevel
 
@@ -33,6 +35,7 @@ def generateTables():
     global bm3table
     global aptable
     global sett
+    global mtable
 
     # begin menu table with no load game
     bm1table = Table()
@@ -66,6 +69,13 @@ def generateTables():
     aptable.add_row(lang.annoyingPopup)
     aptable.add_row("       [OK]", style="bold bright_black")
 
+    # mine
+    mtable = Table()
+    mtable.show_header = False
+    mtable.add_column("Mine")
+    mtable.add_row(lang.mine)
+    mtable.add_row("[Do not type OK]", style="bold bright_black")
+
     sett = Table()
     sett.add_column(lang.sett1)
     sett.add_row("1."+lang.sett2)
@@ -77,17 +87,17 @@ def screenDownFun():
         print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
-                rprint("[blue][][/blue]", end='')
+                rprint("[blue]█[/blue]", end='')
             elif segment == "Orange":
-                rprint("[bright_yellow][][/bright_yellow]", end='')
+                rprint("[bright_yellow]█[/bright_yellow]", end='')
         print(lang.barProgress1.format(progressbar, progressbar2))
     else:
         print(lang.bar, end='')
         for segment in bar2:
             if segment == "Blue":
-                rprint("[blue][][/blue]", end='')
+                rprint("[blue]█[/blue]", end='')
             elif segment == "Pink":
-                rprint("[bright_magenta][][/bright_magenta]", end='')
+                rprint("[bright_magenta]█[/bright_magenta]", end='')
         print(lang.barProgress2.format(progressbar))
 
 def settings(systemname, systemlevel, systempro):
@@ -97,7 +107,7 @@ def settings(systemname, systemlevel, systempro):
     if choise == "1":
         clear()
         print(lang.doYouWant)
-        rprint(lang.bar, " [blue][][][][][][][][][][][][][][][][][][][][/blue]")
+        rprint(lang.bar, " [blue]███████████████████[/blue]")
         print(lang.barProgress2.format("95"))
         print(lang.popupSetting)
         choice = input("> ")
@@ -190,15 +200,34 @@ def spawnPopup(startLevel, systemLabel):
     print('Level', startLevel)
     if systemLevel > 0:
         print('<', systemLabel, '>')
-    rprint(aptable)
+    type = random.randint(1,3)
+    if type == 3:
+        rprint(mtable)
+    else:
+        rprint(aptable)
     if (loadSettingsSave("screenDown")):
         screenDownFun()
     popupinput = input()
     popupinput = popupinput.lower()
-    if popupinput == "ok":
-        clear()
+    if type == 3:
+        if popupinput == "ok":
+            clear()
+            bar = []
+            bar2 = []
+            bardisplay = ""
+            lives = lives - 1
+            progressbar = 0
+            progressbar2 = 0
+            progressbar3 = 0
+            score = score - 10
+            game_score = 0
+        else:
+            clear()
     else:
-        spawnPopup(startLevel, systemLabel)
+        if popupinput == "ok":
+            clear()
+        else:
+            spawnPopup(startLevel, systemLabel)
 
 def startGame(systemName, startLevel, proLevel):
     global progressbar # total progressbar progress
@@ -218,7 +247,7 @@ def startGame(systemName, startLevel, proLevel):
     global addscore # add score lol
 
     # setting global variables
-    levelLimit = 100
+    levelLimit = levellimit
     if startLevel < levelLimit:
         MaxScore = 1000 * startLevel
     else:
@@ -272,6 +301,8 @@ def startGame(systemName, startLevel, proLevel):
         popupshow = random.randint(0, 6)
         if popupshow == 6:
             spawnPopup(startLevel, systemLabel)
+
+        
 
         print(lang.level, startLevel)
         if systemLevel > 0:
@@ -476,6 +507,9 @@ def startGame(systemName, startLevel, proLevel):
             if progressbar == 0 and progressbar2 == 100:
                 print (lang.gameNonconformist + "\n+4000" + lang.gamePoints)
                 game_score += 4000
+            if progressbar == 95 and progressbar2 == 5:
+                print (lang.game95percent + "\n+2000" + lang.gamePoints)
+                game_score += 2000
 
             # print score
             print(str(game_score) + lang.gamePoints)

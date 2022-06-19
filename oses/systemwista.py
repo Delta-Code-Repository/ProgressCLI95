@@ -6,3 +6,4 @@ class system():
     requiredstring = "PBXB"
     listinbootmenu = 6
     startupstring = "W i s t a"
+    levellimit = 70

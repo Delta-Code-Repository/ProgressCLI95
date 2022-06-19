@@ -57,7 +57,8 @@ def loadSettings(system):
     else:
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
-
+        if hasattr(xobj, "levellimit"):
+            xlvllimit = xobj.levellimit
         if hasattr(xobj, "systemunlock"):
             xu = "system" + xobj.systemunlock
             xun = osArray.index(xu)
@@ -68,7 +69,7 @@ def loadSettings(system):
             xsystem = False
             xunlock = False
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
+        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock, xlvllimit)
 
 def boot():
 
@@ -135,6 +136,8 @@ def boot():
             langobj = langset()
             globals()[langobj] = __import__(langobj)
             lang = eval(langobj).language()
+        elif choice == "quit":
+            quit()
         else:
             if not choice.isdigit() or int(choice) > len(osArray):
                 clear()

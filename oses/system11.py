@@ -6,3 +6,4 @@ class system():
     requiredstring = "PB1X"
     listinbootmenu = 11
     startupstring = "1 1"
+    levellimit = 1000
