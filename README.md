@@ -49,3 +49,17 @@ Before you create an issue, please make sure you check the following:
 - Did you run the game in Python 2 or Python 3?
   - _If you ran the game in Python 2, please run the game in Python 3._
 - Did you run the game _inside_ of the extracted contents?
+
+## GNU General Public License version 3
+By using or modifying this software, you agree to the terms of the GNU General Public License version 3.
+
+You are allowed to sell, modify, distribute, patent, and use/modify this in private.
+
+I am not liable for your actions whilst using this software.
+
+ProgressCLI95 comes with zero warranty.
+
+If you republish this software, you must:
+- use the GPLv3 license with it
+- state your changes to said republished software
+- make the source code available
