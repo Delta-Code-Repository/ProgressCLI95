@@ -20,6 +20,8 @@ Current Development Version: **0.2.2b-dev2**
 - French (fr_FR) - [5jiji](https://github.com/5jiji), [Valv0 Rainbowdash](https://github.com/valv0-rainbow-dash)
 - Turkish (tr_TR) - [UstaYussuf](https://github.com/ustayussuf)
 - Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
+- Ukrainian (uk_UA) - [NUBERT]()
+- Russian (ru_RU) - [H8ther](https://github.com/H8ther)
 
 ### Incompatible Localizations
 These localizations are incompatible due to their translators no longer being with us. If you wish to pick these back up, we would be thankful.
