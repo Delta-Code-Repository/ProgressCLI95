@@ -2,16 +2,21 @@
 
 Progressbar95 but in a terminal. What else did you expect? Made by BurningInfern0. 
 
-*Now with save files!*
+*Progress on in your command line interface!*
 
-Current Stable Version: **0.2.2a**
-
-Current Development Version: **0.2.2b-dev2**
-
-#### _It is recommended that you play on stable versions, unless you wish to playtest and report bugs._
+## Build Versions
+- Current Stable Version: `0.2.2a`
+  - Stable builds are builds that are confirmed to work perfectly with the littlest amount of bugs, designed for public use.
+    - Stable builds are available on the `main` branch, and on the releases tab.
+- Current Development Version: `0.2.2b-dev2`
+  - Development builds are versions that might be a bit more buggy than stable, but provide more features.
+    - Dev builds are available on the `dev` branch, and on the releases tab.
+- Current Rolling Version: `0.2.3-rolling1`
+  - Rolling release builds are versions that might contain major bugs, and could do some possible damage to your save or settings file. Make sure not to launch the game on your main save, and use this only for playtesting the latest features, and reporting bugs that we missed.
+    - Rolling builds are offered on the `rolling` branch, but builds will *not* be published to the releases tab.
 
 ## Available in these languages:
-![progresscli95](https://user-images.githubusercontent.com/74492478/165626243-d5c37e68-5e8f-4a2c-b50a-f9c77c79f2cd.gif)
+![progresscli95](https://user-images.githubusercontent.com/74492478/178005127-75dda163-ef70-4a8a-9f4f-f75dfa4d9b82.gif)
 - American English (en_US) - [BurningInfern0](https://github.com/BurningInfern0)
 - Brazilian Portuguese (pt_BR) - [Luihum](https://github.com/luihum)
 - Romanian (ro_RO) - [setapdede](https://github.com/setapdede), [AlexandruUnu](https://github.com/AlexandruUnu)
@@ -22,11 +27,12 @@ Current Development Version: **0.2.2b-dev2**
 - Italian (it_IT) - [Christian230102](https://github.com/Christian230102), xSalvo2001
 - Ukrainian (uk_UA) - [NUBERT](https://github.com/Anananel)
 - Russian (ru_RU) - [H8ther](https://github.com/H8ther)
+- Polish (pl_PL) - [gamingwithpivin](https://github.com/pivinx1)
 
 ### Incompatible Localizations
 These localizations are incompatible due to their translators no longer being with us. If you wish to pick these back up, we would be thankful.
-- Spanish (es_VE)
-- Polish (pl_PL)
+- Spanish (es_VE) 
+
 
 ## Installation
 
@@ -51,6 +57,7 @@ Before you create an issue, please make sure you check the following:
 - Did you run the game in Python 2 or Python 3?
   - _If you ran the game in Python 2, please run the game in Python 3._
 - Did you run the game _inside_ of the extracted contents?
+- Has someone already made an issue about it?
 
 ## GNU General Public License version 3
 By using or modifying this software, you agree to the terms of the GNU General Public License version 3.
