@@ -9,8 +9,8 @@ import os
 import random
 
 # no touchy!!!
-version = "0.2.2b-dev3"
-compileDate = "07-08-2022"
+version = "0.2.3-rolling1"
+compileDate = "07-09-2022"
 
 # find systems and generate list
 pathToOses = './oses/'
@@ -123,12 +123,15 @@ def boot():
             print()
             rprint(lang.credits2)
             rprint("🇺🇸 American English (en_US) - [#af005f]BurningInfern0[/#af005f]")
+            rprint("🇵🇱 Polish (pl_PL) - [#fff400]gamingwithpivin[/#fff400]")
             rprint("🇷🇴 Romanian (ro_RO) - [#6530ff]setapdede[/#6530ff], [#ff5045]AlexandruUnu[/#ff5045]")
             rprint("🇫🇷 French (fr_FR) - [#2fda00]5jiji[/#2fda00]")
             rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
             rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
             rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
             rprint("🇹🇷 Turkish (tr_TR) - [#8cc443]UstaYussuf[/#8cc443]")
+            rprint("🇺🇦 Ukrainian (uk_UA) - [#]NUBERT[/#]")
+            rprint("🇷🇺 Russian (ru_RU) - [#fa8072]H8ther[/#fa8072]")
             print()
             input()
         elif choice == "chlang":
