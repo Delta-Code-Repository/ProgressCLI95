@@ -7,13 +7,13 @@ Progressbar95 but in a terminal. What else did you expect? Made by BurningInfern
 ## Build Versions
 - Current Stable Version: `0.2.2a`
   - Stable builds are builds that are confirmed to work perfectly with the littlest amount of bugs, designed for public use.
-    - Stable builds are available on the `main` branch, and on the releases tab.
+    - Stable builds are available on the releases tab.
 - Current Development Version: `0.2.2b-dev2`
   - Development builds are versions that might be a bit more buggy than stable, but provide more features.
-    - Dev builds are available on the `dev` branch, and on the releases tab.
+    - Dev builds are available on on the releases tab.
 - Current Rolling Version: `0.2.3-rolling1`
   - Rolling release builds are versions that might contain major bugs, and could do some possible damage to your save or settings file. Make sure not to launch the game on your main save, and use this only for playtesting the latest features, and reporting bugs that we missed.
-    - Rolling builds are offered on the `rolling` branch, but builds will *not* be published to the releases tab.
+    - Rolling builds are offered not via the releases tab, but by downloading the main branch code.
 
 ## Available in these languages:
 ![progresscli95](https://user-images.githubusercontent.com/74492478/178005127-75dda163-ef70-4a8a-9f4f-f75dfa4d9b82.gif)
