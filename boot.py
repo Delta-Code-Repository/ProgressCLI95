@@ -9,8 +9,8 @@ import os
 import random
 
 # no touchy!!!
-version = "0.2.2b-dev2"
-compileDate = "04-27-2022"
+version = "0.2.2b-dev3"
+compileDate = "07-08-2022"
 
 # find systems and generate list
 pathToOses = './oses/'
@@ -68,7 +68,9 @@ def loadSettings(system):
             xsystem = False
             xunlock = False
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
+        systemarray = [xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock]
+
+        startup(systemarray)
 
 def boot():
 
@@ -127,8 +129,6 @@ def boot():
             rprint("🇮🇹 Italian (it_IT) - [#00459b]Christian230102[/#00459b]")
             rprint("🇧🇬 Bulgarian (bg_BG) - [#8a2be2]markverb1[/#8a2be2]")
             rprint("🇹🇷 Turkish (tr_TR) - [#8cc443]UstaYussuf[/#8cc443]")
-            rprint("🇺🇦 Ukrainian (uk_UA) - [#]NUBERT[/#]")
-            rprint("🇷🇺 Russian (ru_RU) - [#fa8072]H8ther[/#fa8072]")
             print()
             input()
         elif choice == "chlang":
