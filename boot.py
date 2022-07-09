@@ -9,8 +9,8 @@ import os
 import random
 
 # no touchy!!!
-version = "0.2.2b-dev2"
-compileDate = "04-27-2022"
+version = "0.2.3-rolling1"
+compileDate = "07-09-2022"
 
 # find systems and generate list
 pathToOses = './oses/'
@@ -68,7 +68,9 @@ def loadSettings(system):
             xsystem = False
             xunlock = False
 
-        startup(xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock)
+        systemarray = [xobj.shortname, xlevel, xobj.prolevel, xbadge, xobj.startupstring, xsystem, xunlock]
+
+        startup(systemarray)
 
 def boot():
 
@@ -121,6 +123,7 @@ def boot():
             print()
             rprint(lang.credits2)
             rprint("🇺🇸 American English (en_US) - [#af005f]BurningInfern0[/#af005f]")
+            rprint("🇵🇱 Polish (pl_PL) - [#fff400]gamingwithpivin[/#fff400]")
             rprint("🇷🇴 Romanian (ro_RO) - [#6530ff]setapdede[/#6530ff], [#ff5045]AlexandruUnu[/#ff5045]")
             rprint("🇫🇷 French (fr_FR) - [#2fda00]5jiji[/#2fda00]")
             rprint("🇧🇷 Brazilian Portuguese (pt_BR) - [#1462d9]Luihum[/#1462d9]")
