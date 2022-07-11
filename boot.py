@@ -57,6 +57,7 @@ def loadSettings(system):
     else:
         xlevel = x
         xbadge = calculateBadge(xlevel, xobj.prolevel)
+        xlvllimit = 0
         if hasattr(xobj, "levellimit"):
             xlvllimit = xobj.levellimit
         if hasattr(xobj, "systemunlock"):
