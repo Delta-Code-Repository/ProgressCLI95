@@ -10,8 +10,8 @@ class language():
   version = '[white]CLI VER. [bold]{0}[/bold] - COMPILD {1}[/white]'
   dev = '[bold red]- DEVELOPMNT BUILD // BUGZ CUD BE COMMON -[/bold red]\n\n'
   # {0} is for the boot menu list number, {1} is for the full system name, {2} is the level number required for unlock, {3} is the level you need in a specified system to unlock this one.
-  notUnlocked = '[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - GIT 2 LEVEL {2} IN {3} 2 UNLOCK DIS![/red]'
-  credits1 = "PROGRES[#12cc00]CLI[/#12cc00]95 [blink]DEVELOPMNT[/blink] and [blink]CONTRIBUTR[/blink] TIM"
+  notUnlocked = '[red][not bold]{0}[/not bold]. [not bold]{1}[/not bold] - GIT 2 LEVL {2} IN {3} 2 UNLOCK DIS![/red]'
+  credits1 = "PROGRES[#12cc00]CLI[/#12cc00]95 [blink]DEVELOPMNT[/blink] AN [blink]CONTRIBUTR[/blink] TIM"
   credits2 = "PROGRES[#12cc00]CLI[/#12cc00]95 [blink]TRANZLASHUN[/blink] TIM"
 
   # player
@@ -35,15 +35,15 @@ class language():
   sett3 = 'RETURN'
   annoyingPopup = ':) ANOYIN POPUP!'
   outOfLives = "[bold bright_blue]U R OUT OV LIFEZ. GAM OVAR![/bold bright_blue]"
-  noLevelTaken = '[i]A LEVEL HAZ NOT TAKEN[/i]'
-  negateLevel = '[bold i]-1 LEVEL[/bold i]'
-  level = 'LEVEL'
+  noLevelTaken = '[i]A LEVL HAZ NOT TAKEN[/i]'
+  negateLevel = '[bold i]-1 LEVL[/bold i]'
+  level = 'LEVL'
   oneLifeLeft = "U HAS [italic bright_red] 1 LIFE LEFT [/italic bright_red]. BE CERFUL."
   # {0} is the current number of lives.
   livesLeft = "U HAS {0} LIFEZ LEFT."
   pressInstructions = "TYPE 'C' 2 KATCH, ANY OTHR KEY 2 MOOV AWAY, AN 'Q' 2 QUIT.\n"
   gameOver = 'GAM OVAR! THX 4 PLAYIN!'
-  pressEnter = '\nPRES ENTR 2 PULAY ANOTHR LEVEL.'
+  pressEnter = '\nPRES ENTR 2 PULAY ANOTHR LEVL.'
   gameBravo = 'BRAVO!'
   gamePerfect = 'PERFIK!'
   gameOuterSpace = 'OUTR SPACE!'
