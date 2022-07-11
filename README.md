@@ -39,7 +39,7 @@ Before you create an issue, please make sure you check the following:
 - Please check that the dependencies are installed.
 - Did you get an error about pip not being found when you ran `pip install -r requirements.txt`?
   - That means that pip is not installed in your PATH variable. Simply run `python -m pip install -r requirements.txt` (or `py3 -m pip install -r requirements.txt` on Windows) to go around this issue.
-  - If Python complains that there are no module named pip, run your package manager with the package `python-pip` or `python3-pip` and install `rich` after.
+  - If Python complains that there are no module named pip, install the package `python-pip` or `python3-pip` with your package manager and install `rich` after.
 - Did you get an error about Python not being found when you launched `boot.py`?
   - **Windows:** Python is either not installed, or you did not check the box in the installer to put Python into PATH.
   - **Linux:** Make sure Python is installed and can be found within a folder in your $PATH variable.
