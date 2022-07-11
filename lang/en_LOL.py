@@ -17,9 +17,9 @@ class language():
   # player
   loading = '\n\n\nNAW LOADIN...'
   bar = '\nUR BAR:'
-  barProgress1 = '\nU HAS {0}% WIF {1}% ORANGE IN UR PROGRESBAR.'
-  barProgress2 = "\nU HAS {0}% IN UR PROGRESBAR."
-  doYouWant = "DO U WANTS 2 HAS DIS :"
+  barProgress1 = '\nU HAZ {0}% WIF {1}% ORANGE IN UR PROGRESBAR.'
+  barProgress2 = "\nU HAZ {0}% IN UR PROGRESBAR."
+  doYouWant = "DO U WANTS 2 HAZ DIS :"
   popupSetting = "\n2 TEH POPUP WINDOW? (Y/N)"
   wait = 'P L Z  W A I T . . .\n\n\n'
   closeCMD = '[bold yellow]IT NAW SAFE 2 CLOSE UR COMMAN LINE INTERFEZ[/bold yellow]'
@@ -38,9 +38,9 @@ class language():
   noLevelTaken = '[i]A LEVL HAZ NOT TAKEN[/i]'
   negateLevel = '[bold i]-1 LEVL[/bold i]'
   level = 'LEVL'
-  oneLifeLeft = "U HAS [italic bright_red] 1 LIFE LEFT [/italic bright_red]. BE CERFUL."
+  oneLifeLeft = "U HAZ [italic bright_red] 1 LIFE LEFT [/italic bright_red]. BE CERFUL."
   # {0} is the current number of lives.
-  livesLeft = "U HAS {0} LIFEZ LEFT."
+  livesLeft = "U HAZ {0} LIFEZ LEFT."
   pressInstructions = "TYPE 'C' 2 KATCH, ANY OTHR KEY 2 MOOV AWAY, AN 'Q' 2 QUIT.\n"
   gameOver = 'GAM OVAR! THX 4 PLAYIN!'
   pressEnter = '\nPRES ENTR 2 PULAY ANOTHR LEVL.'
@@ -52,7 +52,7 @@ class language():
   game95percent = '95%'
   gamePoints = " POINTZ"
   mine = "MINE"
-  newSystem = '[i]A NEW SISTEM HAS UNLOCKD[/i]'
+  newSystem = '[i]A NEW SISTEM HAZ UNLOCKD[/i]'
   proCongrats = '\nCONGRATULASHUNS! U R TEH PROFESHUNAL!!'
   proAcquired = 'PRO LABEL ACQUIRD!'
   expertAcquired = '\nEXPERT LABEL ACQUIRD!'
