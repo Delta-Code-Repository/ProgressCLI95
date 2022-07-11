@@ -22,7 +22,7 @@ class language():
   doYouWant = "DO U WANTS 2 HAS DIS :"
   popupSetting = "\n2 TEH POPUP WINDOW? (Y/N)"
   wait = 'P L Z  W A I T . . .\n\n\n'
-  closeCMD = '[bold yellow]IT NAW SAFE 2 CLOSE UR COMMAN LINE INTERFEZ/bold yellow]'
+  closeCMD = '[bold yellow]IT NAW SAFE 2 CLOSE UR COMMAN LINE INTERFEZ[/bold yellow]'
   bm1 = 'B I G I N  M E N U'
   bm2 = 'NEW GAM'
   bm3 = 'LOAD GAM'
@@ -49,7 +49,9 @@ class language():
   gameOuterSpace = 'OUTR SPACE!'
   gameYinAndYang = 'YIN AN YONG'
   gameNonconformist = "NONCONFORMIST!"
-  gamePoints = "POINTS"
+  game95percent = '95%'
+  gamePoints = " POINTZ"
+  mine = "MINE"
   newSystem = '[i]A NEW SISTEM HAS UNLOCKD[/i]'
   proCongrats = '\nCONGRATULASHUNS! U R TEH PROFESHUNAL!!'
   proAcquired = 'PRO LABEL ACQUIRD!'
