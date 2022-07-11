@@ -1,5 +1,5 @@
 class language():
-  # en_US language configuration file
+  # en_LOL language configuration file
   # {*} <-- these are for python's .format() command, used for placing variables in strings.
   # Please do not remove \n, {*}, or [] objects.
 
