@@ -4,6 +4,8 @@ Progressbar95 but in a terminal. What else did you expect? Made by BurningInfern
 
 *Progress on in your command line interface!*
 
+Update 7/25/22: This project is not likely to get any more updates in the future and therefore development will stop indefinitely, to which the repo will be archived. I have other projects that require my attention.
+
 ## Build Versions
 - Current Stable Version: `0.2.2a`
   - Stable builds are builds that are confirmed to work perfectly with the littlest amount of bugs, designed for public use.
